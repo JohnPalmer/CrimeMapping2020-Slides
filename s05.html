@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Crime Mapping and Spatial Analysis</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/beige.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+	<div class="reveal">
+
+		<!-- In between the <div="reveal"> and the <div class="slides">-->
+		<header style="position: absolute;top: 5px; left: 5px; right: 5px; text-align: center; z-index:500; font-size:50px; color:white; padding: 5px; font-family: 'League Gothic', Impact, sans-serif"></header>
+		<footer style="position: absolute;bottom: 5px; left: 5px; text-align: center; z-index:500; font-size:12px;  padding: 5px; font-family: Arial, Helvetica, sans-serif"></footer>
+
+
+		<div class="slides">
+
+			<section>
+				<h1>Crime Mapping and Spatial Analysis</h1>
+				<h3>Class 5: Crime Mapping I</h3>
+				<p><a href="http://johnrbpalmer.com">John Palmer</a>
+				</section>
+
+<section>
+	<h2>Maps for Visual Thinking</h2>
+	<ul>
+		<li>generate ideas or hypotheses</li>
+		<li>crude, working maps</li>
+	</ul>
+</section>
+
+<section>
+	<h2>Maps for Visual Communication</h2>
+	<ul>
+		<li>synthesize and present information</li>
+		<li>understand what you want to communicate and who is your target audience</li>
+	</ul>
+</section>
+
+<section>
+	<h2>Visual Communication</h2>
+	<ul>
+		<li>points, lines, polygons</li>
+		<li>color and pattern</li>
+		<li>shape</li>
+		<li>size</li>
+		<li>isolines and 3D effects</li>
+	</ul>
+</section>
+
+<section>
+	<h2>Map types</h2>
+	<ul>
+		<li>points</li>
+		<li>proportional symbols</li>
+		<li>choropleths</li>
+		<li>charts</li>
+		<li>isolines</li>
+		<li>connections</li>
+	</ul>
+</section>
+
+
+<section>
+	<h3>Point Maps</h2>
+	<ul>
+		<li>choice of symbols</li>
+		<li>choice of colors</li>
+	</ul>
+</section>
+
+<section>
+	<h3>Proportional Symbol Maps</h2>
+	<ul>
+		<li>choice of symbol</li>
+		<li>choice of size</li>
+		<li>choice of color</li>
+	</ul>
+</section>
+
+<section>
+	<h3>Choropleth Maps</h2>
+	<ul>
+		<li>choice of color</li>
+		<li>choice of pattern</li>
+	</ul>
+</section>
+
+<section>
+	<h3>Charts</h2>
+	<ul>
+		<li>pie</li>
+		<li>bar</li>
+		<li>graduated circle</li>
+		<li>line</li>
+		<li>density dots</li>
+	</ul>
+</section>
+
+<section>
+	<h3>Classifying color or size</h3>
+	<ul>
+		<li>How many classes? (4-6 as rule of thumb)</li>
+		<li>What type of data?</li>
+		<li>What does viewer need to understand?</li>
+</ul>
+</section>
+
+
+<section>
+	<h3>Classification Approaches</h3>
+	<ul>
+		<li>Equal intervals</li>
+		<li>Equal counts (quantiles)</li>
+		<li>Equal areas</li>
+		<li>Natural breaks</li>
+		<li>Standard deviations</li>
+</ul>
+</section>
+
+
+				<section>
+				<img src="images/nyc_assaults_precinct.png" class="stretch">
+				</section>
+
+
+<section>
+	<a href="http://trends.vera.org/incarceration-rates?year=2015">Vera Institute Incarceration Rate Map</a>
+</section>
+
+<section>
+	<h3>Modifiable Areal Unit Problem</h3>
+</section>
+
+				<section>
+				<img src="images/nyc_assaults_precinct.png" class="stretch">
+				</section>
+
+
+				<section>
+				<img src="images/nyc_assaults_hex.png" class="stretch">
+				</section>
+
+
+				<section>
+				<img src="images/maup_hex.png" class="stretch">
+				</section>
+
+				<section>
+				<h3>Heat maps</h3>
+				</section>
+
+
+				<section>
+				<img src="images/nyc_assaults_heat_10m.png" class="stretch">
+				</section>
+
+				<section>
+				<h3>Standard deviational Ellipse</h3>
+				</section>
+
+
+				<section>
+				<img src="images/nyc_crime_sde.png" class="stretch">
+				</section>
+
+				<section>
+				<h3>Clustering</h3>
+				</section>
+
+
+
+				<section>
+				<img src="images/clustered_map.png" class="stretch">
+				</section>
+
+
+<section>
+	<h3>Connections and flows</h3>
+</section>
+
+<section>
+	<a href="http://bit.ly/1mTnXsd">Bath City Commuters</a>
+</section>
+
+<section>
+	<h3>Story maps</h3>
+</section>
+
+<section>
+	<a href="https://www.forensic-architecture.org/case/guatemala-operacion-sofia/">Guatemala: Operation Sofia (Forensic Architecture)</a>
+</section>
+
+
+<section>
+<h2>Final Project: Mapping Component</h2>
+<a href="crime_mapping_project_instructions_1.pdf">Instructions</a>
+</section>
+
+
+
+			</div>
+		</div>
+
+		<!-- Footers -->
+		<style>.footer_SDS footer:after { content: "Sutton et al., Una Ligera Introduccion a GIS (2009), http://docs.qgis.org/2.2/es/docs/gentle_gis_introduction/."; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>	
+
+		<style>.footer_layer_stack footer:after { content: "Layer Stack, Ahlzen, CC BY-SA 2.0, http://wiki.openstreetmap.org/wiki/File:Layer-stack.jpg"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>	
+
+		<!-- End Footers -->
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/math/math.js', async: true },
+				     // Zoom in and out with Alt+click
+				     { src: 'plugin/zoom-js/zoom.js', async: true },
+
+
+				     ]
+				 });
+				</script>
+			</body>
+			</html>
+

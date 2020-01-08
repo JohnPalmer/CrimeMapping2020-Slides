@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Crime Mapping and Spatial Analysis</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+
+			<!-- In between the <div="reveal"> and the <div class="slides">-->
+			<header style="position: absolute;top: 5px; left: 5px; right: 5px; text-align: center; z-index:500; font-size:50px; color:white; padding: 5px; font-family: 'League Gothic', Impact, sans-serif"></header>
+			<footer style="position: absolute;bottom: 5px; left: 5px; text-align: center; z-index:500; font-size:12px;  padding: 5px; font-family: Arial, Helvetica, sans-serif"></footer>
+
+
+			<div class="slides">
+
+		<section>
+		<h1>Crime Mapping and Spatial Analysis</h1>
+		<h3>Lab 2: GIS Mapping</h3>
+		<p><a href="http://johnrbpalmer.com">John Palmer</a>
+		</section>
+		
+			
+<section>
+<h4>Task 1</h4>
+	<ul>
+		<p>Go to the ICGC website and select a 1:5.000 orthophoto that covers our building and the streets immediately around it. Download this as a TIFF (GeoTiff) file. (You will need to enter your email address and wait for the confirmation email to do the download.)</p>
+		<p>Open QGIS and start a new project. Add your orthophoto to the project using the menu items <kbd>Layer  &rarr; Add Layer  &rarr; Add Raster Layer</kbd>. (See the <a href="recipes.html#add_raster">Add Raster</a> recipe.)</p>
+	</ul>
+</section>
+
+
+<section>
+<h4>Task 2</h4>
+	<ul>
+		<p>Go downstairs and spend a few minutes observing the sidewalk along each side of this building. Write down the approximate number of people on each sidewalk.</p>
+	</ul>
+</section>
+
+<section>
+<h4>Task 3</h4>
+	<ul>
+		<p>On your QGIS map, create a new polygon layer. Give the layer attributes that include whole number (integer) fields not only for ID, but also for number of people observed (label this field N). Draw a rectangle over each of the 4 stretches of sidewalk you observed, giving each rectangle a sequential ID starting with 1, and adding the number of people you observed in the N field. (See the <a href="recipes.html#create_new_vector_layer">Creating New Vector Layer</a> and <a href="recipes.html#adding_features">Adding Features</a> recipes.)</p>
+	</ul>
+</section>
+
+<section>
+<h4>Task 4</h4>
+	<ul>
+		<p>Use the layer properties to adjust your new polygon layer such that it is visible without entirely blocking the underlying orthophoto. Add labels that show the number of people you counted on each section of sidewalk. (See the <a href="recipes.html#vector_style">Adjusting Vector Layer Appearance</a> recipe.)</p>
+	</ul>
+</section>
+
+
+<section>
+<h4>Task 5</h4>
+	<ul>
+		<p>Download the OpenStreetMap vector for this same area. Based on the <a href="recipes.html#osm_vectors">Adding OpenStreetMap vectors</a> recipe, add lines showing the tertiary streets (which include Carrer de Ramon Trias Fargas). Adjust the style of these lines so that they are easy to see on the map.</p>
+	</ul>
+
+</section>
+
+
+<section>
+	<h4>Lab Report (turn in via Aula Global before Thursday lecture)</h4>
+		<ul>
+		<li>Use the Print Composer to compose and export a map that includes the information you added in each of the tasks. Export the map as a PDF file and turn it in.</li>
+		</ul>
+	</ul>
+</section>
+
+
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

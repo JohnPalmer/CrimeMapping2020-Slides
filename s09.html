@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Crime Mapping and Spatial Analysis</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/beige.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+	<div class="reveal">
+
+		<!-- In between the <div="reveal"> and the <div class="slides">-->
+		<header style="position: absolute;top: 5px; left: 5px; right: 5px; text-align: center; z-index:500; font-size:50px; color:white; padding: 5px; font-family: 'League Gothic', Impact, sans-serif"></header>
+		<footer style="position: absolute;bottom: 5px; left: 5px; text-align: center; z-index:500; font-size:12px;  padding: 5px; font-family: Arial, Helvetica, sans-serif"></footer>
+
+
+		<div class="slides">
+
+			<section>
+				<h1>Crime Mapping and Spatial Analysis</h1>
+				<h3>Class 9: Interpretation and Synthesis</h3>
+				<p><a href="http://johnrbpalmer.com">John Palmer</a>
+				</section>
+
+
+<section>
+	<h3>Follow-up on Lab 5 issues: QGIS</h3>
+	<ul>
+	<li>The key to easily adding multiple variables based on counts is to use each new counts layer (which is a polygon layer) as the polygon layer for the next count.</li>
+	<li>Make sure you give each new count field a new (and intuitive name).</li>
+	<li>If you need to rename a field, you can do this in the layer's properties window, Fields tab. (Set to editing mode first.)</li>
+	<li>Remove unnecessary layers to avoid confusion.</li>
+	</ul>
+</section>
+
+<section>
+	<h3>Follow-up on Lab 5 issues: Stata</h3>
+	<ul>
+	<li>Too many areal units will cause Stata to go slow or freeze when trying to create weights matrices.</li>
+	<li>Use <i>clear *</i> and <i>spshape2dta ..., replace</i> so that your do file can be run multiple times.</li>
+	<li>Once you have multiple variables, make sure you add some as covariates to your regression.</li>
+	</ul>
+</section>
+
+
+<section>
+<h2>Interpreting Spatial Regression Models</h2> 
+</section>
+
+<section>
+<p>Spatially Lagged Independent Variable</p>
+$$ y = \alpha + \beta X + \rho W X +  \epsilon$$
+<br>
+<p>Spatially Lagged Dependent Variable</p>
+$$ y = \alpha + \beta X + \rho W Y +  \epsilon$$
+<br>
+<p>Spatial Errors Model</p>
+$$ y = \alpha + \beta X + \epsilon$$
+$$ \epsilon = \lambda W u + e$$
+</section>
+
+
+
+<section>
+	<pre><code>
+	regress assaults burglaries
+	</code></pre>
+</section>
+
+<section>
+	<img src="images/s09_reg1.png" class="stretch">
+</section>
+
+<section>
+	<img src="images/s09_reg1moran.png">
+</section>
+
+
+<section>
+	<img src="images/s09_reg1moran2.png">
+</section>
+
+<section>
+	<pre><code>
+	spregress assaults burglaries, gs2sls dvarlag(W)
+	</code></pre>
+</section>
+
+<section>
+<img src="images/s09_reg2.png" class="stretch">
+</section>
+
+<section>
+	<img src="images/s09_reg2_impact.png" class="stretch">
+</section>
+
+<section>
+	<pre><code>
+	spregress assaults burglaries, gs2sls errorlag(W)
+	</code></pre>
+</section>
+
+<section>
+	<img src="images/s09_reg3.png" class="stretch">
+</section>
+
+<section>
+	<img src="images/s09_reg3_impact.png" class="stretch">
+</section>
+
+<section>
+	<pre><code>
+	spregress assaults burglaries, gs2sls ivarlag(W: burglaries)
+	</code></pre>
+</section>
+
+<section>
+	<img src="images/s09_reg4.png" class="stretch">
+</section>
+
+<section>
+	<img src="images/s09_reg4_impact.png" class="stretch">
+</section>
+
+<section>
+	<pre><code>
+	spregress assaults burglaries, gs2sls dvarlag(W) ///
+	    ivarlag(W: burglaries) errorlag(W) 
+	</code></pre>
+</section>
+
+
+<section>
+	<img src="images/s09_reg5.png" class="stretch">
+</section>
+
+<section>
+	<img src="images/s09_reg5_impact.png" class="stretch">
+</section>
+
+
+<section>
+	<h3><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0064.2006.00159.x">Andresen (2006)</a></h3>
+</section>
+
+
+<section data-background-image="images/andresen_fig4.png" data-background-size="contain">
+</section>
+
+<section>
+	<h3><a href="https://obrasociallacaixa.org/documents/10280/240906/vol37_ca.pdf/8f3018de-60d5-4fb3-baec-b8842536e222">Echazarra (2014)</a></h3>
+</section>
+
+
+<section data-background-image="images/echazarra_sp.png" data-background-size="contain">
+</section>
+
+
+<section>
+	<h2>Space and Time: Synthesis and Next Steps</h2>
+</section>
+
+<section>
+	<h4>Movement Analysis</h4>
+	<ul>
+		<li>Active and Passive Positioning</li>
+		<li>Trajectories</li>
+		<li>Movement Characteristics: Velocity and Acceleration</li>
+		<li>Space Use Characteristics: Max Distances, MCPs, Brown Bridging</li>
+	</ul>
+</section>
+
+<section>
+	<h2>Project Part 1</h2>
+<a href="crime_mapping_project_instructions_1.pdf">Instructions</a>
+</section>
+
+<section>
+	<h2>Project Part 2</h2>
+<a href="crime_mapping_project_instructions_2.pdf">Instructions</a>
+</section>
+
+
+			</div>
+		</div>
+
+		<!-- Footers -->
+		<style>.footer_SDS footer:after { content: "Sutton et al., Una Ligera Introduccion a GIS (2009), http://docs.qgis.org/2.2/es/docs/gentle_gis_introduction/."; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>	
+
+		<style>.footer_layer_stack footer:after { content: "Layer Stack, Ahlzen, CC BY-SA 2.0, http://wiki.openstreetmap.org/wiki/File:Layer-stack.jpg"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>	
+
+		<!-- End Footers -->
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/math/math.js', async: true },
+				     // Zoom in and out with Alt+click
+				     { src: 'plugin/zoom-js/zoom.js', async: true },
+
+
+				     ]
+				 });
+				</script>
+			</body>
+			</html>
+

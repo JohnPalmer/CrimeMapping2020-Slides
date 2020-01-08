@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Crime Mapping and Spatial Analysis</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/beige.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+	<div class="reveal">
+
+		<!-- In between the <div="reveal"> and the <div class="slides">-->
+		<header style="position: absolute;top: 5px; left: 5px; right: 5px; text-align: center; z-index:500; font-size:50px; color:white; padding: 5px; font-family: 'League Gothic', Impact, sans-serif"></header>
+		<footer style="position: absolute;bottom: 5px; left: 5px; text-align: center; z-index:500; font-size:12px;  padding: 5px; font-family: Arial, Helvetica, sans-serif"></footer>
+
+
+		<div class="slides">
+
+			<section>
+				<h1>Crime Mapping and Spatial Analysis</h1>
+				<h3>Class 8: Spatial Regression</h3>
+				<p><a href="http://johnrbpalmer.com">John Palmer</a>
+				</section>
+
+
+
+				<section>
+					<h2>Preparing Data</h2>
+				</section>
+
+<section data-background-image="images/ss8_1.png" data-background-size="contain">
+</section>
+
+<section>
+	<h3>Changing CRS</h3>
+	<ul>
+	<li>Although not necessary, you may want to change your Coordinate Reference System (CRS) to UTM so that you can think about measurements (like the areal unit grid you are creating) in meters.</li>
+	<li>To do this, click the projection box at the bottom right of the map window in QGIS</li>
+</ul>
+</section>
+
+<section data-background-image="images/ss8_2.png" data-background-size="contain">
+</section>
+
+<section>
+	<h3>Making Hexagon Grid</h3>
+	<ul>
+	<li>With the Project CRS set to UTM, you can now create hexagons in meters.</li>
+	<li>Note that the x and y distances will not be equal because of the hexagon's shape.</li>
+</ul>
+</section>
+
+<section data-background-image="images/ss8_3.png" data-background-size="contain">
+</section>
+
+<section>
+	<h3>Changing Layer CRS</h3>
+		<ul>
+	<li>The on-the-fly Project CRS does not change the individual layer CRS, so your layers may still be in lon-lat.</li>
+	<li>If that is the case, you will need to set them so that the points layer CRS matches the polygons layer (hexagons) CRS before you can count points in polygons. Do this by saving the layer as a new file and setting the CRS while saving. This will transform the layer.</li>
+</ul>
+</section>
+
+
+<section data-background-image="images/ss8_4.png" data-background-size="contain">
+</section>
+
+<section>
+	<h3>Reducing Areal Unit Number</h3>
+	<ul>
+	<li>As many of you saw on Tuesday, having too many areal units makes it difficult to create distance matrices without lots of computational resources.</li>
+	<li>To reduce the number of areal units, we can make them bigger. But we can also remove the ones we don't need.</li>
+</ul>
+</section>
+
+<section data-background-image="images/ss8_5.png" data-background-size="contain">
+</section>
+
+<section>
+	<h3>Filtering Crime Data to Get Counts</h3>
+	<ul>
+	<li>To count different crime types in each areal unit, using the filtering function in the layer properties.</li>
+	<li>Filter first for one crime time, do the count, then filter for another crime type and do the count again.</li>
+	<li>To ensure that all of this data ends up in the same layer, make sure you use the new count layer each time.</li>
+</ul>
+</section>
+
+
+<section data-background-image="images/ss8_7.png" data-background-size="contain">
+</section>
+
+<section data-background-image="images/ss8_8.png" data-background-size="contain">
+</section>
+
+
+<section data-background-image="images/ss8_9.png" data-background-size="contain">
+</section>
+
+<section data-background-image="images/ss8_11.png" data-background-size="contain">
+</section>
+
+<section>
+<h2>Fitting Spatial Regression Models</h2> 
+</section>
+
+<section>
+<h4>OLS Model</h4>
+$$ y = \alpha + \beta X + \epsilon$$
+</section>
+
+
+<section>
+<h4>Spatially Lagged Independent Variable</h4>
+$$ y = \alpha + \beta X + \rho W X +  \epsilon$$
+</section>
+
+
+<section>
+<h4>Spatially Lagged Dependent Variable</h4>
+$$ y = \alpha + \beta X + \rho W Y +  \epsilon$$
+</section>
+
+
+<section>
+<h4>Spatial Errors Model</h4>
+$$ y = \alpha + \beta X + \epsilon$$
+$$ \epsilon = \lambda W u + e$$
+</section>
+
+
+<section>
+	<pre><code>
+		regress assaults burglaries
+	</code></pre>
+</section>
+
+<section>
+	<pre><code>
+		spregress assaults burglaries, gs2sls dvarlag(W)
+	</code></pre>
+</section>
+
+<section>
+	<pre><code>
+		spregress assaults burglaries, gs2sls errorlag(W)
+	</code></pre>
+</section>
+
+<section>
+	<pre><code>
+		spregress assaults burglaries, gs2sls ivarlag(W: burglaries)
+	</code></pre>
+</section>
+
+
+<section>
+	<pre><code>
+		spregress assaults burglaries, gs2sls dvarlag(W) ivarlag(W: burglaries) errorlag(W)
+	</code></pre>
+</section>
+
+
+<section data-background-image="images/andresen_fig4.png" data-background-size="contain">
+</section>
+
+<section data-background-image="images/echazarra_sp.png" data-background-size="contain">
+</section>
+
+
+<section>
+	<h2>Project Part 2</h2>
+<a href="crime_mapping_project_instructions_2.pdf">Instructions</a>
+</section>
+			</div>
+		</div>
+
+		<!-- Footers -->
+		<style>.footer_SDS footer:after { content: "Sutton et al., Una Ligera Introduccion a GIS (2009), http://docs.qgis.org/2.2/es/docs/gentle_gis_introduction/."; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>	
+
+		<style>.footer_layer_stack footer:after { content: "Layer Stack, Ahlzen, CC BY-SA 2.0, http://wiki.openstreetmap.org/wiki/File:Layer-stack.jpg"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>	
+
+		<!-- End Footers -->
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/math/math.js', async: true },
+				     // Zoom in and out with Alt+click
+				     { src: 'plugin/zoom-js/zoom.js', async: true },
+
+
+				     ]
+				 });
+				</script>
+			</body>
+			</html>
+

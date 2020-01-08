@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Mètodes d'Investigació Criminològica Avançada</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/beige.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+	<div class="reveal">
+
+		<!-- In between the <div="reveal"> and the <div class="slides">-->
+		<header style="position: absolute;top: 5px; left: 5px; right: 5px; text-align: center; z-index:500; font-size:50px; color:white; padding: 5px; font-family: 'League Gothic', Impact, sans-serif"></header>
+		<footer style="position: absolute;bottom: 5px; left: 5px; text-align: center; z-index:500; font-size:12px;  padding: 5px; font-family: Arial, Helvetica, sans-serif"></footer>
+
+
+		<div class="slides">
+
+			<section>
+				<h1>Mètodes d'Investigació Criminològica Avançada</h1>
+				<h3>Sessió 10: Programari de SIG</h3>
+				<p><a href="http://johnrbpalmer.com">John Palmer</a>
+				</section>
+
+<section>
+	<h2>Programari de SIG</h2>
+	<ul>
+		<li>llegir mapes</li>
+		<li>afegir informació espacial</li>
+		<li>anàlisi espacial</li>
+		<li>imprimir mapes</li>
+		<li>manejar SRC i la seva transforcó</li>
+		<li>GUI</li>
+		<li>capes</li>
+		<li>llegenda</li>
+		<li>servidor</li>
+	</ul>
+</section>
+
+<section>
+	<h2>Programari de SIG</h2>
+	<ul>
+		<li>QGIS</li>
+		<li>ArcGIS</li>
+		<li>GRASS</li>
+		<hr>
+		<li>R</li>
+		<li>Stata</li>
+		<li>Python</li>
+	</ul>
+</section>
+
+<section>
+	<p>dades vs mapatge</p>
+</section>
+
+<section>
+<h2>R</h2>
+</section>
+
+<section data-background="images/rstudio_img.png" data-background-size="contain">
+</section>
+
+<section>
+<h3>biblioteques de R</h3>
+<pre><code data-trim data-noescape>install.packages("tidyverse")</code></pre>
+</section>
+
+<section>
+<h3>domar dades</h3>
+<p><a href="data-wrangling-spanish.pdf">Full de referència</a></p> 
+</section>
+
+<section>
+<h3>domar dades</h3>
+<pre><code data-trim data-noescape>D <- tlb_df(USArrests)</code></pre>
+<pre><code data-trim data-noescape>D <- as.tibble(USArrests)</code></pre>
+</section>
+
+<section>
+<h3>domar dades</h3>
+<pre><code data-trim data-noescape>glimpse(D)</code></pre>
+<pre><code data-trim data-noescape>View(D)</code></pre>
+</section>
+
+<section>
+<h3>domar dades</h3>
+<pre><code data-trim data-noescape>%>%</code></pre>
+<pre><code data-trim data-noescape>D <- as.tibble(USArrests) %>% 
+	select(Assault, UrbanPop) %>% 
+	rename(upop = UrbanPop)
+</code></pre>
+</section>
+
+<section>
+<h3>domar dades</h3>
+<p><a href="data/SubwayEntrances.geojson">Subways</a></p> 
+<br>
+<p><a href="data/Police Precincts.geojson">Precincts</a></p> 
+<br>
+<p><a href="data/NYPD_Complaint_Map__Year_to_Date.csv">Delictes</a></p> 
+</section>
+
+
+			</div>
+		</div>
+
+		<!-- Footers -->
+		<style>.footer_SDS footer:after { content: "Sutton et al., Una Ligera Introduccion a GIS (2009), http://docs.qgis.org/2.2/es/docs/gentle_gis_introduction/."; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>	
+
+		<style>.footer_layer_stack footer:after { content: "Layer Stack, Ahlzen, CC BY-SA 2.0, http://wiki.openstreetmap.org/wiki/File:Layer-stack.jpg"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>	
+
+		<!-- End Footers -->
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/math/math.js', async: true },
+				     // Zoom in and out with Alt+click
+				     { src: 'plugin/zoom-js/zoom.js', async: true },
+
+
+				     ]
+				 });
+				</script>
+			</body>
+			</html>
+

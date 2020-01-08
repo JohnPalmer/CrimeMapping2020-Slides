@@ -1,0 +1,659 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Crime Mapping and Spatial Analysis</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/beige.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+	<div class="reveal">
+
+		<!-- In between the <div="reveal"> and the <div class="slides">-->
+			<header style="position: absolute;top: 5px; left: 5px; right: 5px; text-align: center; z-index:500; font-size:50px; color:white; padding: 5px; font-family: 'League Gothic', Impact, sans-serif"></header>
+			<footer style="position: absolute;bottom: 5px; left: 5px; text-align: center; z-index:500; font-size:12px;  padding: 5px; font-family: Arial, Helvetica, sans-serif"></footer>
+
+
+			<div class="slides">
+
+				<section>
+					<h1>Crime Mapping and Spatial Analysis</h1>
+					<h3>Class 1: Theory, Design, Ethics</h3>
+					<p><a href="http://johnrbpalmer.com">John Palmer</a>
+					</section>
+
+
+
+					<section data-transition="slide-in fade-out" data-background="images/blueprints.jpg" data-state="footer2">
+						<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+							<h2>Plan</h2>
+						</div>
+						<style>.footer2 footer:after { content: "Blueprint from Greene and Greene Archives, Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+						<div>&nbsp;</div>	
+					</section>
+
+
+					<section data-transition="fade" data-background="images/blueprints.jpg" data-state="footer2">
+						<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+							<h3>Schedule</h3>
+							<ul>
+								<li>Lectures: Wednesdays, 12:30-14:30, 40.213.</li>
+								<li>Labs: Every other Thursday, 12:30-14:30, 40.047B.</li>	
+								<br>
+								Exceptions:
+								<ul> 
+									<li>No class during week 6</li>
+									<li>Final session on 12 March, 14:30-16:30, 40.047B.</li></ul>
+							</ul>
+						</div>
+						<style>.footer2 footer:after { content: "Blueprint from Greene and Greene Archives, Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+						<div>&nbsp;</div>	
+					</section>
+
+					<section data-transition="fade" data-background="images/blueprints.jpg" data-state="footer2">
+						<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+							<h3>Teaching Method</h3>
+							<ul>
+								<li>Lectures</li>
+								<li>Computer Labs</li>
+							</ul>
+						</div>
+						<style>.footer2 footer:after { content: "Blueprint from Greene and Greene Archives, Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+						<div>&nbsp;</div>	
+					</section>
+
+					<section data-transition="fade" data-background="images/blueprints.jpg" data-state="footer2">
+						<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+							<h3>Office Hours</h3>
+							<ul>
+								<li>Thursdays, 14:45-15:45, Room 20.100</li>
+								<li><a href="https://calendar.google.com/calendar/selfsched?sstoken=UUVKM0xtNmRsRF9hfGRlZmF1bHR8MzU3NDUyYzNjMzgwMjRiM2NmMTg2ZmM5OWJkNzg0NmM">Online Reservations</a></li>
+							</ul>
+						</div>
+						<style>.footer2 footer:after { content: "Blueprint from Greene and Greene Archives, Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+						<div>&nbsp;</div>	
+					</section>
+
+
+
+					<section data-transition="fade" data-background="images/blueprints.jpg" data-state="footer2">
+						<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+							<h3>Evaluation</h3>
+							<ul>
+								<li>Participation (10% of final grade)</li>
+								<li>Computer lab exercises (40% of final grade)</li>
+								<li>Mapping project (20% of final grade)</li>
+								<li>Spatial analysis project (30% of final grade)</li>
+							</ul>
+
+
+						</div>			<style>.footer2 footer:after { content: "Blueprint from Greene and Greene Archives, Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+						<div>&nbsp;</div>	
+					</section>
+
+
+
+					<section data-transition="fade" data-background="images/blueprints.jpg" data-state="footer2">
+						<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+							<h3>Outline</h3>
+							<ul style="list-style: none;">
+								<li>
+									<h4>Block I: Introduction, Review, and Theory</h4></li><ul>
+										<li>Theoretical framework, research design, research ethics</li>
+										<li>Qualitative and quantitative analysis</li>
+										<li>Space and time in criminology</li></ul>
+										<br>
+									<li><h4>Block 2: Geographic Information Systems</h4></li><ul>
+											<li>GIS data, software, and hardware</li>
+											<li>Crime mapping I</li>
+											<li>Crime mapping II</li></ul>
+										</ul>
+
+								</div>			<style>.footer2 footer:after { content: "Blueprint from Greene and Greene Archives, Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+								<div>&nbsp;</div>	
+							</section>
+
+
+								<section data-background="images/blueprints.jpg" data-state="footer2" data-transition="fade">>
+									<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+										<h3>Outline</h3>
+										<ul style="list-style: none;">
+											<li>
+												<li><h4>Block 3: Spatial Analysis</h4></li><ul>
+													<li>Buffers, distances, aggregation, patterns, and clustering</li>
+													<li>Correlation, autocorrelation, and inference</li>
+													<li>New data sources and methods</li></ul>
+													<br>
+													<li><h4>Block 4: Synthesis</h4></li><ul>
+														<li>Socio-spatial research in criminology</li></ul></ul>
+												</ul>
+											</div>			<style>.footer2 footer:after { content: "Blueprint from Greene and Greene Archives, Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+											<div>&nbsp;</div>	
+										</section>
+
+
+												<section data-transition="slide-in fade-out" data-background="images/rafael_school_of_athens.jpg" data-state="footersoa">
+													<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+														<h2>Theoretical Framework</h2>
+
+													</div>
+													<style>.footersoa footer:after { content: "Rafael, School of Athens (1509-1511), Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+													<div>&nbsp;</div>	
+												</section>
+
+
+
+					<section data-transition="fade" data-background="images/rafael_school_of_athens.jpg" data-state="footersoa">
+						<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+					<h3>Research Logics</h3>
+						<img src="images/induction_deduction.png">
+
+						</div>
+						<style>.footersoa footer:after { content: "Rafael, School of Athens (1509-1511), Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+						<div>&nbsp;</div>	
+					</section>
+
+
+					<section data-transition="fade" data-background="images/microscope.jpg" data-state="footermic">
+						<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+							<h2>Research Strategies and Paradigms</h2>
+							
+						</div>
+						<style>.footermic footer:after { content: "Beale-type microscope, England, 1871-1900, Welcome Library, London, CC BY 4.0, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+						<div>&nbsp;</div>	
+					</section>
+
+							<section data-transition="fade" data-background="images/microscope.jpg" data-state="footermic">
+								<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+									<h3>Scientific Practice</h3>
+									<ul>
+										<li>Paradigms and revolutions (Kuhn, 1962)</li>
+										<li>Social science</li>
+									</ul>	
+								</div>
+								<style>.footermic footer:after { content: "Beale-type microscope, England, 1871-1900, Welcome Library, London, CC BY 4.0, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+								<div>&nbsp;</div>	
+							</section>
+
+
+
+						<section data-transition="fade" data-background="images/microscope.jpg" data-state="footermic">
+							<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+								<h3>Neo-Positivist Approach</h3>
+								<ul>
+									<li>Question</li>
+									<li>Hypothesis</li>
+									<li>Prediction</li>
+									<li>Testing</li>
+									<li>Analysis</li>
+									<li>Review</li>
+									<li>Replication</li>
+									<li>Falsification</li>		
+								</div>
+								<style>.footermic footer:after { content: "Beale-type microscope, England, 1871-1900, Welcome Library, London, CC BY 4.0, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+								<div>&nbsp;</div>	
+							</section>
+
+
+
+							<section data-transition="fade" data-background="images/microscope.jpg" data-state="footermic">
+								<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+									<h3>Inference</h3>
+									<ul>
+										<li>Descriptive</li>
+										<li>Causal</li>
+									</ul>
+								</div>
+								<style>.footermic footer:after { content: "Beale-type microscope, England, 1871-1900, Welcome Library, London, CC BY 4.0, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+								<div>&nbsp;</div>	
+							</section>
+
+							<section data-transition="fade" data-background="images/microscope.jpg" data-state="footermic">
+								<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+									<h3>Generalization & Simplification</h3>
+									<ul>
+										<li>Parsimony</li>
+										<li>Models</li>
+									</ul>
+								</div>
+								<style>.footermic footer:after { content: "Beale-type microscope, England, 1871-1900, Welcome Library, London, CC BY 4.0, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+								<div>&nbsp;</div>	
+							</section>
+
+
+							<section data-transition="fade" data-background="images/microscope.jpg" data-state="footermic">
+								<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+									<h2>Uncertainty</h2>
+								</div>
+								<style>.footermic footer:after { content: "Beale-type microscope, England, 1871-1900, Welcome Library, London, CC BY 4.0, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+								<div>&nbsp;</div>	
+							</section>
+
+
+								<section data-transition="slide-in fade-out" data-background="images/protractor.jpg" data-state="footer2">
+									<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+										<h2>Research Design</h2>
+									</div>
+									<style>.footer2 footer:after { content: "Mechanical Protractor, Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+									<div>&nbsp;</div>	
+								</section>
+
+								<section data-transition="fade" data-background="images/protractor.jpg" data-state="footer2">
+									<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+										<h3>Criteria</h3>
+										<ul>
+											<li>Reliability</li>
+											<li>Replicability</li>
+											<li>Validity</li>
+										</ul>
+									</div>
+									<style>.footer2 footer:after { content: "Mechanical Protractor, Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+									<div>&nbsp;</div>	
+								</section>
+
+
+								<section data-transition="fade" data-background="images/protractor.jpg" data-state="footer2">
+									<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+										<h3>Reliability</h3>
+										<ul>
+											<li>Do our measures give stable and consistent values?</li>
+										</ul>
+									</div>
+									<style>.footer2 footer:after { content: "Mechanical Protractor, Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+									<div>&nbsp;</div>	
+								</section>
+
+
+								<section data-transition="fade" data-background="images/protractor.jpg" data-state="footer2">
+									<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+										<h3>Replicability</h3>
+										<ul>
+											<li>Can others replicate our findings?</li>
+										</ul>
+									</div>
+									<style>.footer2 footer:after { content: "Mechanical Protractor, Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+									<div>&nbsp;</div>	
+								</section>
+
+
+								<section data-transition="fade" data-background="images/protractor.jpg" data-state="footer2">
+									<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+										<h3>Validity</h3>
+										<ul>
+											<li>Internal validity</li>
+											<li>External validity</li>
+										</ul>
+									</div>
+									<style>.footer2 footer:after { content: "Mechanical Protractor, Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+									<div>&nbsp;</div>	
+								</section>
+
+
+								<section data-transition="fade" data-background="images/protractor.jpg" data-state="footer2">
+									<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+										<h3>Design Types</h3>
+										<ul>
+											<li>Experimental</li>
+											<li>Quasi-Experimental</li>
+											<li>Cross-Sectional</li>
+											<li>Longitudinal</li>
+											<li>Case Study</li>
+											<li>Comparative</li>
+										</ul>
+									</div>
+									<style>.footer2 footer:after { content: "Mechanical Protractor, Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+									<div>&nbsp;</div>	
+								</section>
+
+
+
+
+		<section data-transition="fade" data-background="images/protractor.jpg" data-state="footer2">
+				<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+					<h3>Research Questions</h3>
+													<ul>
+											<li>Basic vs. Applied</li>
+												<li>Broad vs. Narrow</li>
+																	<li>Substantive vs. Methodological</li>
+																	<li>What, Why, How</li>
+																	<li>Feasibility</li>
+																	<li>Connection to literature</li>
+																	<li>Connection to research agenda</li></ul>
+																</div>
+									<style>.footer2 footer:after { content: "Mechanical Protractor, Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+									<div>&nbsp;</div>	
+															</section>
+
+
+
+
+
+<section data-transition="slide-in fade-out">
+<h2>Research Ethics</h2>
+</section>
+
+			
+<section data-transition="fade">
+<img class="stretch" src="images/ethics_law_inst_ven.png">
+</section>
+
+
+<section data-transition="fade" data-state="footer_NT">
+			<style>.footer_NT footer:after { content: "Trials of War Criminals before the Nuremberg Military Tribunals under Control Council LawNo. 10, Vol. 2, pp. 181-182. Washington, D.C.: U.S. Government Printing Office, 1949."; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>
+<img class="stretch" src="images/NT.jpg">
+</section>
+
+<section data-transition="fade">
+
+<h2>Nuremberg Medical Trial</h2>
+<ul>
+	<li>Nazi doctors did medical experiments on concentration camp victims</li>
+	<li>Treatments included involuntary sterilization, inducing hypothermia, exposure to diseases and toxic chemicals, experimental organ and limb transplants, and placement in low pressure chambers</li>
+	<li>Victims suffered excruciating pain, mutilation, and death</li>
+</ul>
+</section>
+
+<section data-transition="fade" data-state="footer_brandt_indictment">
+			<style>.footer_brandt_indictment footer:after { content: "Indictment in United States v. Brandt"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>
+<img class="stretch" src="images/NT_brandt_indictment.jpg">
+</section>
+
+
+<section data-transition="fade" data-state="footer_brandt_trial">
+			<style>.footer_brandt_trial footer:after { content: "Karl Brandt, Reich Commissioner for Health and Sanitation, during sentencing at Nuremberg, Public Domain, Wikimedia Commons"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>
+<img class="stretch" src="images/brandt.jpg">
+</section>
+
+<section data-transition="fade" data-state="footer_brandt_permissible">
+			<style>.footer_brandt_permissible footer:after { content: "Trials of War Criminals before the Nuremberg Military Tribunals under Control Council LawNo. 10, Vol. 2, pp. 181-182. Washington, D.C.: U.S. Government Printing Office, 1949."; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>
+<img class="stretch" src="images/NT_permissible.jpg">
+</section>
+
+
+<section data-transition="fade">
+<h3>Nuremberg Code</h3>
+<ol><small>
+<li>Voluntary consent of the human subject is absolutely essential</li>
+<li>The experiment must yield generalizable knowledge that could not be obtained in any other way and is not random and unnecessary in nature</li>
+<li>Animal experimentation should precede human experimentation</li>
+<li>All unnecessary physical and mental suffering and injury should be avoided</li>
+<li>No experiment should be conducted if there is reason to believe that death or disabling injury will occur</li>
+<li>The degree of risk to subjects should never exceed the humanitarian importance of the problem</li>
+<li>Risks to the subjects should be minimized through proper preparations</li>
+<li>Experiments should only be conducted by scientifically qualified investigators</li>
+<li>Subjects should always be at liberty to withdraw from experiments</li>
+<li>Investigators must be ready to end the experiment at any stage if there is cause to believe that continuing the experiment is likely to result in injury, disability or death to the subject</li>
+</small></ol>
+</section>
+
+
+<section data-transition="fade">
+<h3>Milgram Experiments</h3>
+</section>
+
+			<section data-transition="fade" data-state="footer_milgram_ad">
+			<style>.footer_milgram_ad footer:after { content: "Recruitment Ad for Milgram Experiment, Public Domain, Wikimedia Commons"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>
+			<img class="stretch" src="images/Milgram_Experiment_advertising.png">
+			</section>
+
+			<section data-transition="fade" data-state="footer_milgram_title">
+			<style>.footer_milgram_title footer:after { content: "Stanley Milgram (1963), Behavioral Study of obedience, The Journal of Abnormal and Social Psychology, Vol 67(4), 371-378. http://dx.doi.org/10.1037/h0040525"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>
+			<img class="stretch" src="images/milgram1963_title.jpg">
+			</section>
+
+			<section data-transition="fade" data-state="footer_milgram_abstract">
+			<style>.footer_milgram_abstract footer:after { content: "Stanley Milgram (1963), Behavioral Study of obedience, The Journal of Abnormal and Social Psychology, Vol 67(4), 371-378. http://dx.doi.org/10.1037/h0040525"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>
+			<img class="stretch" src="images/milgram1963_abstract.jpg">
+			</section>
+
+			<section data-transition="fade" data-state="footer_milgram_subjects">
+			<style>.footer_milgram_subjects footer:after { content: "Stanley Milgram (1963), Behavioral Study of obedience, The Journal of Abnormal and Social Psychology, Vol 67(4), 371-378. http://dx.doi.org/10.1037/h0040525"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>
+			<img class="stretch" src="images/milgram1963_subjects.jpg">
+			</section>
+
+
+			<section data-transition="fade" data-state="footer_milgram_table2">
+			<style>.footer_milgram_table2 footer:after { content: "Stanley Milgram (1963), Behavioral Study of obedience, The Journal of Abnormal and Social Psychology, Vol 67(4), 371-378. http://dx.doi.org/10.1037/h0040525"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>
+			<img class="stretch" src="images/milgram1963_table2.jpg">
+			</section>
+
+			<section data-transition="fade" data-state="footer_milgram_man">
+			<style>.footer_milgram_man footer:after { content: "The mild-mannered, likeable gentleman, from Stanley Milgram, Obedience to Authority: An Experimental View (Harper & Row 1974)"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>
+			<img class="stretch" src="images/milgram_mild_man.jpg">
+			</section>
+
+			<section data-transition="fade" data-state="footer_milgram_man_strapped">
+			<style>.footer_milgram_man_strapped footer:after { content: "The mild-mannered, likeable gentleman gets strapped in, from Stanley Milgram, Obedience to Authority: An Experimental View (Harper & Row 1974)"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>
+			<img class="stretch" src="images/milgram_mild_man_strapped.jpg">
+			</section>
+
+
+<section data-transition="fade" data-state="tuskegee_NYT">
+			<style>.tuskegee_NYT footer:after { content: "New York Times, July 26, 1972."; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>
+<img class="stretch" src="images/tuskegee_NYT.jpg">
+</section>
+
+<section data-transition="fade" data-state="tuskegee_photo">
+			<style>.tuskegee_photo footer:after { content: "Doctor draws blood from one of the Tuskegee test subjects, U.S. National Archives, Public Domain, Wikimedia Commons"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>
+<img class="stretch" src="images/tuskegee_photo.jpg">
+</section>
+
+
+<section data-transition="fade">
+<h3>Tuskegee Syphilis Experiment</h3>
+<ul>
+<li>U.S. Public Health Service study of long-term effects of syphilis, using panel of 600 black men, most of whom were poor and uneducated, without informed consent.</li>
+<li>Subjects told, inaccurately, that painful research procedures like spinal taps were treatments.</li>
+<li>400 members of panel with syphilis intentionally denied treatment.</li>
+<li>Death rate for those with syphilis found to be about double that of control group.</li>
+<li>1932-72</li>
+</ul>
+</section>
+
+
+<section data-transition="fade">
+<h3>Belmont Report</h3>
+<ul>
+<li>National Commission established by U.S. Congress in response to Tuskegee revelations.</li>
+<li>Released in 1979 as set of principles and guidelines for human subjects research.</li>
+<li>Key Principles: Respect for persons, Beneficence, Justice</li>
+</ul>
+</section>
+
+<section data-transition="fade">
+<h4>Respect for Persons</h4>
+<ul>
+<li>Individuals should be treated as autonomous agents</li>
+<li>Persons with diminished autonomy are entitled to additional protections</li>
+</ul>
+</section>
+
+<section data-transition="fade">
+<h4>Beneficence</h4>
+<ul>
+<li>Do no harm</li>
+<li>Maximize possible benefits and minimize possible harms</li>
+</ul>
+</section>
+
+
+<section data-transition="fade">
+<h4>Justice</h4>
+<ul>
+<li>Treat individuals and groups fairly and equitably in terms of bearing the burdens and receiving the benefits of research.</li>
+</ul>
+</section>
+
+
+
+
+
+
+<section data-transition="fade">
+<h3>What About Milgram's Methods?</h3>
+<ul style="list-style: none;">
+<li><i>Participants provided uninformed verbal consent and signed a waiver absolving Yale University of legal responsibility.</i></li><br>
+<li><small>Nick Haslam, Steve Loughnan & Gina Perry (2014) Meta-Milgram: An Empirical Synthesis of the Obedience Experiments. PLoS ONE 9(4): e93927. doi:10.1371/journal.pone.0093927</small></li>
+</ul>
+</section>
+
+
+<section data-transition="fade">
+<ul style="list-style: none;">
+<li><i>Attempts have been made to replicate it with mixed results and the original data have been re-examined. Meanwhile, archival scholarship continues to examine the origins of Milgram's work and to unearth troubling discrepancies between its public representation and how its methodology was executed in practice.</i></li><br>
+<li><small>Nick Haslam, Steve Loughnan & Gina Perry (2014) Meta-Milgram: An Empirical Synthesis of the Obedience Experiments. PLoS ONE 9(4): e93927. doi:10.1371/journal.pone.0093927 (citations omitted)</small></li>
+</ul>
+</section>
+
+
+
+
+<section data-transition="slide-in fade-out">
+<h2>Data Protection</h2>
+</section>
+
+<section data-transition="fade">
+<h3>Data Protection</h3>
+<ul style="list-style: none">
+<li><i>the technical framework and security measures designed to guarantee that all personal data are safe from unforeseen, unintended or malevolent use.</i></li>
+<br>
+<li><small>European University Institute, Guide on Good Data Protection Practice in Research, May 2016</small>
+</li>
+</section>
+
+<section data-transition="fade">
+<h3>Personal Data</h3>
+<ul>
+<li>any information relating to an "identified or identifiable natural person".</li> 
+<li>"identifiable person" = one who can be identified directly or indirectly, "in particular by reference to an identification number or to one or more factors specific to his or her physical, physiological, mental, economic, cultural or social identity."</li>
+<br>
+<li style="list-style: none"><small>European University Institute, Guide on Good Data Protection Practice in Research, May 2016</small></li>
+
+</ul>
+</section>
+
+<section data-transition="fade">
+<h3>Data Security</h3>
+<ul>
+<li>take the   appropriate   technical   and   organisational   measures  to  prevent  any unauthorised act  with  regard  to the data;</li>
+<li>make sure that no one will access, read, copy, alter, use in   any way or process the   data   unless   he/she   is   authorised to do so according to clear access rules;</li>
+<li>organise the processing   in   a   way   that   gives   you   complete   control   and   tracking   of   the   procedures   followed;</li>
+<li>if someone is processing data on your behalf, you need to choose someone able to guarantee secure processing. </li><br>
+<li style="list-style: none"><small>European University Institute, Guide on Good Data Protection Practice in Research, May 2016</small></li>
+</ul>
+</section>
+
+
+<section data-transition="fade">
+<h3>Secure Data Storage: Key Questions</h3>
+<ul>
+<li>Where is the data stored?</li>
+<li>On which hardware type is the data stored?</li>
+<li>Who has access to the data?</li>
+<li>For how long will the data be stored, accessed?</li>
+<li>If stored on a machine, is the storage machine/server equipped with Wifi, Bluetooth, USB drive, or other devices that might ease data duplication of circulation?</li>
+<li>What data backup policies and processes will be implemented?</li>
+<br>
+<li style="list-style: none"><small>European University Institute, Guide on Good Data Protection Practice in Research, May 2016</small></li>
+
+</ul>
+</section>
+
+	<section data-transition="fade" data-background="images/locked_box.jpg" data-state="locked_box">
+								<div style="background-color: rgba(255, 255, 255, .95); padding:20px;">
+									<h3>Understanding Encryption</h3>
+								</div>
+								<style>.locked_box footer:after { content: "Sander van der Wel, CC BY-SA 2.0, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>							
+								<div>&nbsp;</div>	
+							</section>
+
+
+
+<section data-transition="fade">
+<h3>Using Encryption</h3>
+<a href="https://ssd.eff.org/"><img src="images/eff_ssd.png"></a>
+<br>
+(Resources from Electronic Frontier Foundation)
+</section>
+
+<section data-transition="fade">
+<h3>Using Encryption</h3>
+<ul>
+<li>Symmetric encryption</li>
+<li>Asymmetric (public key) encryption</li>
+</ul>
+</section>
+
+<section data-transition="fade">
+<h3>Using Encryption</h3>
+<ul>
+<li>Full disk encryption for hard drives</li>
+<li>Mobile phone encryption</li>
+</ul>
+</section>
+
+<section data-transition="fade">
+<h3>Using Encryption</h3>
+<ul>
+<li>End-to-end encryption</li><ul>
+<li>Email</li>
+<li>Instant Messaging</li></ul>
+</ul>
+</section>
+
+
+
+<section data-transition="slide-in fade-out">
+
+<h2>Applying this to...</h2>
+
+<ul>
+	<li>Criminology</li>
+	<li>Mapping</li>
+	<li>Spatial Analysis</li>
+</ul>
+</section>
+
+														</div>
+													</div>
+
+													<script src="lib/js/head.min.js"></script>
+													<script src="js/reveal.js"></script>
+
+													<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				math: {
+		mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+		config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+	},
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+								{ src: 'plugin/math/math.js', async: true }
+
+				]
+			});
+		</script>
+	</body>
+	</html>

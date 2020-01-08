@@ -1,0 +1,346 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Crime Mapping and Spatial Analysis</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/beige.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+	<div class="reveal">
+
+		<!-- In between the <div="reveal"> and the <div class="slides">-->
+			<header style="position: absolute;top: 5px; left: 5px; right: 5px; text-align: center; z-index:500; font-size:50px; color:white; padding: 5px; font-family: 'League Gothic', Impact, sans-serif"></header>
+			<footer style="position: absolute;bottom: 5px; left: 5px; text-align: center; z-index:500; font-size:12px;  padding: 5px; font-family: Arial, Helvetica, sans-serif"></footer>
+
+
+			<div class="slides">
+
+				<section>
+					<h1>Crime Mapping and Spatial Analysis</h1>
+					<h3>Class 3: Space and Time in Criminology</h3>
+					<p><a href="http://johnrbpalmer.com">John Palmer</a>
+					</section>
+
+					<section>
+						<a hre="https://data.cityofnewyork.us/d/7x9x-zpz6/visualization">NYPD Complaint Data</a>
+					</section>
+
+				<section>
+				<img src="images/add_point_data_added.png" class="stretch">
+				</section>
+
+				<section>
+					<p>What can we learn from mapping crime?</p>
+				</section>
+
+				<section>
+					<p>What are the biases of maps using this NYPD complaint data?</p>
+				</section>
+
+
+				<section>
+					<p>How else might we map and analyze this data?</p>
+				</section>
+
+<section>
+<a href="http://ajuntament.barcelona.cat/prevencio/ca/enquesta-de-victimitzaci%C3%B3-de-barcelona-0">Barcelona Victimization Survey</a>
+</section>
+
+<section>
+<img class="stretch" src="images/2015EVB_Informe_Executiu1.jpg">
+</section>
+
+
+<section>
+<img class="stretch" src="images/2015EVB_Informe_Executiu3.jpg">
+</section>
+
+<section>
+<img class="stretch" src="images/EVB_map_close.jpg">
+</section>
+
+<section>
+<p>Which is the most dangerous neighborhood?</p>
+</section>
+
+<section>
+<img class="stretch" src="images/2015EVB_Informe_Executiu2.jpg">
+</section>
+
+
+<section>
+<ul style="list-style: none">
+<li><b>Ciutat Vella</b>: 30.2% of respondents (\(n=400\)) reported having been victims, during the previous year, of one or more acts that they consider to be crimes.</li></ul>
+<ul><br>
+<li>What can we infer about the percentage of victims (defined the same way) in the total population of Ciutat Vella?</li>
+<li>What is the 95% confidence interval on this estimate?</li>
+</ul>
+</section>
+
+<section>
+<h3>Point Estimation</h3>
+$$\hat{\theta} = \bar{x}$$
+</section> 
+
+<section>
+<h3>Confidence Intervals</h3>
+$$CI_{100\%-\alpha} = \hat{\theta} \pm z_{\alpha/2}\sqrt{\frac{\hat{\theta}(1-\hat{\theta})}{n}}$$
+</section> 
+
+
+<section>
+$$CI_{95\%} = .302 \pm z_{2.5\%}\sqrt{\frac{.302(1-.302)}{400}} = .302 \pm 1.96*.023$$
+<br>
+$$CI_{95\%}  = \left(.257, .347\right)$$
+</section>
+
+<section>
+<ul style="list-style: none">
+<li><b>Sant Marti</b>: 26.6% of respondents (\(n=400\)) reported having been victims, during the previous year, of one or more acts that they consider to be crimes.</li></ul>
+<ul><br>
+<li>What can we infer about the percentage of victims (defined the same way) in the total population of Sant Marti?</li>
+<li>What is the 95% confidence interval on this estimate?</li>
+</ul>
+</section>
+
+<section>
+$$\hat{\theta} = 26.6\%$$
+<br>
+$$CI_{95\%}  = \left(.223, .309\right)$$
+</section>
+
+<section>
+			<table>
+			<tr>
+			<th>Neighborhood</th><th>\(CI_{95\%}\)</th></tr>
+			<tr><td>Ciutat Vella</td><td>(.257, .347)</td></tr>
+			<tr><td>Sant Marti</td><td>(.223, .309)</td></tr>
+			</table>
+</section>
+
+<section>
+<img class="stretch" src="images/ICV_ci.png">
+</section>
+
+
+<section>
+<h2>Putting Crime into Place</h2>
+</section>
+
+
+<section>
+<p>Why should we care about space or time in criminology?</p>
+</section>
+
+
+<section>
+<p>What are the determinants of crime?</p>
+</section>
+
+
+<section>
+<p>Thinking about scale</p>
+</section>
+
+
+<section>
+<h3>Social Disorganization Theory</h3>
+</section>
+
+<section>
+<h4>SDT Structural Factors</h3>
+	<ul>
+		<li>Socio-economic status</li>
+		<li>Residential stability</li>
+		<li>Diversity</li>
+		<li>Family disintegration</li>
+		<li>Urbanization</li>
+		<li>Residential segregation</li>
+	</ul>
+</section>
+
+
+<section>
+<h3>Routine Activity Theory</h3>
+</section>
+
+<section>
+<h4>RAT Key Variables</h3>
+	<ul>
+		<li>Motivated offenders</li>
+		<li>Suitable Targets</li>
+		<li>Capable Guardians</li>
+		<li>Intimate Handlers</li>
+	</ul>
+</section>
+
+<section>
+<img class="stretch" src="images/BuffSimGoogleSatMap_all-closeup.png">
+</section>
+
+
+<section>
+<img class="stretch" src="images/BuffSim3D_sampleof10.png">
+</section>
+
+<section>
+	<p>Investigating human mobility</p>
+</section>
+
+					<section>
+						<h2>Operationalization</h2>
+					</section>
+
+					<section data-state="footer_opdiag">
+						<h3>From the Theoretical to the Empirical</h3>
+						<img src="images/operationalization.jpg">
+						<style>.footer_opdiag footer:after { content: "Based on Figure 4.1 of Anol Bhattacherjee, Social Science Research: Principles, Methods, and Practices (2012), Textbooks Collection, Book 3, CC BY-NC-SA 3.0, http://scholarcommons.usf.edu/oa_textbooks/3"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>
+					</section>
+
+					<section>
+						<h3>Constructs</h3>
+						<ul>abstract concepts chosen to explain a phenomenon of interest</ul>
+						
+					</section>
+
+					<section>
+						<h4>Examples of Constructs</h4>
+						<ul>
+							<li>Age</li>
+							<li>Education</li>
+							<li>Academic aptitude</li>
+							<li>Prejudice</li>
+							<li>Level of Rights</li>
+						</ul>
+					</section>
+
+
+					<section>
+						<h3>Variables</h3>
+						<ul style="list-style: none">
+							<li>Measurable representations of constructs</li>
+						</ul>
+					</section>
+
+
+					<section>
+						<h4>Examples of Variables</h4>
+						<ul>
+							<li>Age in years</li>
+							<li>Highest degree completed</li>
+							<li>Test scores</li>
+							<li>Prejudice index</li>
+							<li>Rights index</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Types of variables</h4>
+						<ul>
+							<li>quantitative vs. categorical</li>
+							<li>nominal vs. ordinal vs. interval</li>
+							<li>discrete vs. continuous</li>
+						</ul>
+					</section>
+
+<section>
+<h2>Qualitative Analysis</h2>
+</section>
+
+
+<section>
+<h3>Qualitative-Quantitative Divide</h3>
+<ul>
+<li>Words vs. Numbers</li>
+<li>Inductive vs. Deductive</li>
+<li>Interpretivist vs. Positivist Epistemology</li>
+<li>Constructionist vs. Objectivist Ontology</li>
+</ul>
+</section>
+
+<section>
+<p>But...</p>
+<ul>
+<li>One can incorporate numbers into qualitative analysis (and words into quantitative).</li>
+<li>Both types usually combine induction and deduction.</li>
+<li>Both include a wide variety of epistemologies and ontologies.</li>
+</ul>
+</section>
+
+
+
+<section>
+<h3>Qualitative Research Questions</h3>
+<ul>
+<li>Often broader and less explicitly stated than quantitative ones.</li>
+</ul>
+</section>
+
+
+			<section>
+				<ul>
+				<p>I had research questions vaguely in mind, and I was already making mental comparisons between what I was seeing and what the sociology literature had to say.</p>
+				<small>Duneier, Mitchell. 1999. Sidewalk. New York: Straus and Giroux.</small>
+				</ul>
+			</section>
+
+
+
+
+
+
+			<section>
+				<ul>
+				<p>From the beginning of my time as a sociologist I’ve been interested in the struggle of human beings to live in accordance to moral worth. And one of the reasons that Sixth Avenue was a strategic site for me was that the challenges to living a moral life there were greater. Here was a setting where you had people coming out of prison with felony convictions and no ability to get jobs or housing. So the question was how you survive in those circumstances and still struggle to live in accordance to standards of moral worth?</p>
+				<small>Duneier, Mitchell, and Les Back. 2006. “Voices from the Sidewalk: Ethnography and Writing Race.” Ethnic and Racial Studies 29 (3). Taylor & Francis Group: 543–65. doi:10.1080/01419870600598113.</small>
+</ul>
+			</section>
+
+
+
+				</div>
+			</div>
+
+			<style>.footer2 footer:after { content: "Mechanical Protractor, Public Domain, Wikimedia Commons"; color:white;background-color: rgba(0,0,0,0.5); padding: 5px;}</style>
+
+			<script src="lib/js/head.min.js"></script>
+			<script src="js/reveal.js"></script>
+
+			<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/math/math.js', async: true },
+				     // Zoom in and out with Alt+click
+				     { src: 'plugin/zoom-js/zoom.js', async: true },
+
+
+				     ]
+				 });
+				</script>
+			</body>
+			</html>
+

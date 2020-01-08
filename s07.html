@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Crime Mapping and Spatial Analysis</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/beige.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+	<div class="reveal">
+
+		<!-- In between the <div="reveal"> and the <div class="slides">-->
+		<header style="position: absolute;top: 5px; left: 5px; right: 5px; text-align: center; z-index:500; font-size:50px; color:white; padding: 5px; font-family: 'League Gothic', Impact, sans-serif"></header>
+		<footer style="position: absolute;bottom: 5px; left: 5px; text-align: center; z-index:500; font-size:12px;  padding: 5px; font-family: Arial, Helvetica, sans-serif"></footer>
+
+
+		<div class="slides">
+
+			<section>
+				<h1>Crime Mapping and Spatial Analysis</h1>
+				<h3>Class 7: Spatio-Temporal Dependence and Heterogeneity</h3>
+				<p><a href="http://johnrbpalmer.com">John Palmer</a>
+				</section>
+
+				<section>
+					<ul>
+					"everything is related to everything else, but near things are more related than distant things"
+					<br>
+					<br>
+					--Waldo Tobler's First Law of Geography
+				</ul>
+				</section>
+
+				<section>
+					<h2>Clustering</h2>
+				<h3>"K-means"</h3>
+				$$\textrm{arg min}\sum_{i=1}^k\sum_{x_j \in s_i}\left(x_j - \mu_i \right)^2$$
+				</section>
+
+
+				<section>
+					<p>How many clusters should you use?</p>
+				</section>
+
+				<section>
+					<h4>K=2</h4>
+					<img src="images/clusters_2.png" class="stretch">
+				</section>
+				<section>
+										<h4>K=10</h4>
+
+					<img src="images/clusters_10.png" class="stretch">
+				</section>
+				<section>
+										<h4>K=20</h4>
+					<img src="images/clusters_20.png" class="stretch">
+				</section>
+
+
+				<section>
+					<img src="images/cluster_comparison_elbow.png" class="stretch">
+				</section>
+
+				<section>
+										<h4>K=5</h4>
+					<img src="images/clusters_5.png" class="stretch">
+				</section>
+
+				<section>
+					<p>What about time?</p>
+				</section>
+
+				<section>
+ 				<img src="images/chicago3d.png" class="stretch">
+				</section>
+
+
+				<section>
+					<h2>Smoothing</h2>
+				<h3>Kernel Density Estimation</h3>
+				$$ \hat{f}_h(x) = \frac{1}{n}\sum_{i=1}^n K_h(x - x_i) =  \frac{1}{nh}\sum_{i=1}^n K\left(\frac{x - x_i}{h}\right)$$
+				</section>
+
+				<section>
+ 				<img src="images/density_x.png" class="stretch">
+				</section>
+
+				<section>
+ 				<img src="images/density_y.png" class="stretch">
+				</section>
+
+				<section>
+ 				<img src="images/density_2d.png" class="stretch">
+				</section>
+
+				<section>
+					<h2>Temporal Dependence</h2>
+				</section>
+
+				<section>
+					<img src="images/chicago_hourly.png" class="stretch">
+				</section>
+
+				<section>
+					<img src="images/chicago_hour_bar.png" class="stretch">
+				</section>
+
+
+				<section>
+					<h2>Spatial Dependence</h2>
+				</section>
+
+				<section>
+				<h4>Spatial Weights</h4>
+				</section>
+
+				<section>
+				<h4>Moran's I - Global</h4>
+
+				$$ I = \frac{N}{S_0} \sum_{i=1}^N\sum_{j=1}^N \frac{w_{ij}(x_i-\mu)(x_j-\mu)}{\sum_{i=1}^N (x_i - \mu)^2} $$ <br>
+
+				$$ S_0 = \sum_{i=1}^N\sum_{j=1}^N w_{ij} $$
+				</section>
+
+				<section>
+				<h4>Moran's I - Local</h4>
+
+				$$ I_i = \frac{z_i}{\sum_i{z_i^2/N}} \sum_{j \in J_i}{w_{ij}Z_j}$$ <br>
+
+			
+				</section>
+
+
+				<section>
+				<h2>Spatial Regression</h2>
+				</section>
+
+
+<section>
+<h4>OLS Model</h4>
+$$ y = \alpha + \beta X + \epsilon$$
+</section>
+
+
+<section>
+<h4>Spatially Lagged Independent Variable</h4>
+$$ y = \alpha + \beta X + \rho W X +  \epsilon$$
+</section>
+
+
+<section>
+<h4>Spatially Lagged Dependent Variable</h4>
+$$ y = \alpha + \beta X + \rho W Y +  \epsilon$$
+</section>
+
+
+<section>
+<h4>Spatial Errors Model</h4>
+$$ y = \alpha + \beta X + \epsilon$$
+$$ \epsilon = \lambda W u + e$$
+</section>
+
+
+
+
+
+
+
+			</div>
+		</div>
+
+		<!-- Footers -->
+		<style>.footer_SDS footer:after { content: "Sutton et al., Una Ligera Introduccion a GIS (2009), http://docs.qgis.org/2.2/es/docs/gentle_gis_introduction/."; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>	
+
+		<style>.footer_layer_stack footer:after { content: "Layer Stack, Ahlzen, CC BY-SA 2.0, http://wiki.openstreetmap.org/wiki/File:Layer-stack.jpg"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>	
+
+		<!-- End Footers -->
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/math/math.js', async: true },
+				     // Zoom in and out with Alt+click
+				     { src: 'plugin/zoom-js/zoom.js', async: true },
+
+
+				     ]
+				 });
+				</script>
+			</body>
+			</html>
+

@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Mètodes d'Investigació Criminològica Avançada</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/beige.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+	<div class="reveal">
+
+		<!-- In between the <div="reveal"> and the <div class="slides">-->
+		<header style="position: absolute;top: 5px; left: 5px; right: 5px; text-align: center; z-index:500; font-size:50px; color:white; padding: 5px; font-family: 'League Gothic', Impact, sans-serif"></header>
+		<footer style="position: absolute;bottom: 5px; left: 5px; text-align: center; z-index:500; font-size:12px;  padding: 5px; font-family: Arial, Helvetica, sans-serif"></footer>
+
+
+		<div class="slides">
+
+			<section>
+				<h1>Mètodes d'Investigació Criminològica Avançada</h1>
+				<h3>Sessió 5: Anàlisi quantitatiu</h3>
+				<p><a href="http://johnrbpalmer.com">John Palmer</a>
+				</section>
+
+<section>
+<h2>Models Lineals</h2>
+</section>
+
+<section data-background-image="images/echazarra_cover.png" data-background-size="contain">
+</section>
+
+
+<section data-background-image="images/perception_reg_FE.png" data-background-size="contain">
+</section>
+
+
+<section data-background-image="images/perception_ML_1.png" data-background-size="contain">
+</section>
+
+<section data-background-image="images/perception_ML_2.png" data-background-size="contain">
+</section>
+
+
+
+
+
+<section>
+<h3>L'equació de predicció</h3>
+$$\hat{y} = a + bx$$
+</section>
+
+
+<section>
+<h3>mínims quadrats ordinaris</h3>
+$$b = \frac{\sum\left(x - \bar{x}\right)\left(y - \bar{y}\right)}{\sum\left(x-\bar{x}\right)^2}$$
+<br>
+$$a = \bar{y} - b\bar{x}$$
+</section>
+
+<section>
+<h3>Exercici: Biometria dels estudiants</h3>
+<a href="demo_s02.R">R Script</a><br>
+<a href="http://www.amstat.org/publications/jse/v20n3/mclaren/shoesize.xls">Dataset</a>
+</section>
+
+					<section data-transition="fade-out">
+						<h3>Relació entre altura i talla de sabates</h3>
+						<img class="stretch" src="images/height_shoe_scatter.png">
+					</section>
+
+					<section data-transition="fade-in">
+						<h3>Relació entre altura i talla de sabates</h3>
+						<img class="stretch" src="images/height_shoe_scatter_lm.png">
+					</section>
+
+
+<section>
+<h3>Correlació</h3>
+$$r = \left(\frac{s_x}{s_y}\right)b$$ 
+</section>
+
+
+<section>
+<h3>Regressió multivariant</h3>
+$$\hat{y} = \alpha + \beta_1x_1 + \beta_2x_2$$
+</section>
+
+<section>
+<h3>Regressió multivariant</h3>
+<a href="images/fp_3Dreg/index.html">3D</a>
+</section>
+
+<section>
+<h3>Variables categòriques</h3>
+$$\hat{y} = \alpha + \beta_1{x_1} + \beta_2{\textrm{D}}$$
+</section>
+
+<section>
+<h3>Variables categòriques</h3>
+<img class="stretch" src="images/fp_reg_cat.png">
+</section>
+
+
+<section>
+<h3>Variables categòriques</h3>
+<img class="stretch" src="images/fp_reg_ints.png">
+</section>
+
+<section>
+<h3>Interaccions</h3>
+$$\hat{y} = \alpha + \beta_1x_1 + \beta_2\textrm{D} + \beta_3x_1\textrm{D}$$
+</section>
+
+
+<section>
+<h3>Interaccions</h3>
+<img class="stretch" src="images/fp_reg_ints_slopes.png">
+</section>
+
+
+<section>
+<h3>Interaccions</h3>
+$$\hat{y} = \alpha + \beta_1x_1 + \beta_2x_2 + \beta_3x_1x_2$$
+</section>
+
+
+<section>
+<h3>Interaccions</h3>
+<a href="images/fp_int_3Dreg/index.html">3D</a>
+</section>
+
+
+<section>
+<h3>Logit</h3>
+$$\textrm{logit}(\pi) = \textrm{log}\frac{\pi}{1-\pi} = \alpha + \beta x$$
+</section>
+
+
+<section data-background-image="images/perception_reg_FE.png" data-background-size="contain">
+</section>
+
+
+<section data-background-image="images/perception_ML_1.png" data-background-size="contain">
+</section>
+
+<section data-background-image="images/perception_ML_2.png" data-background-size="contain">
+</section>
+
+
+
+
+			</div>
+		</div>
+
+		<!-- Footers -->
+		<style>.footer_SDS footer:after { content: "Sutton et al., Una Ligera Introduccion a GIS (2009), http://docs.qgis.org/2.2/es/docs/gentle_gis_introduction/."; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>	
+
+		<style>.footer_layer_stack footer:after { content: "Layer Stack, Ahlzen, CC BY-SA 2.0, http://wiki.openstreetmap.org/wiki/File:Layer-stack.jpg"; color:black;background-color: rgba(0,0,0,0); padding: 5px;}</style>	
+
+		<!-- End Footers -->
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/math/math.js', async: true },
+				     // Zoom in and out with Alt+click
+				     { src: 'plugin/zoom-js/zoom.js', async: true },
+
+
+				     ]
+				 });
+				</script>
+			</body>
+			</html>
+
