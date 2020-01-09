@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Lab Instructions | Crime Mapping and Spatial Analysis</title>
+  <title>Crime Mapping and Spatial Analysis</title>
   <meta name="description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Lab Instructions | Crime Mapping and Spatial Analysis" />
+  <meta property="og:title" content="Crime Mapping and Spatial Analysis" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Lab Instructions | Crime Mapping and Spatial Analysis" />
+  <meta name="twitter:title" content="Crime Mapping and Spatial Analysis" />
   
   <meta name="twitter:description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="getting-started-with-qgis.html"/>
+
+<link rel="next" href="lab-instructions.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -107,41 +107,37 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab-instructions" class="section level1 unnumbered">
-<h1>Lab Instructions</h1>
-<p>This section provides instructions for each lab session</p>
-<div id="lab-1-9-january-2019" class="section level2 unnumbered">
-<h2>Lab 1: 9 January 2019</h2>
-<p>The core of criminology research involves observing the world around you, thinking about it, and communicating your thoughts to others. Computers can be useful tools for this, and most of the labs will focus on how to make use of them. Yet, computers can also get in the way. They can distort our observations and encourage us to think and communicate in certain ways. For this lab, therefore, we will start by actually going outside into the real world, making observations, and using a pen and paper to think about them and communicate them.</p>
-<p>Your task for this lab is to observe the courtyard in the middle of the Jaume I building, think about the following questions, and draw a map to explain your thoughts to someone else:</p>
-<ul>
-<li>How many people are in the courtyard? Note, of course, that you will need to make some decision about time to answer this question: How many people right now? How many people over the course of an hour? Think about how the way you refine the question in this way will affect not just your answer but also the methods you use for reaching it.</li>
-<li>Where are these people? In other words, how are these people you observe in the courtyard spatially distributed? (Again, time comes into play here, so we might be better off asking how they are spatio-temporally distributed.)</li>
-<li>What are these people doing and where are they doing it? For example, are people reading, looking at their phones, talking, walking, running…? Where are these activities taking place? For activities that involve movement, how can you best communicate how this movement is occurring?</li>
-<li>What aspects of the physical environment (benches, walls, entry and exit points…) seem to play an important role in the social activity you are observing?</li>
-</ul>
-<p>We will proceed with this in several steps:</p>
-<ol style="list-style-type: decimal">
-<li>Conduct an initial assessment of the courtyard and develop a strategy for answering the questions and communicating them on a map. You can do this in groups or on your own.</li>
-<li>We will then reconvene as a class to discuss your strategies.</li>
-<li>Now return to the courtyard and carry out your observations, analysis, and mapping. You can work in groups but you will each need to produce a set of maps that convey your findings. These maps should be drawn by hand.</li>
-<li>We will then reconvene again to discuss your finished maps.</li>
-<li>Finally, we will start using QGIS using the <em>Getting Started with QGIS</em> section of this manual.</li>
-</ol>
-<p>At the end of the lab, you should hand in your hand-drawn maps. They will be evaluated based on your ideas, not based on how well you draw, how neat they are etc. The goal here is to get you to think through what how to communicate this information visually. How you then execute this technically, will form much of what we cover in the coming labs.</p>
+<div id="header">
+<h1 class="title">Crime Mapping and Spatial Analysis</h1>
+<h2 class="subtitle"><em>Lab Manual</em></h2>
+<p class="author"><em>John Palmer</em></p>
+<p class="date"><em>2020-01-09</em></p>
+</div>
+<div id="introduction" class="section level1 unnumbered">
+<h1>Introduction</h1>
+<p>This manual is intended to function as a companion to the <em>Crime Mapping and Spatial Analysis</em> labs as well as a stand-along reference for working with QGIS, Stata, and R for mapping and analysis. Each chapter walks you through a particular task or set of tasks, usually with an exercise to serve as an example. These are organized according to the class lab sessions but can also be followed intependently or used as a reference.</p>
+<div id="accessing-qgis" class="section level2 unnumbered">
+<h2>Accessing QGIS</h2>
+<p>QGIS is free and open source software, which you can download from <a href="https://qgis.org" class="uri">https://qgis.org</a>. At the time of writing, version 3.4 is the most recent long-term stable release and this manual is based on that version. When installing QGIS, leaving all of the default options as they are should be fine for purposes of this manual. The Windows installation includes a number of different choices for running QGIS; you shoud simply select the normal desktop version.</p>
+</div>
+<div id="accessing-stata" class="section level2 unnumbered">
+<h2>Accessing Stata</h2>
+<p>Stata is proprietary software, which cannot be freely downloaded if have not purchased a license. However, as a UPF student, you have free access to Stata on the UPF lab computers and through UPF’s <em>MyApps</em> platform. The latter requires an internet connection and has some limitations in terms of resources, but you can access it from outside UPF using your own computer and a web browser.</p>
+<p>To access Stata through <em>MyApps</em>, open a web browser and go to <a href="https://myapps.upf.edu" class="uri">https://myapps.upf.edu</a>. Log in using your UPF user ID (uxxxxx) and the password you use for logging into UPF computers (i.e. your birthdate, written as DDMMYYYY). Remember that this is not necessarily the password you use for Campus Global; your browser may have that Campus Global password stored, in which case you will need to manually change it each time. On the login page, you will need to choose between using <em>vWorkspace Connector</em> or simply through your web browser with HTML5. The first option allows you to access local files on your computer, but it can be slow and “buggy”, particularly on Macs. To follow this approach, click the <em>Install</em> button on the page you reach after logging in. The second option can be faster, but any files you want to use will need to be first uploaded through the UPF MyCloud. To follow this approach, click the <em>Continue</em> button on the page after login, and then flip the <em>HTML5</em> switch to the on position at the top right of your screen.</p>
+</div>
+<div id="accessing-r" class="section level2 unnumbered">
+<h2>Accessing R</h2>
+<p>R is free and open source software, which you can download from <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>. You will normally want to install the latest release from that site, and to then install a good text editor or Integrated Development Environment (IDE). An excellent choice for the latter is the (free) Open Source Edition of RStudio, which you can download from <a href="https://www.rstudio.com" class="uri">https://www.rstudio.com</a>. R and RStudio are also both available on the lab computers. This manual will assume that you are running RStudio.</p>
 
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="getting-started-with-qgis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+<a href="lab-instructions.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
