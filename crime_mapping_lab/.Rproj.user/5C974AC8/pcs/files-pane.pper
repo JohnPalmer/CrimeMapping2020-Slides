@@ -1,0 +1,13 @@
+{
+    "path" : "~/projects/crime_mapping/2019-20/crime_mapping_lab",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 4
+        },
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

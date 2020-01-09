@@ -1,0 +1,199 @@
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Crime Mapping and Spatial Analysis},
+            pdfauthor={John Palmer},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Crime Mapping and Spatial Analysis}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \subtitle{Lab Manual}
+  \author{John Palmer}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2020-01-09}
+
+\usepackage{booktabs}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{introduction}{%
+\chapter*{Introduction}\label{introduction}}
+\addcontentsline{toc}{chapter}{Introduction}
+
+This manual is intended to function as a companion to the \emph{Crime Mapping and Spatial Analysis} labs as well as a stand-along reference for working with QGIS, Stata, and R for mapping and analysis. Each chapter walks you through a particular task or set of tasks, usually with an exercise to serve as an example. These are organized according to the class lab sessions but can also be followed intependently or used as a reference.
+
+\hypertarget{accessing-qgis}{%
+\section*{Accessing QGIS}\label{accessing-qgis}}
+\addcontentsline{toc}{section}{Accessing QGIS}
+
+QGIS is free and open source software, which you can download from \url{https://qgis.org}. At the time of writing, version 3.4 is the most recent long-term stable release and this manual is based on that version. When installing QGIS, leaving all of the default options as they are should be fine for purposes of this manual. The Windows installation includes a number of different choices for running QGIS; you shoud simply select the normal desktop version.
+
+\hypertarget{accessing-stata}{%
+\section*{Accessing Stata}\label{accessing-stata}}
+\addcontentsline{toc}{section}{Accessing Stata}
+
+Stata is proprietary software, which cannot be freely downloaded if have not purchased a license. However, as a UPF student, you have free access to Stata on the UPF lab computers and through UPF's \emph{MyApps} platform. The latter requires an internet connection and has some limitations in terms of resources, but you can access it from outside UPF using your own computer and a web browser.
+
+To access Stata through \emph{MyApps}, open a web browser and go to \url{https://myapps.upf.edu}. Log in using your UPF user ID (uxxxxx) and the password you use for logging into UPF computers (i.e.~your birthdate, written as DDMMYYYY). Remember that this is not necessarily the password you use for Campus Global; your browser may have that Campus Global password stored, in which case you will need to manually change it each time. On the login page, you will need to choose between using \emph{vWorkspace Connector} or simply through your web browser with HTML5. The first option allows you to access local files on your computer, but it can be slow and ``buggy'', particularly on Macs. To follow this approach, click the \emph{Install} button on the page you reach after logging in. The second option can be faster, but any files you want to use will need to be first uploaded through the UPF MyCloud. To follow this approach, click the \emph{Continue} button on the page after login, and then flip the \emph{HTML5} switch to the on position at the top right of your screen.
+
+\hypertarget{accessing-r}{%
+\section*{Accessing R}\label{accessing-r}}
+\addcontentsline{toc}{section}{Accessing R}
+
+R is free and open source software, which you can download from \url{https://cran.r-project.org/}. You will normally want to install the latest release from that site, and to then install a good text editor or Integrated Development Environment (IDE). An excellent choice for the latter is the (free) Open Source Edition of RStudio, which you can download from \url{https://www.rstudio.com}. R and RStudio are also both available on the lab computers. This manual will assume that you are running RStudio.
+
+\hypertarget{lab-instructions}{%
+\chapter*{Lab Instructions}\label{lab-instructions}}
+\addcontentsline{toc}{chapter}{Lab Instructions}
+
+This section provides instructions for each lab session
+
+\hypertarget{lab-1-9-january-2019}{%
+\section*{Lab 1: 9 January 2019}\label{lab-1-9-january-2019}}
+\addcontentsline{toc}{section}{Lab 1: 9 January 2019}
+
+The core of criminological research involves observing the world around you, thinking about it, and communicating your thoughts to others. Computers can be useful tools for this, and most of the labs will focus on how to make use of them. Yet, computers can also get in the way. They can distort our observations and encourage us to think and communicate in certain ways. For this lab, therefore, we will start by actually going outside into the real world, making observations, and using a pen and paper to think about them and communicate them.
+
+Your task for this lab is to observe the courtyard in the middle of the Jaume I building, think about the following questions, and draw a map to explain your throughts to someone else:
+
+\begin{itemize}
+\tightlist
+\item
+  How many people are in the courtyard?
+\item
+  Where are they? In other words, how are these people spatially distributed across the courtyard?
+\end{itemize}
+
+\hypertarget{part-crime-mapping-with-qgis}{%
+\part{Crime Mapping with QGIS}\label{part-crime-mapping-with-qgis}}
+
+\hypertarget{getting-started-with-qgis}{%
+\chapter{Getting Started with QGIS}\label{getting-started-with-qgis}}
+
+\hypertarget{beginning-a-new-project}{%
+\section{Beginning a new project}\label{beginning-a-new-project}}
+
+In QGIS, ``projects'' are used to store the settings you are using. It is helpful to start a new project for each map or set of related maps that you are making. This way, you can return to your work later and start from where you left off. Note, however, that the project file does not store the data you are using or the maps you generate. These must be stored as separate files.
+
+To start a new project use the menu item Project → New.
+
+\hypertarget{changing-the-language}{%
+\section{Changing the language}\label{changing-the-language}}
+
+When you start QGIS it will normally be set to the default language of your computer's operating system. To change the language, use the menu item Settings → Options. In the options menu select the General tab. Check the box Override system locale and select the language you want. You will need to restart QGIS for the change to go into effect.
+
+\hypertarget{installing-plugins}{%
+\section{Installing plugins}\label{installing-plugins}}
+
+QGIS makes it easy for the QGIS development team as well as anyone else to write ``plugins,'' which add particular features or functions to the program. Many of these are extremely useful.
+
+To install a plugin, use the menu item Plugins → Manage and Install Plugins\ldots{}. This will bring up a window with a long list of available plugins on the QGIS official repository. (There are other plugin repositories that individual authors maintain but for now we will use only the official one.). Use the search bar or scroll down the list to find and install the plugin you want.
+
+\hypertarget{adding-openstreetmap-tiles}{%
+\section{Adding OpenStreetMap tiles}\label{adding-openstreetmap-tiles}}
+
+To quickly make use of existing map tiles from OpenStreetMap, go to Layer → Data Source Manager. Click the Browser folder at the top left. In the main part of the window, find the XYZ Tiles category and click it. You should see and OpenStreetMap item within this category now. Double click on this and you will the OpenStreetMap tiles will be added to your map.
+
+\hypertarget{placing-points-on-the-map}{%
+\section{Placing points on the map}\label{placing-points-on-the-map}}
+
+The most straightforward (although least efficient) way to mark points on your map is to do it manually.
+
+To do this, you first need to create a new map layer using Layer → Create layer → New Shapefile Layer\ldots{}. In the window that pops up, you can choose to make this a layer of points, lines, or polygons (see Geometry Type selector, third from top in version 3.4). You can also modify the character encoding (File Encoding selector), the Coordinate Reference System (selector just below the File Encoding selector), and the data fields that will be associated with this new layer.
+
+For now, keep the default values (which will produce a point layer), choose a directory and file name (top row: File name) and then click OK.
+
+In order to add a point, move the cursor over your new layer in the Layers Panel and right-click on it. Then select Toggle Editing. Now select Edit → Add Point Feature. Click on the map wherever you want to add a point. Each time you click, you will need to provide attributes for the fields you created when you created the layer. For now, since we used the defaults, we need only an ID, which requires an integer value. Give this whatever (integer) value you want.
+
+\hypertarget{placing-polygons-on-the-map}{%
+\section{Placing polygons on the map}\label{placing-polygons-on-the-map}}
+
+In addition to points, it may be useful to add polygons to a map in order to communicate information about structures and areas. To do this, start again by creating a new vector layer using Layer → Create Layer → New Shapefile Layer\ldots{}. In the window that pops up, choose Polygon as the type, and add at least one new field in which you will store information associated with each feature that you draw. Save the new layer as an SHP file in a directory where you will be able to find it again.
+
+The new layer you have added should appear in the Layers Panel. Right click on this new layer and select Toggle Editing. You will now see a set of new buttons and available menu items. Now select the menu item Edit → Add Polygon Feature. When you hover the mouse pointer over the map you will see that it now has the shape of a cross-hairs. Left click to add sequential points that define the polygon you want to add. When you have added the last point, right click the mouse and a dialog box will appear asking you to add the fields associated with this new feature. Remember that what you add will be limited by the field type you chose (and the ID field requires whole numbers by default).
+
+\bibliography{book.bib,packages.bib}
+
+
+\end{document}

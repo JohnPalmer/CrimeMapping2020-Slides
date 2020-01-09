@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1578564311694.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "52199C6A",
+    "lastKnownWriteTime" : 1578568864,
+    "last_content_update" : 1578568864968,
+    "path" : "~/projects/crime_mapping/2019-20/crime_mapping_lab/00.02-labs.Rmd",
+    "project_path" : "00.02-labs.Rmd",
+    "properties" : {
+        "cursorPosition" : "19,44",
+        "scrollLine" : "14"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

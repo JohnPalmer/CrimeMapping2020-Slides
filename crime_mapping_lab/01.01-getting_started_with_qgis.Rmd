@@ -1,0 +1,41 @@
+# (PART) Crime Mapping with QGIS {-} 
+
+# Getting Started with QGIS
+
+## Beginning a new project 
+
+In QGIS, "projects" are used to store the settings you are using. It is helpful to start a new project for each map or set of related maps that you are making. This way, you can return to your work later and start from where you left off. Note, however, that the project file does not store the data you are using or the maps you generate. These must be stored as separate files. 
+
+To start a new project use the menu item <kbd>Project &rarr; New</kbd>. 
+
+
+## Changing the language 
+
+When you start QGIS it will normally be set to the default language of your computer's operating system. To change the language, use the menu item <kbd>Settings &rarr; Options</kbd>. In the options menu select the <kbd>General</kbd> tab. Check the box <kbd>Override system locale</kbd> and select the language you want. You will need to restart QGIS for the change to go into effect. 
+
+## Installing plugins 
+
+QGIS makes it easy for the QGIS development team as well as anyone else to write "plugins," which add particular features or functions to the program. Many of these are extremely useful. 
+
+To install a plugin, use the menu item <kbd>Plugins &rarr; Manage and Install Plugins...</kbd>. This will bring up a window with a long list of available plugins on the QGIS official repository. (There are other plugin repositories that individual authors maintain but for now we will use only the official one.). Use the search bar or scroll down the list to find and install the plugin you want.
+
+## Adding OpenStreetMap tiles
+
+To quickly make use of existing map tiles from OpenStreetMap, go to <kbd>Layer &rarr; Data Source Manager</kbd>. Click the <kbd>Browser</kbd> folder at the top left. In the main part of the window, find the <kbd>XYZ Tiles</kbd> category and click it. You should see and <kbd>OpenStreetMap</kbd> item within this category now. Double click on this and you will the <kbd>OpenStreetMap</kbd> tiles will be added to your map.
+
+## Placing points on the map 
+
+The most straightforward (although least efficient) way to mark points on your map is to do it manually. 
+
+To do this, you first need to create a new map layer using <kbd>Layer &rarr; Create layer &rarr; New Shapefile Layer...</kbd>. In the window that pops up, you can choose to make this a layer of points, lines, or polygons (see <kbd>Geometry Type</kbd> selector, third from top in version 3.4). You can also modify the character encoding (<kbd>File Encoding</kbd> selector), the Coordinate Reference System (selector just below the <kbd>File Encoding</kbd> selector), and the data fields that will be associated with this new layer. 
+
+For now, keep the default values (which will produce a point layer), choose a directory and file name (top row: <kbd>File name</kbd>) and then click <kbd>OK</kbd>. 
+
+In order to add a point, move the cursor over your new layer in the Layers Panel and right-click on it. Then select <kbd>Toggle Editing</kbd>. Now select <kbd>Edit &rarr; Add Point Feature</kbd>. Click on the map wherever you want to add a point. Each time you click, you will need to provide attributes for the fields you created when you created the layer. For now, since we used the defaults, we need only an ID, which requires an integer value. Give this whatever (integer) value you want. 
+
+## Placing polygons on the map
+
+In addition to points, it may be useful to add polygons to a map in order to communicate information about structures and areas. To do this, start again by creating a new vector layer using <kbd>Layer &rarr; Create Layer &rarr; New Shapefile Layer...</kbd>. In the window that pops up, choose <kbd>Polygon</kbd> as the type, and add at least one new field in which you will store information associated with each feature that you draw. Save the new layer as an SHP file in a directory where you will be able to find it again.                                                                                 
+
+The new layer you have added should appear in the <kbd>Layers Panel</kbd>. Right click on this new layer and select <kbd>Toggle Editing</kbd>. You will now see a set of new buttons and available menu items. Now select the menu item <kbd>Edit &rarr; Add Polygon Feature</kbd>. When you hover the mouse pointer over the map you will see that it now has the shape of a cross-hairs. Left click to add sequential points that define the polygon you want to add. When you have added the last point, right click the mouse and a dialog box will appear asking you to add the fields associated with this new feature. Remember that what you add will be limited by the field type you chose (and the ID field requires whole numbers by default). 
+

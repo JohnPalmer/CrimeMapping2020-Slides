@@ -1,0 +1,7 @@
+# Cluster Analysis with Stata
+
+To perform kmeans clustering in Stata, you can use the command _cluster kmeans_, followed by the list of variables you want to cluster on. For spatial clustering, use the x and y coordinates. The command lets you specify the number of clusters as an option, _k(#)_.
+
+```
+cluster kmeans xcoordinate ycoordinate, k(8)
+```

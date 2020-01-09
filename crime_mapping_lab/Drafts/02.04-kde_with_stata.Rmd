@@ -1,0 +1,3 @@
+# Kernel Density Estimation with Stata
+
+    ssc install bidensity

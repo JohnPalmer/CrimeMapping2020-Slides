@@ -1,0 +1,66 @@
+# Mapping Aggregated Data
+
+## Choropleth Maps
+
+### Downloading data
+
+For this exercise, we will use 2013 data extracted from the Eurostat database <i><a href="http://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-559176_QID_-2189685_UID_-3F171EB0&layout=ICCS,L,X,0;GEO,C,Y,0;UNIT,L,Z,0;TIME,C,Z,1;INDICATORS,C,Z,2;&zSelection=DS-559176TIME,2013;DS-559176INDICATORS,OBS_FLAG;DS-559176UNIT,NR;&rankName1=UNIT_1_2_-1_2&rankName2=INDICATORS_1_2_-1_2&rankName3=TIME_1_0_1_0&rankName4=ICCS_1_2_0_0&rankName5=GEO_1_2_0_1&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=NONE&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23">Recorded offences by offence category - police data</a></i>. (This data has been cleaned sightly after extraction to make things faster.)
+
+<a href="data/crim_off_cat_rates.csv">Download Data</a>
+
+### Download Shapefiles
+We will map this data using the <a href="http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/countries">Eurostat Countries 2013</a> shapefiles at the 1:3 million scale.
+
+<a href="http://ec.europa.eu/eurostat/cache/GISCO/geodatafiles/CNTR-03M-2013-SH.zip">Download Shapefiles</a>
+
+### Unzip the Shapefiles
+
+The file you downloaded is a zipped archive of shapefiles. Find the directory in which you saved it and double click on the file to unzip it.
+
+### Add Country Boundaries to Map
+
+Add the country boundaries using <kbd>Layer &rarr; Add Layer &rarr; Add Vector Layer</kbd>.
+
+In the add vector layer window that pops up, leave <kbd>Source type</kbd> as it is (the default is File with System encoding), and click the <kbd>Browse</kbd> button in the <kbd>Source</kbd> section to select the shapefiles you want to add. Navigate to the directory in which you unzipped these files look at what you have. You will see a number of sets of files with identical names. Each set represents a different layer. We will be using CNTR_RG_03M_2013, but go ahead and add all of them just to see what they look like. To do this, sort the files by type and then hold down the <kbd>Shift</kbd> key will clicking on all of the files that have the <samp>.shp</samp> extension. (QGIS will automatically open all associated files, which have the same names but different extensions).
+
+After selecting the files, click "Open" in the two dialog windows, and the shapes should appear on the map. (Remember that the order of the layers in the layer panel controls the order on the map and that you may need to change this to view certain layers.)
+
+
+### Adding the data
+
+Add the data using <kbd>Layer &rarr; Add Layer &rarr; Add Delimited Text Layer...</kbd>.
+
+In the <kbd>File Name</kbd> box, select the data file (for this exercise, it is <samp>crim_off_cat_rates.csv</samp> if you did not change the name when saving it). In the <kbd>File format</kbd> box, choose <samp>CSV</samp> if it is not already chosen. Look in the preview area below and see if the data is appearing in an organized way, with column headings and values. (It should be for this exercise, but if you use a different data set in the future and it is not appearing correctly, the first thing to try is selecting the <kbd>Custom delimiters</kbd> option for <kbd>File format</kbd> and trying the <samp>Semicolon</samp> option or something else.) For <kbd>Geometry definition</kbd>, select <samp>No geometry (attribute only table)</samp>. This data source does not have coordinates. It simply has data by country name and you will need to link those country names to your shapes in the following step. Click <kbd>OK</kbd>.
+
+### Join the country polygons with the data.
+
+In the layers panel, right click on the country boundary layer (which will be called <samp>CNTR_RG_03M_2013</samp> if you have not changed the names) and select <kbd>Properties</kbd>. In the properties window, select the <kbd>Joins</kbd> tab.
+
+To join the data to the polygons, there needs to be a field in the data table that contains a set of unique identifiers corresponding to a set of the same unique identifiers in the polygon attribute table. For this exercise, the <samp>GEO</samp> field in the data table has country codes that correspond to the same country codes in the polygon attribute table's <samp>CNTR_ID</samp> field. (When you are using your own data sources, this will often require some initial cleaning. For example, you may need to convert country codes to make sure they match, or you may need to deal with complications like states, like Yugoslavia, that have broken apart or those, like Germany, that have formed through unification.)
+
+Click the <span><img height="30px" src="images/r_choro_props_plus.png" alt="screenshot"></span> button. For <kbd>Join layer</kbd>, select your data you want to join (for this exercise it is <samp>crim_off_cat_rates</samp>). For <kbd>Join field</kbd>, select the field in the data table that you will be using for this join. In this case, <samp>GEO</samp>. For the <kbd>Target field</kbd>, select the field in the polygon attribute table that you will be using for the join. In this case, <samp>CNTR_ID</samp>). Click <kbd>OK</kbd> and then <kbd>Apply</kbd>.
+
+### Color the polygons according to crime data
+
+In the <kbd>Style</kbd> panel, choose <kbd>Graduated</kbd> in the selector at the very top. Now select for <kbd>Column</kbd> the field you want to represent on the map. Since you have joined the data with this polygon layer, you will be able to choose from the fields in the data table as well as in your polygon attribute table. For this exercise, choose <samp>crim_off_cat_rates_Theft</samp>). Select a <kbd>Color ramp</kbd> that you like. Under the <kbd>Classes</kbd> tab, select a choice for <kbd>Mode</kbd>. You can experiment with different options and see how they appear. Now click the <kbd>Classify</kbd> button and then click <kbd>OK</kbd>.
+
+### Clean the map
+
+
+Use the layers panel to remove any unnecessary layers that are distracting (for instance, if you included all of the shape files in the Eurostat country data). Use the zoom and pan tools to focus the map on the area of interest to you.
+
+## Proportional Symbols
+
+The choropleth map you just produced represents quantitative data using colors. But it is limited to showing one field from your data. What if you want to show additional information? One option would be to add a symbol on top of each color, making the size proportional to the additional values you want to display. In other words, one field will be displayed by color and another by size.
+
+If you added all of the shapefiles that you downloaded in the last exercise, then you already have everything you need. Put a check next to the <samp>CNTR_LB_2013</samp> layer in your layers panel to display a point for each country on top of the choropleth. You will use these points to place your proportional symbols. Right-click on this layer and select <kbd>Properties</kbd>. Use the same approach as in the last exercise to join this layer to your data table.
+
+### Style the point symbols using graduated sizes
+
+In the <kbd>Style</kbd> panel, select <kbd>Graduated</kbd> at the top and choose the <kbd>Column</kbd> you want to represent here. For this exercise, choose <samp>crim_off_cat_rates_TOTAL</samp>. For <kbd>Method</kbd> now select <samp>Size</samp>. Choose a <kbd>Mode</kbd> and click <kbd>Classify</kbd>. You will need to play around with classification modes as well as minimum and maximum sizes to create symbols that are useful for explaining your data. Click <kbd>OK</kbd> to display the result on your map.
+
+## Pie Charts
+
+To include even more information on your map, you may want to include some small charts that are then placed on top of geographic features. for this exercise we will use pie charts.
+
+Return to your point layer properties and now select the <kdb>Diagrams</kdb> tab. At the top, select <samp>Pie chart</samp>. For attributes, select all of the individual crime categories that you want to include. Be careful not to include overlapping information here. Use the plus button to move all of these to the <kbd>Assigned attributes</kbd> list. You can also size your pie charts proportionally to another variable using the <kbd>size</kbd> tab here.

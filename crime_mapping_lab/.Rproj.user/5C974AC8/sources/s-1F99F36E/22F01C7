@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1578563534090.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1455433275",
+    "id" : "22F01C7",
+    "lastKnownWriteTime" : 1578565453,
+    "last_content_update" : 1578565453893,
+    "path" : "~/projects/crime_mapping/2019-20/crime_mapping_lab/01.01-getting_started_with_qgis.Rmd",
+    "project_path" : "01.01-getting_started_with_qgis.Rmd",
+    "properties" : {
+        "cursorPosition" : "39,731",
+        "scrollLine" : "39"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

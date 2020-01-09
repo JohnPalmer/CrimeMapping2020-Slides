@@ -1,0 +1,24 @@
+# Geocoding
+
+Geocoding is the process of converting addresses into geographic coordinates. We can do this in QGIS using the MMQGIS Plugin. 
+
+## Install MMQGIS
+
+Install the MQGIS plugin using <kbd>Plugins &rarr; Manage and Install Plugins</kbd> and searching for <samp>mmqgis</samp>.
+
+
+## Obtain CSV address file
+
+The addresses you want to geocode using MMQGIS need to be in a CSV file that includes fields for address, city, state (province), and country. You could create a file like this using Excel or you may have a file like this already from whatever data source you are working with. For this exercise, use the file here:
+
+<a href="data/guardia_urbana_bcn_addresses.csv">Download the address data</a>
+
+## Use the MMQGIS geocoding function
+
+To geocode these addresses, click <kbd>MMQGIS &rarr; Geocode &rarr; Geocode CSV with Google / Open Street Map</kbd>.
+
+In the dialog window that pops up, choose the CSV file with your addresses and make sure the Address, City, State, and Country fields are selected correctly. If you choose to geocode with Google Maps, you may need to obtain an Google API key to avoid limits. The simpler alternative is to use the OpenStreetMap / Nominatum option. You will also need to specify file names for the output file (where the geolocations will be stored) as well as for a file that will store a list of addresses that could not be geocoded. This second part is important because you will need to find ways to locate these addresses (often by modifying the address text). When you have all of this specified, click <kbd>OK</kbd>.
+
+If some or all of the addresses could be geocoded, you will see a new points layer appear on your map, containing the locations. Make sure to check the file of addresses that could not be geocoded as well, and figure out what went wrong with these. One common error is with the character encoding. Your csv file needs to be encoded as UTF-8.
+
+

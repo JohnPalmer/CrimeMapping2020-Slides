@@ -1,0 +1,20 @@
+# Adjusting Vector Layer Appearance
+
+QGIS gives you control over how your vector layers appear: You can adjust color, fill style, transparency, labeling, and many other characteristics.
+
+## Opening the properties window
+
+To do this, you need to start by opening the <kbd>Layer Properties</kbd> window. Right click on the layer you want to adjust and select <kbd>Properties</kbd>. You will see a new window with a set of tabs on the left.
+
+## Changing the color
+
+To change the layer's color, select the <kbd>Style</kbd> tab. If this is a polygon layer, you will see a box with <kbd>Fill</kbd> and under this <kbd>Simple fill</kbd>. Click on <kbd>Simple fill</kbd> and then use the scroll bar on the right side of the window to scroll down until you see the <kbd>Fill</kbd>, <kbd>Outline</kbd>, and <kbd>Fill style</kbd> selectors. Click the <kbd>Fill</kbd> selector and choose a color. Notice that you have different options for picking the color, including choosing one from a pallet or gradient, entering HSV or RGB values, or entering an HTML code. You can also choose the level of opacity, which lets you make semitransparent features. (Note that this can be set for the fill color itself or for the entire layer.)
+
+## Changing the border and fill style
+
+You can also change the border and fill style using the <kbd>Outline</kbd> and <kbd>Fill style</kbd> selectors.
+
+## Adding labels
+
+To add labels to your layer, select the <kbd>Labels</kbd> tab. At the very top of the window, change the selector from <kbd>No labels</kbd> to <kbd>Show labels for this layer</kbd>. Just underneath this selector, you will see a selector for <kbd>Label with</kbd>. Use this to select the field you wish to use for your labels. If you created a field in the exercise above for number of people, you can use this to automatically display this information on each feature. Alternatively, you might have a field for name or ID. The idea here is that QGIS can automatically use one of the fields to generate labels. Try making labels and click <kbd>OK</kbd> to see how they look. Then return to the <kbd>Properties</kbd> window to explore the various options you have for adjusting the labels' appearance.
+

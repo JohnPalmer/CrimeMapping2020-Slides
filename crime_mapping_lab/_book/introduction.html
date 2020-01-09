@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Crime Mapping and Spatial Analysis</title>
+  <meta name="description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Crime Mapping and Spatial Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Crime Mapping and Spatial Analysis" />
+  
+  <meta name="twitter:description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
+  
+
+<meta name="author" content="John Palmer" />
+
+
+<meta name="date" content="2020-01-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="lab-instructions.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Crime Mapping and Spatial Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#accessing-qgis"><i class="fa fa-check"></i>Accessing QGIS</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#accessing-stata"><i class="fa fa-check"></i>Accessing Stata</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#accessing-r"><i class="fa fa-check"></i>Accessing R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html"><i class="fa fa-check"></i>Lab Instructions</a><ul>
+<li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-1-9-january-2019"><i class="fa fa-check"></i>Lab 1: 9 January 2019</a></li>
+</ul></li>
+<li class="part"><span><b>I Crime Mapping with QGIS</b></span></li>
+<li class="chapter" data-level="1" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html"><i class="fa fa-check"></i><b>1</b> Getting Started with QGIS</a><ul>
+<li class="chapter" data-level="1.1" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html#beginning-a-new-project"><i class="fa fa-check"></i><b>1.1</b> Beginning a new project</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html#changing-the-language"><i class="fa fa-check"></i><b>1.2</b> Changing the language</a></li>
+<li class="chapter" data-level="1.3" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html#installing-plugins"><i class="fa fa-check"></i><b>1.3</b> Installing plugins</a></li>
+<li class="chapter" data-level="1.4" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html#adding-openstreetmap-tiles"><i class="fa fa-check"></i><b>1.4</b> Adding OpenStreetMap tiles</a></li>
+<li class="chapter" data-level="1.5" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html#placing-points-on-the-map"><i class="fa fa-check"></i><b>1.5</b> Placing points on the map</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html#placing-polygons-on-the-map"><i class="fa fa-check"></i><b>1.6</b> Placing polygons on the map</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Crime Mapping and Spatial Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Crime Mapping and Spatial Analysis</h1>
+<h2 class="subtitle"><em>Lab Manual</em></h2>
+<p class="author"><em>John Palmer</em></p>
+<p class="date"><em>2020-01-09</em></p>
+</div>
+<div id="introduction" class="section level1 unnumbered">
+<h1>Introduction</h1>
+<p>This manual is intended to function as a companion to the <em>Crime Mapping and Spatial Analysis</em> labs as well as a stand-along reference for working with QGIS, Stata, and R for mapping and analysis. Each chapter walks you through a particular task or set of tasks, usually with an exercise to serve as an example. These are organized according to the class lab sessions but can also be followed intependently or used as a reference.</p>
+<div id="accessing-qgis" class="section level2 unnumbered">
+<h2>Accessing QGIS</h2>
+<p>QGIS is free and open source software, which you can download from <a href="https://qgis.org" class="uri">https://qgis.org</a>. At the time of writing, version 3.4 is the most recent long-term stable release and this manual is based on that version. When installing QGIS, leaving all of the default options as they are should be fine for purposes of this manual. The Windows installation includes a number of different choices for running QGIS; you shoud simply select the normal desktop version.</p>
+</div>
+<div id="accessing-stata" class="section level2 unnumbered">
+<h2>Accessing Stata</h2>
+<p>Stata is proprietary software, which cannot be freely downloaded if have not purchased a license. However, as a UPF student, you have free access to Stata on the UPF lab computers and through UPF’s <em>MyApps</em> platform. The latter requires an internet connection and has some limitations in terms of resources, but you can access it from outside UPF using your own computer and a web browser.</p>
+<p>To access Stata through <em>MyApps</em>, open a web browser and go to <a href="https://myapps.upf.edu" class="uri">https://myapps.upf.edu</a>. Log in using your UPF user ID (uxxxxx) and the password you use for logging into UPF computers (i.e. your birthdate, written as DDMMYYYY). Remember that this is not necessarily the password you use for Campus Global; your browser may have that Campus Global password stored, in which case you will need to manually change it each time. On the login page, you will need to choose between using <em>vWorkspace Connector</em> or simply through your web browser with HTML5. The first option allows you to access local files on your computer, but it can be slow and “buggy”, particularly on Macs. To follow this approach, click the <em>Install</em> button on the page you reach after logging in. The second option can be faster, but any files you want to use will need to be first uploaded through the UPF MyCloud. To follow this approach, click the <em>Continue</em> button on the page after login, and then flip the <em>HTML5</em> switch to the on position at the top right of your screen.</p>
+</div>
+<div id="accessing-r" class="section level2 unnumbered">
+<h2>Accessing R</h2>
+<p>R is free and open source software, which you can download from <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>. You will normally want to install the latest release from that site, and to then install a good text editor or Integrated Development Environment (IDE). An excellent choice for the latter is the (free) Open Source Edition of RStudio, which you can download from <a href="https://www.rstudio.com" class="uri">https://www.rstudio.com</a>. R and RStudio are also both available on the lab computers. This manual will assume that you are running RStudio.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="lab-instructions.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["crime_mapping_lab.pdf", "crime_mapping_lab.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

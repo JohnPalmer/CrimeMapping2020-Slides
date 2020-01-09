@@ -1,0 +1,24 @@
+# Lab Instructions {-}
+
+This section provides instructions for each lab session
+
+## Lab 1: 9 January 2019 {-}
+
+The core of criminology research involves observing the world around you, thinking about it, and communicating your thoughts to others. Computers can be useful tools for this, and most of the labs will focus on how to make use of them. Yet, computers can also get in the way. They can distort our observations and encourage us to think and communicate in certain ways. For this lab, therefore, we will start by actually going outside into the real world, making observations, and using a pen and paper to think about them and communicate them.
+
+Your task for this lab is to observe the courtyard in the middle of the Jaume I building, think about the following questions, and draw a map to explain your thoughts to someone else:
+
+* How many people are in the courtyard? Note, of course, that you will need to make some decision about time to answer this question: How many people right now? How many people over the course of an hour? Think about how the way you refine the question in this way will affect not just your answer but also the methods you use for reaching it. 
+* Where are these people? In other words, how are these people you observe in the courtyard spatially distributed? (Again, time comes into play here, so we might be better off asking how they are spatio-temporally distributed.)
+* What are these people doing and where are they doing it? For example, are people reading, looking at their phones, talking, walking, running...? Where are these activities taking place? For activities that involve movement, how can you best communicate how this movement is occurring?
+* What aspects of the physical environment (benches, walls, entry and exit points...) seem to play an important role in the social activity you are observing?
+
+We will proceed with this in several steps:
+
+1. Conduct an initial assessment of the courtyard and develop a strategy for answering the questions and communicating them on a map. You can do this in groups or on your own.
+2. We will then reconvene as a class to discuss your strategies.
+3. Now return to the courtyard and carry out your observations, analysis, and mapping. You can work in groups but you will each need to produce a set of maps that convey your findings. These maps should be drawn by hand.
+4. We will then reconvene again to discuss your finished maps.
+5. Finally, we will start using QGIS using the _Getting Started with QGIS_ section of this manual.
+
+At the end of the lab, you should hand in your hand-drawn maps. They will be evaluated based on your ideas, not based on how well you draw, how neat they are etc. The goal here is to get you to think through what how to communicate this information visually. How you then execute this technically, will form much of what we cover in the coming labs.

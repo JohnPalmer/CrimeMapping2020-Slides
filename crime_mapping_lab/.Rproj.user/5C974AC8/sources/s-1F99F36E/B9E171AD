@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1578563577065.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2979494859",
+    "id" : "B9E171AD",
+    "lastKnownWriteTime" : 1553288107,
+    "last_content_update" : 1553288107,
+    "path" : "~/projects/crime_mapping/2019-20/crime_mapping_lab/01.02-mapping_basics.Rmd",
+    "project_path" : "01.02-mapping_basics.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
