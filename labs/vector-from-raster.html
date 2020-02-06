@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Aggregating Point Data | Crime Mapping and Spatial Analysis</title>
+  <title>Chapter 3 Creating Vector Data From Raster Base | Crime Mapping and Spatial Analysis</title>
   <meta name="description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Aggregating Point Data | Crime Mapping and Spatial Analysis" />
+  <meta property="og:title" content="Chapter 3 Creating Vector Data From Raster Base | Crime Mapping and Spatial Analysis" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://johnpalmer.github.io/CrimeMapping2020-Slides/labs/" />
   <meta property="og:image" content="https://johnpalmer.github.io/CrimeMapping2020-Slides/labs/images/lab_manual_cover.png" />
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Aggregating Point Data | Crime Mapping and Spatial Analysis" />
+  <meta name="twitter:title" content="Chapter 3 Creating Vector Data From Raster Base | Crime Mapping and Spatial Analysis" />
   
   <meta name="twitter:description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
   <meta name="twitter:image" content="https://johnpalmer.github.io/CrimeMapping2020-Slides/labs/images/lab_manual_cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="aggregated-data.html"/>
-<link rel="next" href="geocoding.html"/>
+<link rel="prev" href="mapping-basics.html"/>
+<link rel="next" href="vector-appearance.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -168,38 +168,27 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="aggregating-point-data" class="section level1">
-<h1><span class="header-section-number">Chapter 7</span> Aggregating Point Data</h1>
-<div id="counting-points-in-areal-units" class="section level2">
-<h2><span class="header-section-number">7.1</span> Counting Points in Areal Units</h2>
-<div id="obtain-the-data" class="section level3">
-<h3><span class="header-section-number">7.1.1</span> Obtain the data</h3>
-<p>For this exercise, we will again use the New York City assault data extracted from <a href="https://data.cityofnewyork.us/">NYC Open Data</a>, which you can download by clicking the button below.</p>
-<p><a href="data/NYPD_Complaint_Map__Year_to_Date.csv">Download the data</a></p>
+<div id="vector_from-raster" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Creating Vector Data From Raster Base</h1>
+<p>It will often be necessary to create vector data – points, lines, or polygons – by tracing features on an existing raster map. This chapter will walk you through that process.</p>
+<div id="obtaining-a-raster" class="section level2">
+<h2><span class="header-section-number">3.1</span> Obtaining a raster</h2>
+<p>We will start by finding and downloading a raster base For example, you could use a high resolution orthophoto, such as those available at <a href="http://www.icc.cat/appdownloads/index.html">http://www.icc.cat/appdownloads/index.html</a>. When you first enter this site, it will be set to download topographical maps. Change this setting to orthophoto by clicking on the “Ortoimatges” tab in the left sidebar. Also change the format option in the bottom of the left sidebar to “tif” (for GeoTiff), and select the highest resolution: 1:2.500. Now drag the green square in the mapping area to the region you want to download. For this exercize, zoom in and select UPF’s Jaume I building, reducing the size of the green box as you do this so that it just covers the building itself. (Note that with this resolution selecting a large area will result in a very large file.) Once you have the green box in place, click the <kbd>Descarregar</kbd> button and enter your email address. The platform will a link to the file to your email within a few moments and you can then click to download it.</p>
+<p><img src="images/icc_map.png" alt="Downloading orthophoto from ICC website.)" />
+## Adding raster to map</p>
+<p>By saving the file in GeoTiff format you have ensured that it includes CRS information that QGIS can read automatically. Add the layer using <kbd>Layer → Add Layer → Add Raster Layer…</kbd> and then selecting the file you downloaded. Depending on the CRS of your current map, QGIS may then give you a choice of how to transform your raster’s CRS to the map’s CRS. You can select one of these or you can go back to your map and change it’s CRS to match the raster’s.</p>
+<div class="figure">
+<img src="images/adding_raster_layer.png" alt="Adding raster layer.)" />
+<p class="caption">Adding raster layer.)</p>
 </div>
-<div id="obtaining-shapefile" class="section level3">
-<h3><span class="header-section-number">7.1.2</span> Obtaining shapefile</h3>
-<p>We will use the polygons in the New York City police precinct geojson shapefile from the same site. You can download it using the button below. If the geojson text appears in a new browser window rather than automatically triggering a download prompt, simply choose <kbd>Save Page As…</kbd> or else copy the text and past it into a new text file, saving with the geojson extension.</p>
-<p><a href="data/PolicePrecincts.geojson" download="data/PolicePrecincts.geojson">Download geojson shapefile</a></p>
 </div>
-<div id="add-the-shapefile-layer-to-your-map" class="section level3">
-<h3><span class="header-section-number">7.1.3</span> Add the shapefile layer to your map</h3>
-<p>Add the shapefile to your map with <kbd>Layer → Add Layer → Add Vector Layer…</kbd>, or with the <span><img height="30px" src="images/r_add_vector_layer_button.png" alt="screenshot"></span> button.</p>
-<p>Select the geojson file and click <kbd>Open</kbd>.</p>
-</div>
-<div id="add-the-data" class="section level3">
-<h3><span class="header-section-number">7.1.4</span> Add the data</h3>
-<p>Add the data using <kbd>Layer → Add Layer → Add Delimited Text Layer…</kbd>, or the <span><img height="30px" src="images/r_add_csv_layer_button.png" alt="screenshot"></span> button.</p>
-<p>Select the data file (for this exercise it is <samp>NYPD_Complaint_Map__Year_to_Date.csv</samp>). On the <kbd>Geometry definition</kbd> line, make sure <kbd>Point coordinates</kbd> is selected and make sure the <samp>Longitude</samp> and <samp>Latitude</samp> fields are selected for the <kbd>X field</kbd> and <kbd>Y field</kbd>, respectively. Click <kbd>OK</kbd>.</p>
-<p>In the <samp>Coordinate Reference System</samp> window that should now pop up, select the appropriate coordinate reference system. If the points are defined by Latitude and Longitude (as in our exercise data), then this should be WGS 84 (EPSG 4326). (If you are using data in another coordinate reference system, make sure you check which this is in the data documentation.)</p>
-</div>
-<div id="count-the-points-in-each-polygon" class="section level3">
-<h3><span class="header-section-number">7.1.5</span> Count the points in each polygon</h3>
-<p>To count how many points (crime report locations) fall within each polygon (police precinct), use <kbd>Vector → Analysis Tools → Count points in polygon</kbd>.</p>
-<p>In the parameters tab of the window that pops up make sure that the correct layers are selected for the polygons and the points, and click <kbd>Run</kbd>.</p>
-<p>You will now see that a new layer has appeared on your map and inyour layers window. The new layer contains the polygons from your original polygon layer, but it also has an attribute table that links each of these polygons to the count of points that falls within it. The polygons will appear by default with one single fill color, but you can change the style to color them according the count. (For example, follow the <a href="#mapping-aggregated-data">Mapping Aggregated Data</a> recipes.)</p>
+<div id="creating-a-new-vector-layer." class="section level2">
+<h2><span class="header-section-number">3.2</span> Creating a new vector layer.</h2>
+<p>Create a new vector layer using <kbd>Layer → Create Layer → New Shapefile Layer…</kbd>. In the window that pops up, you can choose to make this a layer of points, lines, or polygons (see <kbd>Geometry Type</kbd> selector, third from top). You can also modify the character encoding (<kbd>File Encoding</kbd> selector), the CRS (selector just below the <kbd>File Encoding</kbd> selector), and the data fields that will be associated with this new layer.
+For this exercise, choose <kbd>Polygon</kbd> as the type, and add at least one new field in which you will store information associated with each feature that you draw. For this exercise, we will be using the layer to indicate the approximate number of people who you observed in the courtyard during our first lab, so create a <kbd>Whole Number</kbd> field and give it a name (e.g. N). Save the new layer as an SHP file in a directory where you will be able to find it again.<br />
+## Adding features</p>
+<p>The new layer you have added should appear in the <kbd>Layers Panel</kbd>. Right click on this new layer and select <kbd>Toggle Editing</kbd>. You will now see a set of new buttons and available menu items. Select <kbd>Edit → Add Polygon Feature</kbd>. When you hover the mouse pointer over the map you will see that it now has the shape of a cross-hairs. Left click to add sequential points that define the polygon you want to add. When you have added the last point, right click the mouse and a dialog box will appear asking you to add the fields associated with this new feature. Remember that what you add will be limited by the field type you chose (and the ID field requires whole numbers by default). For this exercise, draw a rectangle over UPF’s Jaume I courtyard.</p>
 
-</div>
 </div>
 </div>
             </section>
@@ -207,8 +196,8 @@
           </div>
         </div>
       </div>
-<a href="aggregated-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="geocoding.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="mapping-basics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vector-appearance.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
