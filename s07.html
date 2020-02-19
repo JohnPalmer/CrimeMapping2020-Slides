@@ -160,8 +160,27 @@ $$d(p,q) = \sqrt{(q_1 - p_1)^2 + (q_2 - p_2)^2 + (q_3 - p_3)^2 }$$
 
 
 				<section>
-					<h2>Clustering</h2>
-				<h3>"K-means"</h3>
+				<h3>Kernel Density Estimation</h3>
+				$$ \hat{f}_h(x) = \frac{1}{n}\sum_{i=1}^n K_h(x - x_i) =  \frac{1}{nh}\sum_{i=1}^n K\left(\frac{x - x_i}{h}\right)$$
+				</section>
+
+				<section>
+ 				<img src="images/density_x.png" class="stretch">
+				</section>
+
+				<section>
+ 				<img src="images/density_y.png" class="stretch">
+				</section>
+
+				<section>
+ 				<img src="images/density_2d.png" class="stretch">
+				</section>
+
+
+
+
+				<section>
+					<h3>K-Means Clustering</h3>
 				$$\textrm{arg min}\sum_{i=1}^k\sum_{x_j \in s_i}\left(x_j - \mu_i \right)^2$$
 				</section>
 
@@ -200,25 +219,6 @@ $$d(p,q) = \sqrt{(q_1 - p_1)^2 + (q_2 - p_2)^2 + (q_3 - p_3)^2 }$$
 
 				<section>
  				<img src="images/chicago3d.png" class="stretch">
-				</section>
-
-
-				<section>
-					<h2>Smoothing</h2>
-				<h3>Kernel Density Estimation</h3>
-				$$ \hat{f}_h(x) = \frac{1}{n}\sum_{i=1}^n K_h(x - x_i) =  \frac{1}{nh}\sum_{i=1}^n K\left(\frac{x - x_i}{h}\right)$$
-				</section>
-
-				<section>
- 				<img src="images/density_x.png" class="stretch">
-				</section>
-
-				<section>
- 				<img src="images/density_y.png" class="stretch">
-				</section>
-
-				<section>
- 				<img src="images/density_2d.png" class="stretch">
 				</section>
 
 
