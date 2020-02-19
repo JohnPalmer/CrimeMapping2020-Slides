@@ -33,18 +33,131 @@
 
 			<section>
 				<h1>Crime Mapping and Spatial Analysis</h1>
-				<h3>Class 7: Spatio-Temporal Dependence and Heterogeneity</h3>
+				<h3>Class 7: Spatial Analysis of Points</h3>
+				<p>aggregation, buffers, distances, patterns, clustering</p>
 				<p><a href="http://johnrbpalmer.com">John Palmer</a>
 				</section>
 
-				<section>
+<section>
+
+	<h2>Introduction to Spatial Analysis</h2>
 					<ul>
 					"everything is related to everything else, but near things are more related than distant things"
 					<br>
 					<br>
 					--Waldo Tobler's First Law of Geography
 				</ul>
-				</section>
+</section>
+
+<section>
+	<h3>Moving from maps to statistics</h3>
+	<ul>
+		<li>concepts</li>
+		<li>tools</li>
+		<li>data</li>
+		<li>analysis</li>
+		<li>presentation</li>
+	</ul>
+</section>
+
+<section>
+	<h2>Working with Points</h2>
+
+<img src="images/unclustered_map.png" class="stretch">
+
+</section>
+
+<section>
+	<h3>Aggregation</h3>
+	<h4>Areal Unit Choice and MAUP</h4>
+<img src="images/unclustered_map.png" class="stretch">
+</section>
+
+<section>
+	<h3>Aggregation</h3>
+	<h4>Areal Unit Choice and MAUP</h4>
+				<img src="images/maup_hex.png" class="stretch">
+</section>
+
+
+<section>
+	<h3>Buffers</h3>
+<img src="images/unclustered_map_buffers.png" class="stretch">
+</section>
+
+<section>
+	<h3>Buffers</h3>
+<ul>
+	<li>Where should they be focused?</li>
+	<li>What radius to use?</li>
+</ul>
+</section>
+
+
+<section>
+	<h3>Distances</h3>
+<ul>
+	<li>Between which points?</li>
+	<li>How to calculate?</li>
+	<li>Distance functions</li>
+</ul>
+</section>
+
+<section>
+	<h4>Euclidean Distance</h4>
+	<br>
+<p>2 dimensions</p>
+$$d(p,q) = \sqrt{(q_1 - p_1)^2 + (q_2 - p_2)^2 }$$
+	<br>
+
+<p>3 dimensions</p>
+$$d(p,q) = \sqrt{(q_1 - p_1)^2 + (q_2 - p_2)^2 + (q_3 - p_3)^2 }$$
+
+</section>
+
+
+<section>
+	<h4>Geodesic Distance</h4>
+<ul>
+	<li>Great circle distance</li>
+	<li>Haversine distance</li>
+	<li>Vincenty Ellipsoid distance</li>
+</ul>
+</section>
+
+
+<section>
+	<h3>Patterns</h3>
+	<ul>
+		<li>Random vs. Systematic</li>
+		<li>Pattern and Scale</li>
+		<li>Segregation</li>
+	</ul>
+</section>
+
+
+			<section>
+				<img class="stretch" src="images/2Dseg_unevenness.png">
+			</section>
+
+			<section>
+				<img class="stretch" src="images/2Dseg_clustering.png">
+			</section>
+
+			<section>
+				<img class="stretch" src="images/2Dseg_concentration.png">
+			</section>
+
+			<section>
+				<img class="stretch" src="images/2Dseg_centralization.png">
+			</section>
+
+			<section>
+				<img class="stretch" src="images/2Dseg_exposure.png">
+				<p>Exposure</p>
+			</section>
+
+
 
 				<section>
 					<h2>Clustering</h2>
@@ -108,76 +221,6 @@
  				<img src="images/density_2d.png" class="stretch">
 				</section>
 
-				<section>
-					<h2>Temporal Dependence</h2>
-				</section>
-
-				<section>
-					<img src="images/chicago_hourly.png" class="stretch">
-				</section>
-
-				<section>
-					<img src="images/chicago_hour_bar.png" class="stretch">
-				</section>
-
-
-				<section>
-					<h2>Spatial Dependence</h2>
-				</section>
-
-				<section>
-				<h4>Spatial Weights</h4>
-				</section>
-
-				<section>
-				<h4>Moran's I - Global</h4>
-
-				$$ I = \frac{N}{S_0} \sum_{i=1}^N\sum_{j=1}^N \frac{w_{ij}(x_i-\mu)(x_j-\mu)}{\sum_{i=1}^N (x_i - \mu)^2} $$ <br>
-
-				$$ S_0 = \sum_{i=1}^N\sum_{j=1}^N w_{ij} $$
-				</section>
-
-				<section>
-				<h4>Moran's I - Local</h4>
-
-				$$ I_i = \frac{z_i}{\sum_i{z_i^2/N}} \sum_{j \in J_i}{w_{ij}Z_j}$$ <br>
-
-			
-				</section>
-
-
-				<section>
-				<h2>Spatial Regression</h2>
-				</section>
-
-
-<section>
-<h4>OLS Model</h4>
-$$ y = \alpha + \beta X + \epsilon$$
-</section>
-
-
-<section>
-<h4>Spatially Lagged Independent Variable</h4>
-$$ y = \alpha + \beta X + \rho W X +  \epsilon$$
-</section>
-
-
-<section>
-<h4>Spatially Lagged Dependent Variable</h4>
-$$ y = \alpha + \beta X + \rho W Y +  \epsilon$$
-</section>
-
-
-<section>
-<h4>Spatial Errors Model</h4>
-$$ y = \alpha + \beta X + \epsilon$$
-$$ \epsilon = \lambda W u + e$$
-</section>
-
-
-
-
 
 
 
@@ -199,6 +242,7 @@ $$ \epsilon = \lambda W u + e$$
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				history: true,
+				transition: 'fade',
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
