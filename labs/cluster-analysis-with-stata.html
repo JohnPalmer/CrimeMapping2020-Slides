@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Aggregating Point Data | Crime Mapping and Spatial Analysis</title>
+  <title>Chapter 12 Cluster Analysis with Stata | Crime Mapping and Spatial Analysis</title>
   <meta name="description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Aggregating Point Data | Crime Mapping and Spatial Analysis" />
+  <meta property="og:title" content="Chapter 12 Cluster Analysis with Stata | Crime Mapping and Spatial Analysis" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://johnpalmer.github.io/CrimeMapping2020-Slides/labs/" />
   <meta property="og:image" content="https://johnpalmer.github.io/CrimeMapping2020-Slides/labs/images/lab_manual_cover.png" />
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Aggregating Point Data | Crime Mapping and Spatial Analysis" />
+  <meta name="twitter:title" content="Chapter 12 Cluster Analysis with Stata | Crime Mapping and Spatial Analysis" />
   
   <meta name="twitter:description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
   <meta name="twitter:image" content="https://johnpalmer.github.io/CrimeMapping2020-Slides/labs/images/lab_manual_cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="basic-spatial-statistics-with-stata.html"/>
-<link rel="next" href="cluster-analysis-with-stata.html"/>
+<link rel="prev" href="aggregating-point-data.html"/>
+<link rel="next" href="measuring-autocorrelation-with-stata.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -176,47 +176,19 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="aggregating-point-data" class="section level1">
-<h1><span class="header-section-number">Chapter 11</span> Aggregating Point Data</h1>
-<div id="counting-points-in-areal-units" class="section level2">
-<h2><span class="header-section-number">11.1</span> Counting Points in Areal Units</h2>
-<div id="obtain-the-data" class="section level3">
-<h3><span class="header-section-number">11.1.1</span> Obtain the data</h3>
-<p>For this exercise, we will again use the New York City assault data extracted from <a href="https://data.cityofnewyork.us/">NYC Open Data</a>, which you can download by clicking the button below.</p>
-<p><a href="data/NYPD_Complaint_Map__Year_to_Date.csv">Download the data</a></p>
-</div>
-<div id="obtaining-shapefile" class="section level3">
-<h3><span class="header-section-number">11.1.2</span> Obtaining shapefile</h3>
-<p>We will use the polygons in the New York City police precinct geojson shapefile from the same site. You can download it using the button below. If the geojson text appears in a new browser window rather than automatically triggering a download prompt, simply choose <kbd>Save Page As…</kbd> or else copy the text and past it into a new text file, saving with the geojson extension.</p>
-<p><a href="data/PolicePrecincts.geojson" download="data/PolicePrecincts.geojson">Download geojson shapefile</a></p>
-</div>
-<div id="add-the-shapefile-layer-to-your-map" class="section level3">
-<h3><span class="header-section-number">11.1.3</span> Add the shapefile layer to your map</h3>
-<p>Add the shapefile to your map with <kbd>Layer → Add Layer → Add Vector Layer…</kbd>, or with the <span><img height="30px" src="images/r_add_vector_layer_button.png" alt="screenshot"></span> button.</p>
-<p>Select the geojson file and click <kbd>Open</kbd>.</p>
-</div>
-<div id="add-the-data" class="section level3">
-<h3><span class="header-section-number">11.1.4</span> Add the data</h3>
-<p>Add the data using <kbd>Layer → Add Layer → Add Delimited Text Layer…</kbd>, or the <span><img height="30px" src="images/r_add_csv_layer_button.png" alt="screenshot"></span> button.</p>
-<p>Select the data file (for this exercise it is <samp>NYPD_Complaint_Map__Year_to_Date.csv</samp>). On the <kbd>Geometry definition</kbd> line, make sure <kbd>Point coordinates</kbd> is selected and make sure the <samp>Longitude</samp> and <samp>Latitude</samp> fields are selected for the <kbd>X field</kbd> and <kbd>Y field</kbd>, respectively. Click <kbd>OK</kbd>.</p>
-<p>In the <samp>Coordinate Reference System</samp> window that should now pop up, select the appropriate coordinate reference system. If the points are defined by Latitude and Longitude (as in our exercise data), then this should be WGS 84 (EPSG 4326). (If you are using data in another coordinate reference system, make sure you check which this is in the data documentation.)</p>
-</div>
-<div id="count-the-points-in-each-polygon" class="section level3">
-<h3><span class="header-section-number">11.1.5</span> Count the points in each polygon</h3>
-<p>To count how many points (crime report locations) fall within each polygon (police precinct), use <kbd>Vector → Analysis Tools → Count points in polygon</kbd>.</p>
-<p>In the parameters tab of the window that pops up make sure that the correct layers are selected for the polygons and the points, and click <kbd>Run</kbd>.</p>
-<p>You will now see that a new layer has appeared on your map and inyour layers window. The new layer contains the polygons from your original polygon layer, but it also has an attribute table that links each of these polygons to the count of points that falls within it. The polygons will appear by default with one single fill color, but you can change the style to color them according the count. (For example, follow the <a href="#mapping-aggregated-data">Mapping Aggregated Data</a> recipes.)</p>
+<div id="cluster-analysis-with-stata" class="section level1">
+<h1><span class="header-section-number">Chapter 12</span> Cluster Analysis with Stata</h1>
+<p>To perform kmeans clustering in Stata, you can use the command <em>cluster kmeans</em>, followed by the list of variables you want to cluster on. For spatial clustering, use the x and y coordinates. The command lets you specify the number of clusters as an option, <em>k(#)</em>.</p>
+<pre><code>cluster kmeans xcoordinate ycoordinate, k(8)</code></pre>
 
-</div>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="basic-spatial-statistics-with-stata.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cluster-analysis-with-stata.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="aggregating-point-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="measuring-autocorrelation-with-stata.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

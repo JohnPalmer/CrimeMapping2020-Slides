@@ -86,7 +86,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-02-06}
+    \date{2020-02-20}
 
 \usepackage{booktabs}
 
@@ -199,8 +199,14 @@ In this lab we will learn how to create your own cartographic vector data, how t
 
 Submit both PNG files through Aula Global.
 
-\hypertarget{part-crime-mapping-with-qgis}{%
-\part{Crime Mapping with QGIS}\label{part-crime-mapping-with-qgis}}
+\hypertarget{lab-4-20-february-2020}{%
+\section*{Lab 4: 20 February 2020}\label{lab-4-20-february-2020}}
+\addcontentsline{toc}{section}{Lab 4: 20 February 2020}
+
+In this lab we will learn how to use buffers and distances for spatial analysis. Follow the instructions in Section \ref{buffers-distances} and upload the csv file that you export in the end to Aula Global.
+
+\hypertarget{part-crime-mapping}{%
+\part{Crime Mapping}\label{part-crime-mapping}}
 
 \hypertarget{getting-started-with-qgis}{%
 \chapter{Getting Started with QGIS}\label{getting-started-with-qgis}}
@@ -533,76 +539,103 @@ To include even more information on your map, you may want to include some small
 
 Return to your point layer properties and now select the Diagrams tab. At the top, select Pie chart. For attributes, select all of the individual crime categories that you want to include. Be careful not to include overlapping information here. Use the plus button to move all of these to the Assigned attributes list. You can also size your pie charts proportionally to another variable using the size tab here.
 
-\hypertarget{aggregating-point-data}{%
-\chapter{Aggregating Point Data}\label{aggregating-point-data}}
+\hypertarget{part-spatial-analysis}{%
+\part{Spatial Analysis}\label{part-spatial-analysis}}
 
-\hypertarget{counting-points-in-areal-units}{%
-\section{Counting Points in Areal Units}\label{counting-points-in-areal-units}}
+\hypertarget{getting-started-with-qgis-1}{%
+\chapter{Getting Started with QGIS}\label{getting-started-with-qgis-1}}
 
-\hypertarget{obtain-the-data}{%
-\subsection{Obtain the data}\label{obtain-the-data}}
+If you already have QGIS set up for mapping, there is nothing more you need to do to get started with spatial analysis. Most of the tools you will need can be found under the Vector, Raster, and Processing menus.
 
-For this exercise, we will again use the New York City assault data extracted from NYC Open Data, which you can download by clicking the button below.
+\hypertarget{getting-started-with-stata}{%
+\chapter{Getting Started with Stata}\label{getting-started-with-stata}}
 
-Download the data
+There are a number of ways to use Stata, and your choice will affect the overall workflow of your analysis. These include using the menus, typing commands directly in the console, and using do-files.
 
-\hypertarget{obtaining-shapefile}{%
-\subsection{Obtaining shapefile}\label{obtaining-shapefile}}
+\hypertarget{menus}{%
+\section{Menus}\label{menus}}
 
-We will use the polygons in the New York City police precinct geojson shapefile from the same site. You can download it using the button below. If the geojson text appears in a new browser window rather than automatically triggering a download prompt, simply choose Save Page As\ldots{} or else copy the text and past it into a new text file, saving with the geojson extension.
+The most intuitive approach for new users is to use the menus. Stata's comprehensive and well-organized menus are one of the features that makes it attractive, and you can learn a lot about what Stata has to offer simply by exploring the menus options. One drawback to using the menus, though, is that this makes it cumbersome to repeat steps from your work -- something that you often need to do in statistical analysis, and that you should always aim to make possible for others to do so that your work is replicable. Stata has a feature that can help with this, which is the option to create a log file that records everything you have done. This is something you should always do, even if working with the menus, as it allows you to go back and figure out exactly what you did, identify errors, etc. But going through a log file and repeating the commands can be tedious if you need to repeat your work multiple times. It is possible to create a ``command log,'' which contains only the commands you typed and thus can be more easily repeated, but these repetitions will require that you move away from the menu approach in any case.
 
-Download geojson shapefile
+\hypertarget{commands}{%
+\section{Commands}\label{commands}}
 
-\hypertarget{add-the-shapefile-layer-to-your-map}{%
-\subsection{Add the shapefile layer to your map}\label{add-the-shapefile-layer-to-your-map}}
+An alternative to the menus is to type commands directly in the command console at the bottom. If you are using Stata in interactive mode (for instance on a server without a GUI), this is often the only possibility, as there will be no menus. This can save time when you start to learn the commands. It is also good for quick analysis that you do not intend to repeat. And you can still log your work, just as with the menus. Ultimately, though, for most analysis you will want to keep track of your work in a more systematic way, and this is where do-files come in.
 
-Add the shapefile to your map with Layer → Add Layer → Add Vector Layer\ldots{}, or with the {} button.
+\hypertarget{do-files}{%
+\section{Do-Files}\label{do-files}}
 
-Select the geojson file and click Open.
+Do-Files are simply text files in which you store the commands you want to execute (also called a script). The key is that you can get Stata to execute these commends directly from the file. This can be done by selecting a line or set of lines and pressing \emph{Ctrl-D}. (You can also press \emph{Ctrl+D} without anything selected in order to execute all lines, or you can press \emph{Ctrl+Shift+D} to execute all lines from wherever your cursor is to the bottom. If you forget this or want to see more options, just look at the \emph{Tools} menu in the do-file editor.) The most efficient way to work with Stata is to use a do-file and to also log your work. This way, you end up with a do-file that you can re-run (and modify) whenever you need to repeat your work, along with an exact log of what lines you ran and Stata's output. While working, you may skip around your do-file and run particular lines, but the goal is to produce a file that can be run from start to finish to accomplish your analysis. You can then give this to someone else and they should be able to use it to replicate what you have done (and check for errors).
 
-\hypertarget{add-the-data}{%
-\subsection{Add the data}\label{add-the-data}}
+There are certain useful pieces of information and commands that you should include at the beginning and end of any do-file. These include information about what the file is intended to do, who wrote it, what version of Stata is was written with, and the commands to start logging to the log file and then (at the end) to stop logging. The Stata version is particularly useful because as new versions of Stata are released, they all are all written to be compatible with older ones and to be able to run older do-files exactly as they were intended. Thus, if you write a do-file using Stata 15 and specify this in your do-file, you can insure that all future versions of Stata will run it using Stata 15 (and thus continue to exactly replicate your work). Here is an example:
 
-Add the data using Layer → Add Layer → Add Delimited Text Layer\ldots{}, or the {} button.
+\begin{verbatim}
+// Spatial analysis of Chicago Crime data
+// John Palmer, 20 February 2020
 
-Select the data file (for this exercise it is NYPD\_Complaint\_Map\_\_Year\_to\_Date.csv). On the Geometry definition line, make sure Point coordinates is selected and make sure the Longitude and Latitude fields are selected for the X field and Y field, respectively. Click OK.
+version 15
+clear
+capture log close
+log using chicago_analysis, text replace
 
-In the Coordinate Reference System window that should now pop up, select the appropriate coordinate reference system. If the points are defined by Latitude and Longitude (as in our exercise data), then this should be WGS 84 (EPSG 4326). (If you are using data in another coordinate reference system, make sure you check which this is in the data documentation.)
+// Here you would start your analysis for example:
+display 2+2
 
-\hypertarget{count-the-points-in-each-polygon}{%
-\subsection{Count the points in each polygon}\label{count-the-points-in-each-polygon}}
+log close
+\end{verbatim}
 
-To count how many points (crime report locations) fall within each polygon (police precinct), use Vector → Analysis Tools → Count points in polygon.
+\hypertarget{buffers-distances}{%
+\chapter{Buffers and Distances}\label{buffers-distances}}
 
-In the parameters tab of the window that pops up make sure that the correct layers are selected for the polygons and the points, and click Run.
+To learn how to use buffers and distances for analyzing data in QGIS, we will work through an example similar to the one we talked about in class. For this exercise, start by going to Chicago's open data portal and downloading the following datasets:
 
-You will now see that a new layer has appeared on your map and inyour layers window. The new layer contains the polygons from your original polygon layer, but it also has an attribute table that links each of these polygons to the count of points that falls within it. The polygons will appear by default with one single fill color, but you can change the style to color them according the count. (For example, follow the \protect\hyperlink{mapping-aggregated-data}{Mapping Aggregated Data} recipes.)
+\hypertarget{getting-the-data}{%
+\section{Getting the Data}\label{getting-the-data}}
 
-\hypertarget{geocoding}{%
-\chapter{Geocoding}\label{geocoding}}
+First, go to the crimes database at:
 
-Geocoding is the process of converting addresses into geographic coordinates. We can do this in QGIS using the MMQGIS Plugin.
+\url{https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2/data}
 
-\hypertarget{install-mmqgis}{%
-\section{Install MMQGIS}\label{install-mmqgis}}
+Use the filter tab to select only crimes that were reported after 1 January 2020 (Date is after\ldots{}) and that have the Primary Type listed as ``BATTERY''. Export this data as a csv file and save it on your computer.
 
-Install the MQGIS plugin using Plugins → Manage and Install Plugins and searching for mmqgis.
+Now, go to the public schools database at:
 
-\hypertarget{obtain-csv-address-file}{%
-\section{Obtain CSV address file}\label{obtain-csv-address-file}}
+\url{https://data.cityofchicago.org/Education/Chicago-Public-Schools-School-Locations-SY1920-Map/xtgb-6hqg}
 
-The addresses you want to geocode using MMQGIS need to be in a CSV file that includes fields for address, city, state (province), and country. You could create a file like this using Excel or you may have a file like this already from whatever data source you are working with. For this exercise, use the file here:
+Export the public school location data as a csv file and save it on your computer.
 
-Download the address data
+Finally, go to the bars database at:
 
-\hypertarget{use-the-mmqgis-geocoding-function}{%
-\section{Use the MMQGIS geocoding function}\label{use-the-mmqgis-geocoding-function}}
+\url{https://data.cityofchicago.org/Community-Economic-Development/bars/x7bm-cj66}
 
-To geocode these addresses, click MMQGIS → Geocode → Geocode CSV with Google / Open Street Map.
+Filter this data to include only bar licenses that expire after 1 January 2020, export it and save it on your computers.
 
-In the dialog window that pops up, choose the CSV file with your addresses and make sure the Address, City, State, and Country fields are selected correctly. If you choose to geocode with Google Maps, you may need to obtain an Google API key to avoid limits. The simpler alternative is to use the OpenStreetMap / Nominatum option. You will also need to specify file names for the output file (where the geolocations will be stored) as well as for a file that will store a list of addresses that could not be geocoded. This second part is important because you will need to find ways to locate these addresses (often by modifying the address text). When you have all of this specified, click OK.
+\hypertarget{mapping-the-data}{%
+\section{Mapping the Data}\label{mapping-the-data}}
 
-If some or all of the addresses could be geocoded, you will see a new points layer appear on your map, containing the locations. Make sure to check the file of addresses that could not be geocoded as well, and figure out what went wrong with these. One common error is with the character encoding. Your csv file needs to be encoded as UTF-8.
+Now put all of this data on a map in QGIS using the techniques you have already learned. Each dataset is a csv file, so you will need to add it using Add Delimited Text Layer and specifying the coordinates. In each case, the coordinates are given in latitude and longitude.
+
+\hypertarget{drawing-buffers-around-the-schools}{%
+\section{Drawing Buffers Around the Schools}\label{drawing-buffers-around-the-schools}}
+
+To draw buffers around the schools, first make sure you have the MMQGIS plugin installed and install it if you don't. Go to the MMQGIS menu at the top of your screen and choose Create → Create Buffers. In the dialog that opens up set the radius that you want to use for your buffers and the units that this will be in. Think about a good choice based on the research questions we discussed yesterday. Then select an output shapefile (button of dialog) location where you have write access and will remember where it is. Click OK to calculate the buffers.
+
+\hypertarget{counting-points-in-polygons}{%
+\section{Counting Points in Polygons}\label{counting-points-in-polygons}}
+
+To count the number of batteries and the number of bars in each school's buffer, select Vector → Analysis Tools → Count Points in Polygon. In the dialog that opens, select your new buffer layer as the polygons and select one of the points layers that you want to count. Give the count field a name that will make sense to you later (like ``N\_batteries'' or ``N\_bars''). Run the operation and then do this again for the other point layer you want to count. (Note that each time you run this, it will create a polygon layer with the counts. Is you use that layer as your polygons for the next count, then you will end up with both counts in the same attribute file, which will save you time. Alternatively, you can do each separately and then join them.)
+
+\hypertarget{calculating-distances}{%
+\section{Calculating Distances}\label{calculating-distances}}
+
+To calculate distances from each school to the nearest bar, go to the Vector → Analysis Tools → Distance Matrix. Choose as the input layer your school points as as your target layer the bar points. Make sure you have a unique field selected for each. For Use only the nearest (k) target points type 1. Run the operation and wait for it to finish.
+
+One complication to note: Distances are calculated in units that depend on the CRS of the two layers. In this case, both layers simply use latitude and longitude, so your distances will end up being in degrees of latitude and longitude. You will be better off with meters, which you can achieve by first reprojecting your layers to UTM before carrying out the operation. For purposes of this lab, however, leave it as it is.
+
+\hypertarget{joining-and-exporting-data}{%
+\section{Joining and Exporting Data}\label{joining-and-exporting-data}}
+
+If you want to end up with a file that you can analyze later in Stata, R, or some other statistical tool, you will want to export your data from QGIS. But you first need to join your distance table with the polygon layer in which you have your counts. Do this using the Join tab in the properties dialog for the polygon layer. Select the unique ID for each layer and carry out the join. If you do it correctly, you should see the distances in the attribute table for the polygons. If that is the case, then export your polygon layer as a csv file and save this for further analysis in our next lab. (Also turn it in as your lab assignment for this week.)
 
 \bibliography{book.bib,packages.bib}
 

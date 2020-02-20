@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Mapping Basics | Crime Mapping and Spatial Analysis</title>
+  <title>Chapter 9 Buffers and Distances | Crime Mapping and Spatial Analysis</title>
   <meta name="description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Mapping Basics | Crime Mapping and Spatial Analysis" />
+  <meta property="og:title" content="Chapter 9 Buffers and Distances | Crime Mapping and Spatial Analysis" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://johnpalmer.github.io/CrimeMapping2020-Slides/labs/" />
   <meta property="og:image" content="https://johnpalmer.github.io/CrimeMapping2020-Slides/labs/images/lab_manual_cover.png" />
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Mapping Basics | Crime Mapping and Spatial Analysis" />
+  <meta name="twitter:title" content="Chapter 9 Buffers and Distances | Crime Mapping and Spatial Analysis" />
   
   <meta name="twitter:description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
   <meta name="twitter:image" content="https://johnpalmer.github.io/CrimeMapping2020-Slides/labs/images/lab_manual_cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="getting-started-with-qgis.html"/>
-<link rel="next" href="vector-from-raster.html"/>
+<link rel="prev" href="getting-started-with-stata.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -171,92 +171,42 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="mapping-basics" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Mapping Basics</h1>
-<div id="mapping-crime-locations" class="section level2">
-<h2><span class="header-section-number">2.1</span> Mapping crime locations</h2>
-<div id="downloading-data" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> Downloading Data</h3>
-<p>To get started, we will use the New York City Police Department’s (NYPD’s) most recent complaint data as a way to construct a basic map of reported crime locations. This data set is available on New York City’s open data website and described as including “all valid felony, misdemeanor, and violation crimes reported to the [New York City Police Department [NYPD] for all complete quarters so far this year.” At the time of writing, the temporal scope of this data is all of 2019 (since there are not yet any completed quarters in 2020.)</p>
-<p>To start exploring the data, go to the website at:</p>
-<p><a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Complaint-Data-Current-Year-To-Date-/5uac-w243" class="uri">https://data.cityofnewyork.us/Public-Safety/NYPD-Complaint-Data-Current-Year-To-Date-/5uac-w243</a></p>
-<p>The website allows you to view or visualize the data directly online, as well as to export the data and to access it through an API. You could export the entire dataset using <kbd>Export</kbd> button:</p>
-<div class="figure">
-<img src="images/NYPD_CD_main.png" alt="Location of Export button on the NYPD Complaint Data page of the NYC open data website" />
-<p class="caption">Location of Export button on the NYPD Complaint Data page of the NYC open data website</p>
+<div id="buffers-distances" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Buffers and Distances</h1>
+<p>To learn how to use buffers and distances for analyzing data in QGIS, we will work through an example similar to the one we talked about in class. For this exercise, start by going to Chicago’s open data portal and downloading the following datasets:</p>
+<div id="getting-the-data" class="section level2">
+<h2><span class="header-section-number">9.1</span> Getting the Data</h2>
+<p>First, go to the crimes database at:</p>
+<p><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2/data" class="uri">https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2/data</a></p>
+<p>Use the filter tab to select only crimes that were reported after 1 January 2020 (Date is after…) and that have the Primary Type listed as “BATTERY”. Export this data as a csv file and save it on your computer.</p>
+<p>Now, go to the public schools database at:</p>
+<p><a href="https://data.cityofchicago.org/Education/Chicago-Public-Schools-School-Locations-SY1920-Map/xtgb-6hqg" class="uri">https://data.cityofchicago.org/Education/Chicago-Public-Schools-School-Locations-SY1920-Map/xtgb-6hqg</a></p>
+<p>Export the public school location data as a csv file and save it on your computer.</p>
+<p>Finally, go to the bars database at:</p>
+<p><a href="https://data.cityofchicago.org/Community-Economic-Development/bars/x7bm-cj66" class="uri">https://data.cityofchicago.org/Community-Economic-Development/bars/x7bm-cj66</a></p>
+<p>Filter this data to include only bar licenses that expire after 1 January 2020, export it and save it on your computers.</p>
 </div>
-<p>If you do this, however, you may end up with a very large file and this may slow things down in terms of download and processing time. For purposes of this first exercise, instead click the <kbd>View Data</kbd> button, as this will allow you to filter the data before downloading it:</p>
-<div class="figure">
-<img src="images/NYPD_CD_view.png" alt="Location of the View Data button" />
-<p class="caption">Location of the View Data button</p>
+<div id="mapping-the-data" class="section level2">
+<h2><span class="header-section-number">9.2</span> Mapping the Data</h2>
+<p>Now put all of this data on a map in QGIS using the techniques you have already learned. Each dataset is a csv file, so you will need to add it using <kbd>Add Delimited Text Layer</kbd> and specifying the coordinates. In each case, the coordinates are given in latitude and longitude.</p>
 </div>
-<p>Clicking on the <kbd>View Data</kbd> button will take you to a new page that includes a <kbd>Filter</kbd> button. Click on this and then click the <kbd>Add a New Filter Condition</kbd> button. You can easily filter the data by any of its fields (or by multiple fields). For this exercise, filter the <kbd>OFNS_DESC</kbd> field (which is the description of the offense, as recorded by the NYPD) for <kbd>FELONY ASSAULT</kbd>:</p>
-<div class="figure">
-<img src="images/NYPD_CD_filter.png" alt="Filtering the NYPD Complaint Data" />
-<p class="caption">Filtering the NYPD Complaint Data</p>
+<div id="drawing-buffers-around-the-schools" class="section level2">
+<h2><span class="header-section-number">9.3</span> Drawing Buffers Around the Schools</h2>
+<p>To draw buffers around the schools, first make sure you have the MMQGIS plugin installed and install it if you don’t. Go to the MMQGIS menu at the top of your screen and choose <kbd>Create → Create Buffers</kbd>. In the dialog that opens up set the radius that you want to use for your buffers and the units that this will be in. Think about a good choice based on the research questions we discussed yesterday. Then select an output shapefile (button of dialog) location where you have write access and will remember where it is. Click <kbd>OK</kbd> to calculate the buffers.</p>
 </div>
-<p>Once you do this, you will see that the effect of the filter in the data displayed in the table on the left, incuding a large reduction in the number of records indicated at the bottom. Now export this filtered data using the <kbd>Export<kbd> button and selecting <kbd>CSV</kbd> as the format:</p>
-<div class="figure">
-<img src="images/NYPD_CD_visualize_export.png" alt="Exporting the NYPD Complaint data" />
-<p class="caption">Exporting the NYPD Complaint data</p>
+<div id="counting-points-in-polygons" class="section level2">
+<h2><span class="header-section-number">9.4</span> Counting Points in Polygons</h2>
+<p>To count the number of batteries and the number of bars in each school’s buffer, select <kbd>Vector → Analysis Tools → Count Points in Polygon</kbd>. In the dialog that opens, select your new buffer layer as the polygons and select one of the points layers that you want to count. Give the count field a name that will make sense to you later (like “N_batteries” or “N_bars”). Run the operation and then do this again for the other point layer you want to count. (Note that each time you run this, it will create a polygon layer with the counts. Is you use that layer as your polygons for the next count, then you will end up with both counts in the same attribute file, which will save you time. Alternatively, you can do each separately and then join them.)</p>
 </div>
-<p>Your browser will then let you choose a location to save the downloaded file. Remember this location so that you can find it in the next step and go ahead and complete the download.</p>
+<div id="calculating-distances" class="section level2">
+<h2><span class="header-section-number">9.5</span> Calculating Distances</h2>
+<p>To calculate distances from each school to the nearest bar, go to the <kbd>Vector → Analysis Tools → Distance Matrix</kbd>. Choose as the input layer your school points as as your target layer the bar points. Make sure you have a unique field selected for each. For <kbd>Use only the nearest (k) target points</kbd> type 1. Run the operation and wait for it to finish.</p>
+<p>One complication to note: Distances are calculated in units that depend on the CRS of the two layers. In this case, both layers simply use latitude and longitude, so your distances will end up being in degrees of latitude and longitude. You will be better off with meters, which you can achieve by first reprojecting your layers to UTM before carrying out the operation. For purposes of this lab, however, leave it as it is.</p>
 </div>
-<div id="adding-data-to-your-map" class="section level3">
-<h3><span class="header-section-number">2.1.2</span> Adding data to your map</h3>
-<p>Add the data to your map using <kbd>Layer → Add Layer → Add Delimited Text Layer…</kbd>.</p>
-<div class="figure">
-<img src="images/add_deilmited_text_layer.png" alt="Screenshot of the Add Delimited Text Layer menu option in QGIS 3.10 for MacOS" />
-<p class="caption">Screenshot of the Add Delimited Text Layer menu option in QGIS 3.10 for MacOS</p>
-</div>
-<p>In the dialog that comes up, click on the <kbd>…</kbd> button to the right of the <kbd>File name</kbd> box at the top. Select the data file you just downloaded and saved.</p>
-<div class="figure">
-<img src="images/add_delimited_file_chooser.png" alt="Choosing file in the dialog (botton at top right with bllue circle around it.)" />
-<p class="caption">Choosing file in the dialog (botton at top right with bllue circle around it.)</p>
-</div>
-<p>Once you select the file in the dialog box, you will see that it is listed in the <kbd>File name</kbd> box. Note that you can also choose a <kbd>Layer name</kbd>. This is how the layer you are creating will be named on the layers bar of your QGIS interface. You will need to ensure that the proper <kbd>File format</kbd> is selected (in this case CSV) and you will need to provide information about geometry: In the <kbd>Geometry definition</kbd> box, make sure <kbd>Point coordinates</kbd> is selected. Make sure that the <kbd>X field</kbd> and <kbd>Y field</kbd> boxes contain the correct field names from your data for the x and y coordinates (in this case, the correct fields are <kbd>Longitude</kbd> and <kbd>Latitute</kbd>).</p>
-<p>Now look at the Coordinate Reference System (CRS) selector, which is labelled <kbd>Geometry CRS</kbd>. This is a crucial setting because selecting the wrong CRS will lead to your layer being incorrectly placed on the map (or sometimes not visible at all). For points recorded as Latitude and Longitude, the correct CRS is <kbd>EPSG 4326 - WGS 84</kbd>, so make sure this is selected. We will talk more about other CRSs and how to determine which one your data relies on.</p>
-<p><i>Note: Some of these settings may already be correctly set because QGIS automatically tries to figure them out from your file. So in many cases you will simply need to go through and double check them.</i></p>
-<p>Once you have ensured that the settings are correct, look at the preview shown in the <kbd>Sample Data</kbd> section at the bottom of the window. You should see a table with data in rows and columns with headers. If you do not see this, go back and check the settings again.</p>
-<p><i>Note: One common problem when importing CSV data is that QGIS may not be properly recognizing the character used to separate columns. CSV stands for comma-separated values, and in many systems this means that the columns are separated with commas (“,”) (as the name implies). In some systems, however, the default is to use semi-colons (“;”) instead of commas - and this is often the default on computers and software localized for Spain. Thus, for example, if you save an Excel sheet as a CSV file on a UPF lab computer, you may find that it is saved using semi-colons rather than commas. You can easily see whether it is commas or semi-colons (or something else) by simply opening your CSV file in a text editor and looking at it closely. If it is not a comma, you will need to specify which character it is by choosing the <kbd>Custom delimiters</kbd> setting and then either checking one of the preset boxes or simply typing in the character in the <kbd>Others</kbd> box.</i></p>
-<p>Once you have finished with the settings, click the <kbd>Add</kbd> button at the bottom of the window.</p>
-</div>
-<div id="adding-data-using-an-api" class="section level3">
-<h3><span class="header-section-number">2.1.3</span> Adding data using an API</h3>
-<p>We just added data by first downloading it to your computer because you will often need to work with data files in this way. Data providers, however, are increasingly making it possible to access their data sources using an Application Programming Interface (API). This can simply things for you, particularly when you will be working with a source frequently and will want the most updated data. We will discuss ways of working with APIs later on.</p>
-</div>
-</div>
-<div id="working-with-multiple-layers" class="section level2">
-<h2><span class="header-section-number">2.2</span> Working with Multiple Layers</h2>
-<p>When you first add the NYPD Complaint Data (or any other data source), you should be able to see it in the QGIS mapping window. Often, however, you will want to combine it with additional layers. For example, the NYPD Complaint Data will be much more useful it it is overlaid on top of a map of New York City. You can add such a map in many ways, but for now add Open Steet Map tiles using the instructions in Section <a href="getting-started-with-qgis.html#osm-tiles">1.4</a>.</p>
-<p>One issue you wil sometimes need to deal with is finding the features in a particular layer you have added. For example, if you have first added Open Street Map tiles and then added points, it may be that your map winder is focused on part of the world where there are no points. To view your new layer, you will need to pan and zoom to get to the location where it actually has data - in this case New York City. You can do that quickly by right-clicking on the layer in the <kbd>Layers</kbd> panel and selecting <kbd>Zoom to Layer</kbd> at the very top of the menu.</p>
-<p>You may also need to make sure that the layer is not being covered by another layer. The order of the layers in the Layers Panel is the order in which they appear on the map (imagine actual layers of paper or transparent paper with features on a physical map). You can drag layers up and down in that list to change the order.</p>
-<p>To learn more about each point marked on the map, select <kbd>View → Identify Features</kbd> and click on a point. You will see information in the Identify Results panel on the right (although you may need to expand that panel to see the values associated with each feature.</p>
-</div>
-<div id="printing-or-exporting-a-map" class="section level2">
-<h2><span class="header-section-number">2.3</span> Printing or Exporting a Map</h2>
-<p>What you see in the QGIS console is useful for creating, modifying, and analyzing your map. If you want to share your map with someone or publish it as part of a report, you will want to use the print composer to produce high-quality output.</p>
-<div id="setting-up-the-print-layout" class="section level3">
-<h3><span class="header-section-number">2.3.1</span> Setting up the Print Layout</h3>
-<p>Select <kbd>Project → New Print Layout</kbd>. In the dialog box that pops up, you can give this print layout a title or leave the box blank and click OK for the default title. You will now see a new window with a canvas that you can use to compose exactly how you want your map to look.</p>
-</div>
-<div id="adding-a-map" class="section level3">
-<h3><span class="header-section-number">2.3.2</span> Adding a map</h3>
-<p>The most obvious thing you will want on your composed map is the map itself. Select <kbd>Add Item → Add Map</kbd> and then use the mouse to draw a rectangle on the canvas where you want the map to appear. Notice that the map that will now appear in that box is essentially a mirror image of the map you currently have in the main console (although the dimensions may be different depending on how you draw the box). After drawing the box, you can still move it around using the <kbd>Edit → Select/Move Item</kbd> tool, and you can move the map around within it using the <kbd>Edit → Move Content</kbd> tool. Notice that you can add more than one map to your canvas. This makes it possible to include inset maps, for example, showing where your detailed map lies at a larger scale.</p>
-</div>
-<div id="adding-a-scale-bar" class="section level3">
-<h3><span class="header-section-number">2.3.3</span> Adding a scale bar</h3>
-<p>You may wish to add a scale bar to your map, and you can do this easily using <kbd>Add Item → Add Scale Bar</kbd>. Again, you will need to click on the map to position and resize the scale bar. You will notice that you also have many options to choose from in changing its appearance using the Item properties tab on the right.</p>
-</div>
-<div id="adding-a-legend" class="section level3">
-<h3><span class="header-section-number">2.3.4</span> Adding a legend</h3>
-<p>To add a legend, select <kbd>Add Item → Add Legend</kbd> and use the mouse to draw a rectangle where you want the legend to appear. The legend will be automatically filled with the information in your layers list, but you can modify this using the Item properties tab on the right. Select the legend you have added and scroll down the Item properties to the <kbd>Legend Items</kbd> section. Uncheck <kbd>Auto update</kbd>. Now select the layers you do not wish to see in the legend and click the minus sign at the bottom to remove them. Next click the item(s) that you want in the legend and use the editing button to edit the text that will appear. In the <kbd>Main properties</kbd> section you can also change the title and alignment of the legend text.</p>
-</div>
-<div id="exporting-your-map" class="section level3">
-<h3><span class="header-section-number">2.3.5</span> Exporting your map</h3>
-<p>When you are happy with your map, use <kbd>Layout → Export as Image</kbd> or <kbd>Layout → Export as PDF</kbd> or <kbd>Layout → Export as SVG</kbd> to export your map to a single file, which you can then share, embed in a report, or print.</p>
+<div id="joining-and-exporting-data" class="section level2">
+<h2><span class="header-section-number">9.6</span> Joining and Exporting Data</h2>
+<p>If you want to end up with a file that you can analyze later in Stata, R, or some other statistical tool, you will want to export your data from QGIS. But you first need to join your distance table with the polygon layer in which you have your counts. Do this using the <kbd>Join</kbd> tab in the properties dialog for the polygon layer. Select the unique ID for each layer and carry out the join. If you do it correctly, you should see the distances in the attribute table for the polygons. If that is the case, then export your polygon layer as a csv file and save this for further analysis in our next lab. (Also turn it in as your lab assignment for this week.)</p>
 
-</div>
 </div>
 </div>
             </section>
@@ -264,8 +214,8 @@
           </div>
         </div>
       </div>
-<a href="getting-started-with-qgis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="vector-from-raster.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="getting-started-with-stata.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

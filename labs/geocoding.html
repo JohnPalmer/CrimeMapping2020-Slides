@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Geocoding | Crime Mapping and Spatial Analysis</title>
   <meta name="description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Geocoding | Crime Mapping and Spatial Analysis" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="John Palmer" />
 
 
-<meta name="date" content="2020-02-06" />
+<meta name="date" content="2020-02-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="aggregating-point-data.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="getting-started-with-qgis-1.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -80,7 +80,7 @@
 <li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-2-23-january-2020"><i class="fa fa-check"></i>Lab 2: 23 January 2020</a></li>
 <li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-3-5-february-2020"><i class="fa fa-check"></i>Lab 3: 5 February 2020</a></li>
 </ul></li>
-<li class="part"><span><b>I Crime Mapping with QGIS</b></span></li>
+<li class="part"><span><b>I Crime Mapping</b></span></li>
 <li class="chapter" data-level="1" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html"><i class="fa fa-check"></i><b>1</b> Getting Started with QGIS</a><ul>
 <li class="chapter" data-level="1.1" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html#beginning-a-new-project"><i class="fa fa-check"></i><b>1.1</b> Beginning a new project</a></li>
 <li class="chapter" data-level="1.2" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html#changing-the-language"><i class="fa fa-check"></i><b>1.2</b> Changing the language</a></li>
@@ -148,6 +148,18 @@
 <li class="chapter" data-level="8.2" data-path="geocoding.html"><a href="geocoding.html#obtain-csv-address-file"><i class="fa fa-check"></i><b>8.2</b> Obtain CSV address file</a></li>
 <li class="chapter" data-level="8.3" data-path="geocoding.html"><a href="geocoding.html#use-the-mmqgis-geocoding-function"><i class="fa fa-check"></i><b>8.3</b> Use the MMQGIS geocoding function</a></li>
 </ul></li>
+<li class="part"><span><b>II Spatial Analysis</b></span></li>
+<li class="chapter" data-level="9" data-path="getting-started-with-qgis-1.html"><a href="getting-started-with-qgis-1.html"><i class="fa fa-check"></i><b>9</b> Getting Started with QGIS</a></li>
+<li class="chapter" data-level="10" data-path="getting-started-with-stata.html"><a href="getting-started-with-stata.html"><i class="fa fa-check"></i><b>10</b> Getting Started with Stata</a><ul>
+<li class="chapter" data-level="10.1" data-path="getting-started-with-stata.html"><a href="getting-started-with-stata.html#menus"><i class="fa fa-check"></i><b>10.1</b> Menus</a></li>
+<li class="chapter" data-level="10.2" data-path="getting-started-with-stata.html"><a href="getting-started-with-stata.html#commands"><i class="fa fa-check"></i><b>10.2</b> Commands</a></li>
+<li class="chapter" data-level="10.3" data-path="getting-started-with-stata.html"><a href="getting-started-with-stata.html#do-files"><i class="fa fa-check"></i><b>10.3</b> Do-Files</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="getting-started-with-r.html"><a href="getting-started-with-r.html"><i class="fa fa-check"></i><b>11</b> Getting Started with R</a></li>
+<li class="chapter" data-level="12" data-path="basic-spatial-statistics-with-stata.html"><a href="basic-spatial-statistics-with-stata.html"><i class="fa fa-check"></i><b>12</b> Basic Spatial Statistics with Stata</a></li>
+<li class="chapter" data-level="13" data-path="cluster-analysis-with-stata.html"><a href="cluster-analysis-with-stata.html"><i class="fa fa-check"></i><b>13</b> Cluster Analysis with Stata</a></li>
+<li class="chapter" data-level="14" data-path="measuring-autocorrelation-with-stata.html"><a href="measuring-autocorrelation-with-stata.html"><i class="fa fa-check"></i><b>14</b> Measuring Autocorrelation with Stata</a></li>
+<li class="chapter" data-level="15" data-path="kernel-density-estimation-with-stata.html"><a href="kernel-density-estimation-with-stata.html"><i class="fa fa-check"></i><b>15</b> Kernel Density Estimation with Stata</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -189,13 +201,16 @@
 
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
 <a href="aggregating-point-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="getting-started-with-qgis-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
