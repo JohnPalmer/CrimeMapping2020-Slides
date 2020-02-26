@@ -33,90 +33,54 @@
 
 			<section>
 				<h1>Crime Mapping and Spatial Analysis</h1>
-				<h3>Class 8: Spatial Regression</h3>
+				<h3>Class 8: Correlation, Autocorrelation, and Inference</h3>
 				<p><a href="http://johnrbpalmer.com">John Palmer</a>
 				</section>
 
 
 
 				<section>
-					<h2>Preparing Data</h2>
+					<h2>Temporal Dependence</h2>
 				</section>
 
-<section data-background-image="images/ss8_1.png" data-background-size="contain">
-</section>
+				<section>
+					<img src="images/chicago_hourly.png" class="stretch">
+				</section>
 
-<section>
-	<h3>Changing CRS</h3>
-	<ul>
-	<li>Although not necessary, you may want to change your Coordinate Reference System (CRS) to UTM so that you can think about measurements (like the areal unit grid you are creating) in meters.</li>
-	<li>To do this, click the projection box at the bottom right of the map window in QGIS</li>
-</ul>
-</section>
-
-<section data-background-image="images/ss8_2.png" data-background-size="contain">
-</section>
-
-<section>
-	<h3>Making Hexagon Grid</h3>
-	<ul>
-	<li>With the Project CRS set to UTM, you can now create hexagons in meters.</li>
-	<li>Note that the x and y distances will not be equal because of the hexagon's shape.</li>
-</ul>
-</section>
-
-<section data-background-image="images/ss8_3.png" data-background-size="contain">
-</section>
-
-<section>
-	<h3>Changing Layer CRS</h3>
-		<ul>
-	<li>The on-the-fly Project CRS does not change the individual layer CRS, so your layers may still be in lon-lat.</li>
-	<li>If that is the case, you will need to set them so that the points layer CRS matches the polygons layer (hexagons) CRS before you can count points in polygons. Do this by saving the layer as a new file and setting the CRS while saving. This will transform the layer.</li>
-</ul>
-</section>
+				<section>
+					<img src="images/chicago_hour_bar.png" class="stretch">
+				</section>
 
 
-<section data-background-image="images/ss8_4.png" data-background-size="contain">
-</section>
+				<section>
+					<h2>Spatial Dependence</h2>
+				</section>
 
-<section>
-	<h3>Reducing Areal Unit Number</h3>
-	<ul>
-	<li>As many of you saw on Tuesday, having too many areal units makes it difficult to create distance matrices without lots of computational resources.</li>
-	<li>To reduce the number of areal units, we can make them bigger. But we can also remove the ones we don't need.</li>
-</ul>
-</section>
+				<section>
+				<h4>Spatial Weights</h4>
+				</section>
 
-<section data-background-image="images/ss8_5.png" data-background-size="contain">
-</section>
+				<section>
+				<h4>Moran's I - Global</h4>
 
-<section>
-	<h3>Filtering Crime Data to Get Counts</h3>
-	<ul>
-	<li>To count different crime types in each areal unit, using the filtering function in the layer properties.</li>
-	<li>Filter first for one crime time, do the count, then filter for another crime type and do the count again.</li>
-	<li>To ensure that all of this data ends up in the same layer, make sure you use the new count layer each time.</li>
-</ul>
-</section>
+				$$ I = \frac{N}{S_0} \sum_{i=1}^N\sum_{j=1}^N \frac{w_{ij}(x_i-\mu)(x_j-\mu)}{\sum_{i=1}^N (x_i - \mu)^2} $$ <br>
 
+				$$ S_0 = \sum_{i=1}^N\sum_{j=1}^N w_{ij} $$
+				</section>
 
-<section data-background-image="images/ss8_7.png" data-background-size="contain">
-</section>
+				<section>
+				<h4>Moran's I - Local</h4>
 
-<section data-background-image="images/ss8_8.png" data-background-size="contain">
-</section>
+				$$ I_i = \frac{z_i}{\sum_i{z_i^2/N}} \sum_{j \in J_i}{w_{ij}Z_j}$$ <br>
+
+			
+				</section>
 
 
-<section data-background-image="images/ss8_9.png" data-background-size="contain">
-</section>
+				<section>
+				<h2>Spatial Regression</h2>
+				</section>
 
-<section data-background-image="images/ss8_11.png" data-background-size="contain">
-</section>
-
-<section>
-<h2>Fitting Spatial Regression Models</h2> 
-</section>
 
 <section>
 <h4>OLS Model</h4>
@@ -125,60 +89,91 @@ $$ y = \alpha + \beta X + \epsilon$$
 
 
 <section>
-<h4>Spatially Lagged Independent Variable</h4>
+<p>Spatially Lagged Independent Variable</p>
 $$ y = \alpha + \beta X + \rho W X +  \epsilon$$
-</section>
-
-
-<section>
-<h4>Spatially Lagged Dependent Variable</h4>
+<br>
+<p>Spatially Lagged Dependent Variable</p>
 $$ y = \alpha + \beta X + \rho W Y +  \epsilon$$
-</section>
-
-
-<section>
-<h4>Spatial Errors Model</h4>
+<br>
+<p>Spatial Errors Model</p>
 $$ y = \alpha + \beta X + \epsilon$$
 $$ \epsilon = \lambda W u + e$$
 </section>
 
 
+
+
 <section>
 	<pre><code>
-		regress assaults burglaries
+	regress assaults burglaries
 	</code></pre>
 </section>
 
 <section>
-	<pre><code>
-		spregress assaults burglaries, gs2sls dvarlag(W)
-	</code></pre>
+	<img src="images/s09_reg1.png" class="stretch">
 </section>
 
 <section>
-	<pre><code>
-		spregress assaults burglaries, gs2sls errorlag(W)
-	</code></pre>
-</section>
-
-<section>
-	<pre><code>
-		spregress assaults burglaries, gs2sls ivarlag(W: burglaries)
-	</code></pre>
+	<img src="images/s09_reg1moran.png">
 </section>
 
 
 <section>
 	<pre><code>
-		spregress assaults burglaries, gs2sls dvarlag(W) ivarlag(W: burglaries) errorlag(W)
+	spregress assaults burglaries, gs2sls dvarlag(W)
+	</code></pre>
+</section>
+
+<section>
+<img src="images/s09_reg2.png" class="stretch">
+</section>
+
+<section>
+	<img src="images/s09_reg2_impact.png" class="stretch">
+</section>
+
+<section>
+	<pre><code>
+	spregress assaults burglaries, gs2sls errorlag(W)
+	</code></pre>
+</section>
+
+<section>
+	<img src="images/s09_reg3.png" class="stretch">
+</section>
+
+<section>
+	<img src="images/s09_reg3_impact.png" class="stretch">
+</section>
+
+<section>
+	<pre><code>
+	spregress assaults burglaries, gs2sls ivarlag(W: burglaries)
+	</code></pre>
+</section>
+
+<section>
+	<img src="images/s09_reg4.png" class="stretch">
+</section>
+
+<section>
+	<img src="images/s09_reg4_impact.png" class="stretch">
+</section>
+
+<section>
+	<pre><code>
+	spregress assaults burglaries, gs2sls dvarlag(W) ///
+	    ivarlag(W: burglaries) errorlag(W) 
 	</code></pre>
 </section>
 
 
-<section data-background-image="images/andresen_fig4.png" data-background-size="contain">
+<section>
+	<img src="images/s09_reg5.png" class="stretch">
 </section>
 
-<section data-background-image="images/echazarra_sp.png" data-background-size="contain">
+<section>
+	<img src="images/s09_reg5_impact.png" class="stretch">
 </section>
 
 
