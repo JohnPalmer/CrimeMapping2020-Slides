@@ -33,150 +33,48 @@
 
 			<section>
 				<h1>Crime Mapping and Spatial Analysis</h1>
-				<h3>Class 9: Interpretation and Synthesis</h3>
+				<h3>Class 9: New Data Sources and Methods</h3>
 				<p><a href="http://johnrbpalmer.com">John Palmer</a>
 				</section>
 
-
 <section>
-	<h3>Follow-up on Lab 5 issues: QGIS</h3>
-	<ul>
-	<li>The key to easily adding multiple variables based on counts is to use each new counts layer (which is a polygon layer) as the polygon layer for the next count.</li>
-	<li>Make sure you give each new count field a new (and intuitive name).</li>
-	<li>If you need to rename a field, you can do this in the layer's properties window, Fields tab. (Set to editing mode first.)</li>
-	<li>Remove unnecessary layers to avoid confusion.</li>
-	</ul>
-</section>
-
-<section>
-	<h3>Follow-up on Lab 5 issues: Stata</h3>
-	<ul>
-	<li>Too many areal units will cause Stata to go slow or freeze when trying to create weights matrices.</li>
-	<li>Use <i>clear *</i> and <i>spshape2dta ..., replace</i> so that your do file can be run multiple times.</li>
-	<li>Once you have multiple variables, make sure you add some as covariates to your regression.</li>
-	</ul>
+<h2>Working with Mobility Data</h2>
+<ul>
+	<li>Collection</li>
+	<li>Storage and Processing</li>
+	<li>Analysis</li>
+</ul>
 </section>
 
 
 <section>
-<h2>Interpreting Spatial Regression Models</h2> 
+	<h4>Collection: Mobile Phone Active Positioning</h4>
+<img src="images/Screenshot_20200304-112040_Space Mapper.jpg" class="stretch">
 </section>
 
 <section>
-<p>Spatially Lagged Independent Variable</p>
-$$ y = \alpha + \beta X + \rho W X +  \epsilon$$
-<br>
-<p>Spatially Lagged Dependent Variable</p>
-$$ y = \alpha + \beta X + \rho W Y +  \epsilon$$
-<br>
-<p>Spatial Errors Model</p>
-$$ y = \alpha + \beta X + \epsilon$$
-$$ \epsilon = \lambda W u + e$$
-</section>
-
-
-
-<section>
-	<pre><code>
-	regress assaults burglaries
-	</code></pre>
-</section>
-
-<section>
-	<img src="images/s09_reg1.png" class="stretch">
-</section>
-
-<section>
-	<img src="images/s09_reg1moran.png">
+	<h4>Collection: Mobile Phone Active Positioning</h4>
+<img src="images/Screenshot_20200304-112215_Space Mapper.jpg" class="stretch">
 </section>
 
 
 <section>
-	<img src="images/s09_reg1moran2.png">
+	<h4>Collection: Mobile Phone Active Positioning</h4>
+<img src="images/Screenshot_20200304-112354_Space Mapper.jpg" class="stretch">
 </section>
 
 <section>
-	<pre><code>
-	spregress assaults burglaries, gs2sls dvarlag(W)
-	</code></pre>
+	<h4>Storage and Processing: Active Positioning Data</h4>
+<img src="images/spacemapper_data.png" class="stretch">
 </section>
 
 <section>
-<img src="images/s09_reg2.png" class="stretch">
-</section>
-
-<section>
-	<img src="images/s09_reg2_impact.png" class="stretch">
-</section>
-
-<section>
-	<pre><code>
-	spregress assaults burglaries, gs2sls errorlag(W)
-	</code></pre>
-</section>
-
-<section>
-	<img src="images/s09_reg3.png" class="stretch">
-</section>
-
-<section>
-	<img src="images/s09_reg3_impact.png" class="stretch">
-</section>
-
-<section>
-	<pre><code>
-	spregress assaults burglaries, gs2sls ivarlag(W: burglaries)
-	</code></pre>
-</section>
-
-<section>
-	<img src="images/s09_reg4.png" class="stretch">
-</section>
-
-<section>
-	<img src="images/s09_reg4_impact.png" class="stretch">
-</section>
-
-<section>
-	<pre><code>
-	spregress assaults burglaries, gs2sls dvarlag(W) ///
-	    ivarlag(W: burglaries) errorlag(W) 
-	</code></pre>
+	<h4>Storage and Processing: Using High Performance Computing</h4>
 </section>
 
 
 <section>
-	<img src="images/s09_reg5.png" class="stretch">
-</section>
-
-<section>
-	<img src="images/s09_reg5_impact.png" class="stretch">
-</section>
-
-
-<section>
-	<h3><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0064.2006.00159.x">Andresen (2006)</a></h3>
-</section>
-
-
-<section data-background-image="images/andresen_fig4.png" data-background-size="contain">
-</section>
-
-<section>
-	<h3><a href="https://obrasociallacaixa.org/documents/10280/240906/vol37_ca.pdf/8f3018de-60d5-4fb3-baec-b8842536e222">Echazarra (2014)</a></h3>
-</section>
-
-
-<section data-background-image="images/echazarra_sp.png" data-background-size="contain">
-</section>
-
-
-<section>
-	<h2>Space and Time: Synthesis and Next Steps</h2>
-</section>
-
-<section>
-	<h4>Movement Analysis</h4>
+	<h2>Movement Analysis</h2>
 	<ul>
 		<li>Active and Passive Positioning</li>
 		<li>Trajectories</li>
@@ -185,15 +83,77 @@ $$ \epsilon = \lambda W u + e$$
 	</ul>
 </section>
 
-<section>
-	<h2>Project Part 1</h2>
-<a href="crime_mapping_project_instructions_1.pdf">Instructions</a>
-</section>
 
 <section>
-	<h2>Project Part 2</h2>
-<a href="crime_mapping_project_instructions_2.pdf">Instructions</a>
+	<h4>Analysis: Mapping Trajectories</h4>
+<img src="images/spacemapper_paths.png" class="stretch">
 </section>
+
+
+<section>
+		<h4>Analysis: Movement Characteristics</h4>
+
+<img src="images/spacemapper_r_script.png" class="stretch">
+</section>
+
+
+<section>
+		<h4>Analysis: Movement Characteristics</h4>
+<img src="images/spacemapper_r_table.png" class="stretch">
+</section>
+
+
+			<section>
+				<h3>Challenge</h3>
+				<p>How to reconstruct activity spaces from sampled locations?</p>
+			</section>
+
+			<section>
+			<img class="stretch" src="images/satmap_full.svg">
+			<p>Complete trajectory of person commuting to to and from work in Barcelona, Spain, over 24 hours. Synthetic data.</p>
+			</section>
+			<section>
+			<img class="stretch" src="images/satmap_sample.svg">
+			<p>Observed locations of commuter in left figure, using 10 minute sampling interval.</p>
+			</section>
+
+
+			<section>
+			<img class="stretch" src="images/mcp95.svg">
+			<p>Minimum convex polygon encompassing 95% of sampled locations.</p>
+			</section>
+
+			<section>
+			<img class="stretch" src="images/sde.svg">
+			<p>Standard deviation ellipse from sampled locations.</p>
+			</section>
+
+			<section>
+			<img class="stretch" src="images/kud.svg">
+			<p>Utilization distribution based on bivariate normal kernel density. Contour lines show probability of presence.</p>
+			</section>
+
+			<section>
+				<h2>Brownian Bridges</h2>
+			</section>
+	
+		<section>
+				<p>The Brownian bridge movement model (Bullard 1999) is based on the probability distribution of a particle following a Brownian random walk between two known locations.</p>
+			</section>
+
+	
+			<section>
+			<img class="stretch" src="images/BBMM_demo.svg">
+			<p>Brownian bridge between two sampled locations. Contour lines show probability of presence during the sampled time interval.</p>
+			</section>
+			<section>
+			<img class="stretch" src="images/BBMM_demo_all_steps.svg">
+			<p>Individual Brownian bridges between all sampled locations. Contour lines show probability of presence during each time interval between the observed points.</p>
+			</section>
+			<section>
+			<img class="stretch" src="images/BBMM_demo_integrated.svg">
+			<p>Brownian bridge movement model for the full sample. Contour lines show integrated probability of presence during entire 24-hour sampling period. Model estimated using dynamic approach of Kranstauber et al. (2012).</p>
+			</section>
 
 
 			</div>
@@ -214,6 +174,7 @@ $$ \epsilon = \lambda W u + e$$
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				history: true,
+				transition: 'fade',
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
