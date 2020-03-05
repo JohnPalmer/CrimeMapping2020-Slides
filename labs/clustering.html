@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 Cluster Analsis | Crime Mapping and Spatial Analysis</title>
+  <meta name="description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
+  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 Cluster Analsis | Crime Mapping and Spatial Analysis" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://johnpalmer.github.io/CrimeMapping2020-Slides/labs/" />
+  <meta property="og:image" content="https://johnpalmer.github.io/CrimeMapping2020-Slides/labs/images/lab_manual_cover.png" />
+  <meta property="og:description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 Cluster Analsis | Crime Mapping and Spatial Analysis" />
+  
+  <meta name="twitter:description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
+  <meta name="twitter:image" content="https://johnpalmer.github.io/CrimeMapping2020-Slides/labs/images/lab_manual_cover.png" />
+
+<meta name="author" content="John Palmer" />
+
+
+<meta name="date" content="2020-03-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="buffers-distances.html"/>
+<link rel="next" href="autocorrelation.html"/>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Crime Mapping and Spatial Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cover</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#accessing-qgis"><i class="fa fa-check"></i>Accessing QGIS</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#accessing-stata"><i class="fa fa-check"></i>Accessing Stata</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#accessing-r"><i class="fa fa-check"></i>Accessing R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html"><i class="fa fa-check"></i>Lab Instructions</a><ul>
+<li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-1-9-january-2020"><i class="fa fa-check"></i>Lab 1: 9 January 2020</a></li>
+<li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-2-23-january-2020"><i class="fa fa-check"></i>Lab 2: 23 January 2020</a></li>
+<li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-3-5-february-2020"><i class="fa fa-check"></i>Lab 3: 5 February 2020</a></li>
+<li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-4-20-february-2020"><i class="fa fa-check"></i>Lab 4: 20 February 2020</a></li>
+<li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-5-5-march-2020"><i class="fa fa-check"></i>Lab 5: 5 March 2020</a></li>
+</ul></li>
+<li class="part"><span><b>I Crime Mapping</b></span></li>
+<li class="chapter" data-level="1" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html"><i class="fa fa-check"></i><b>1</b> Getting Started with QGIS</a><ul>
+<li class="chapter" data-level="1.1" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html#beginning-a-new-project"><i class="fa fa-check"></i><b>1.1</b> Beginning a new project</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html#changing-the-language"><i class="fa fa-check"></i><b>1.2</b> Changing the language</a></li>
+<li class="chapter" data-level="1.3" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html#installing-plugins"><i class="fa fa-check"></i><b>1.3</b> Installing plugins</a></li>
+<li class="chapter" data-level="1.4" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html#osm-tiles"><i class="fa fa-check"></i><b>1.4</b> Adding OpenStreetMap tiles</a></li>
+<li class="chapter" data-level="1.5" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html#placing-points-on-the-map"><i class="fa fa-check"></i><b>1.5</b> Placing points on the map</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html#placing-polygons-on-the-map"><i class="fa fa-check"></i><b>1.6</b> Placing polygons on the map</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="mapping-basics.html"><a href="mapping-basics.html"><i class="fa fa-check"></i><b>2</b> Mapping Basics</a><ul>
+<li class="chapter" data-level="2.1" data-path="mapping-basics.html"><a href="mapping-basics.html#mapping-crime-locations"><i class="fa fa-check"></i><b>2.1</b> Mapping crime locations</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="mapping-basics.html"><a href="mapping-basics.html#downloading-data"><i class="fa fa-check"></i><b>2.1.1</b> Downloading Data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="mapping-basics.html"><a href="mapping-basics.html#adding-data-to-your-map"><i class="fa fa-check"></i><b>2.1.2</b> Adding data to your map</a></li>
+<li class="chapter" data-level="2.1.3" data-path="mapping-basics.html"><a href="mapping-basics.html#adding-data-using-an-api"><i class="fa fa-check"></i><b>2.1.3</b> Adding data using an API</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="mapping-basics.html"><a href="mapping-basics.html#working-with-multiple-layers"><i class="fa fa-check"></i><b>2.2</b> Working with Multiple Layers</a></li>
+<li class="chapter" data-level="2.3" data-path="mapping-basics.html"><a href="mapping-basics.html#printing-or-exporting-a-map"><i class="fa fa-check"></i><b>2.3</b> Printing or Exporting a Map</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="mapping-basics.html"><a href="mapping-basics.html#setting-up-the-print-layout"><i class="fa fa-check"></i><b>2.3.1</b> Setting up the Print Layout</a></li>
+<li class="chapter" data-level="2.3.2" data-path="mapping-basics.html"><a href="mapping-basics.html#adding-a-map"><i class="fa fa-check"></i><b>2.3.2</b> Adding a map</a></li>
+<li class="chapter" data-level="2.3.3" data-path="mapping-basics.html"><a href="mapping-basics.html#adding-a-scale-bar"><i class="fa fa-check"></i><b>2.3.3</b> Adding a scale bar</a></li>
+<li class="chapter" data-level="2.3.4" data-path="mapping-basics.html"><a href="mapping-basics.html#adding-a-legend"><i class="fa fa-check"></i><b>2.3.4</b> Adding a legend</a></li>
+<li class="chapter" data-level="2.3.5" data-path="mapping-basics.html"><a href="mapping-basics.html#exporting-your-map"><i class="fa fa-check"></i><b>2.3.5</b> Exporting your map</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vector-from-raster.html"><a href="vector-from-raster.html"><i class="fa fa-check"></i><b>3</b> Creating Vector Data From Raster Base</a><ul>
+<li class="chapter" data-level="3.1" data-path="vector-from-raster.html"><a href="vector-from-raster.html#obtaining-a-raster"><i class="fa fa-check"></i><b>3.1</b> Obtaining a raster</a></li>
+<li class="chapter" data-level="3.2" data-path="vector-from-raster.html"><a href="vector-from-raster.html#creating-a-new-vector-layer."><i class="fa fa-check"></i><b>3.2</b> Creating a new vector layer.</a></li>
+<li class="chapter" data-level="3.3" data-path="vector-from-raster.html"><a href="vector-from-raster.html#adding-features"><i class="fa fa-check"></i><b>3.3</b> Adding features</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="vector-appearance.html"><a href="vector-appearance.html"><i class="fa fa-check"></i><b>4</b> Adjusting Vector Layer Appearance</a><ul>
+<li class="chapter" data-level="4.1" data-path="vector-appearance.html"><a href="vector-appearance.html#opening-the-properties-window"><i class="fa fa-check"></i><b>4.1</b> Opening the properties window</a></li>
+<li class="chapter" data-level="4.2" data-path="vector-appearance.html"><a href="vector-appearance.html#changing-fill-color-border-and-style"><i class="fa fa-check"></i><b>4.2</b> Changing fill color, border and style</a></li>
+<li class="chapter" data-level="4.3" data-path="vector-appearance.html"><a href="vector-appearance.html#adding-labels"><i class="fa fa-check"></i><b>4.3</b> Adding labels</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="osm-vectors.html"><a href="osm-vectors.html"><i class="fa fa-check"></i><b>5</b> Adding OpenStreetMap vectors</a><ul>
+<li class="chapter" data-level="5.1" data-path="osm-vectors.html"><a href="osm-vectors.html#downloading-osm-data"><i class="fa fa-check"></i><b>5.1</b> Downloading OSM data</a></li>
+<li class="chapter" data-level="5.2" data-path="osm-vectors.html"><a href="osm-vectors.html#labeling-the-vector-data"><i class="fa fa-check"></i><b>5.2</b> Labeling the vector data</a></li>
+<li class="chapter" data-level="5.3" data-path="osm-vectors.html"><a href="osm-vectors.html#filtering-the-vector-data"><i class="fa fa-check"></i><b>5.3</b> Filtering the vector data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="aggregated-data.html"><a href="aggregated-data.html"><i class="fa fa-check"></i><b>6</b> Mapping Aggregated Data</a><ul>
+<li class="chapter" data-level="6.1" data-path="aggregated-data.html"><a href="aggregated-data.html#choropleth-maps"><i class="fa fa-check"></i><b>6.1</b> Choropleth Maps</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="aggregated-data.html"><a href="aggregated-data.html#downloading-data-1"><i class="fa fa-check"></i><b>6.1.1</b> Downloading data</a></li>
+<li class="chapter" data-level="6.1.2" data-path="aggregated-data.html"><a href="aggregated-data.html#download-and-unzip-shapefiles"><i class="fa fa-check"></i><b>6.1.2</b> Download and Unzip Shapefiles</a></li>
+<li class="chapter" data-level="6.1.3" data-path="aggregated-data.html"><a href="aggregated-data.html#add-country-boundaries-to-map"><i class="fa fa-check"></i><b>6.1.3</b> Add Country Boundaries to Map</a></li>
+<li class="chapter" data-level="6.1.4" data-path="aggregated-data.html"><a href="aggregated-data.html#adding-the-data"><i class="fa fa-check"></i><b>6.1.4</b> Adding the data</a></li>
+<li class="chapter" data-level="6.1.5" data-path="aggregated-data.html"><a href="aggregated-data.html#join-the-country-polygons-with-the-data."><i class="fa fa-check"></i><b>6.1.5</b> Join the country polygons with the data.</a></li>
+<li class="chapter" data-level="6.1.6" data-path="aggregated-data.html"><a href="aggregated-data.html#color-the-polygons-according-to-crime-data"><i class="fa fa-check"></i><b>6.1.6</b> Color the polygons according to crime data</a></li>
+<li class="chapter" data-level="6.1.7" data-path="aggregated-data.html"><a href="aggregated-data.html#clean-the-map"><i class="fa fa-check"></i><b>6.1.7</b> Clean the map</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="aggregated-data.html"><a href="aggregated-data.html#proportional-symbols"><i class="fa fa-check"></i><b>6.2</b> Proportional Symbols</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="aggregated-data.html"><a href="aggregated-data.html#style-the-point-symbols-using-graduated-sizes"><i class="fa fa-check"></i><b>6.2.1</b> Style the point symbols using graduated sizes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="aggregated-data.html"><a href="aggregated-data.html#pie-charts"><i class="fa fa-check"></i><b>6.3</b> Pie Charts</a></li>
+</ul></li>
+<li class="part"><span><b>II Spatial Analysis</b></span></li>
+<li class="chapter" data-level="7" data-path="getting-started-with-qgis-1.html"><a href="getting-started-with-qgis-1.html"><i class="fa fa-check"></i><b>7</b> Getting Started with QGIS</a></li>
+<li class="chapter" data-level="8" data-path="getting-started-with-stata.html"><a href="getting-started-with-stata.html"><i class="fa fa-check"></i><b>8</b> Getting Started with Stata</a><ul>
+<li class="chapter" data-level="8.1" data-path="getting-started-with-stata.html"><a href="getting-started-with-stata.html#menus"><i class="fa fa-check"></i><b>8.1</b> Menus</a></li>
+<li class="chapter" data-level="8.2" data-path="getting-started-with-stata.html"><a href="getting-started-with-stata.html#commands"><i class="fa fa-check"></i><b>8.2</b> Commands</a></li>
+<li class="chapter" data-level="8.3" data-path="getting-started-with-stata.html"><a href="getting-started-with-stata.html#do-files"><i class="fa fa-check"></i><b>8.3</b> Do-Files</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="buffers-distances.html"><a href="buffers-distances.html"><i class="fa fa-check"></i><b>9</b> Buffers and Distances</a><ul>
+<li class="chapter" data-level="9.1" data-path="buffers-distances.html"><a href="buffers-distances.html#getting-the-data"><i class="fa fa-check"></i><b>9.1</b> Getting the Data</a></li>
+<li class="chapter" data-level="9.2" data-path="buffers-distances.html"><a href="buffers-distances.html#mapping-the-data"><i class="fa fa-check"></i><b>9.2</b> Mapping the Data</a></li>
+<li class="chapter" data-level="9.3" data-path="buffers-distances.html"><a href="buffers-distances.html#drawing-buffers-around-the-schools"><i class="fa fa-check"></i><b>9.3</b> Drawing Buffers Around the Schools</a></li>
+<li class="chapter" data-level="9.4" data-path="buffers-distances.html"><a href="buffers-distances.html#counting-points-in-polygons"><i class="fa fa-check"></i><b>9.4</b> Counting Points in Polygons</a></li>
+<li class="chapter" data-level="9.5" data-path="buffers-distances.html"><a href="buffers-distances.html#calculating-distances"><i class="fa fa-check"></i><b>9.5</b> Calculating Distances</a></li>
+<li class="chapter" data-level="9.6" data-path="buffers-distances.html"><a href="buffers-distances.html#joining-and-exporting-data"><i class="fa fa-check"></i><b>9.6</b> Joining and Exporting Data</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>10</b> Cluster Analsis</a><ul>
+<li class="chapter" data-level="10.1" data-path="clustering.html"><a href="clustering.html#using-qgis"><i class="fa fa-check"></i><b>10.1</b> Using QGIS</a></li>
+<li class="chapter" data-level="10.2" data-path="clustering.html"><a href="clustering.html#using-stata"><i class="fa fa-check"></i><b>10.2</b> Using Stata</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="autocorrelation.html"><a href="autocorrelation.html"><i class="fa fa-check"></i><b>11</b> Autocorrelation and Spatial Regression</a><ul>
+<li class="chapter" data-level="11.1" data-path="autocorrelation.html"><a href="autocorrelation.html#loading-the-data-into-stata"><i class="fa fa-check"></i><b>11.1</b> Loading the Data into Stata</a></li>
+<li class="chapter" data-level="11.2" data-path="autocorrelation.html"><a href="autocorrelation.html#creating-spatial-weights-matrix"><i class="fa fa-check"></i><b>11.2</b> Creating Spatial Weights Matrix</a></li>
+<li class="chapter" data-level="11.3" data-path="autocorrelation.html"><a href="autocorrelation.html#regression-and-spatial-regression"><i class="fa fa-check"></i><b>11.3</b> Regression and Spatial Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Crime Mapping and Spatial Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="clustering" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Cluster Analsis</h1>
+<p>K-means clustering is a simple approach for partitioning observations into a set of <em>k</em> clusters. The method within-cluster variances based on the following equation:</p>
+<p><span class="math display">\[ \text{arg min}\sum_{i=1}^k\sum_{x_j \in s_i}\left(x_j - \mu_i \right)^2 \]</span></p>
+<div id="using-qgis" class="section level2">
+<h2><span class="header-section-number">10.1</span> Using QGIS</h2>
+<p>To perform k-means clustering using QGIS, first make sure you have the point data you wish to cluster loaded as a vector layer. Then open the <kbd>Processing → Toolbox</kbd> and double-click on <kbd>Vector analysis → K-means clustering</kbd> (this is in side bar on the right of the QGIS window).</p>
+<div class="figure">
+<img src="images/clustering_qgis1.png" alt="Screenshot of the Processing Toolbox in QGIS 3.10 for MacOS" />
+<p class="caption">Screenshot of the Processing Toolbox in QGIS 3.10 for MacOS</p>
+</div>
+<p>When you do this, a menu will come up allowing you to select the points layer you wish to perform the clustering on and to specify the number of cluters (<em>k</em>), the field and layer name that will be used to store the cluster IDs in the attribute table, and other options.</p>
+<div class="figure">
+<img src="images/clustering_qgis2.png" alt="Screenshot of the k-means clustering menu" />
+<p class="caption">Screenshot of the k-means clustering menu</p>
+</div>
+<p>Once you choose the options you want and click <kbd>Run</kbd>, QGIS will perform the clustering operation. The results will be stored in a new points layer with the name you selected in the previous step. Initially you will not see much difference, just a change in color of the points as this new layer is overlayed on top of the previous one. However, you will see that this new layer has a cluster ID field in the attributes table, and you can use this to color the points by selecting the <kbd>Categorized</kbd> option in <kbd>Properties → Symbology</kbd> and choosing your cluster ID variable as the <kbd>Value</kbd> for the categorization. (Remember to hit the <kbd>Classify<kbd> button.)</p>
+<div class="figure">
+<img src="images/clustering_symb_menu.png" alt="Screenshot of the properties menu for setting up color coding of clustered data" />
+<p class="caption">Screenshot of the properties menu for setting up color coding of clustered data</p>
+</div>
+<p>The final result should look something like this:</p>
+<div class="figure">
+<img src="images/clustering_qgis3.png" alt="Screenshot of clustered data coded by color" />
+<p class="caption">Screenshot of clustered data coded by color</p>
+</div>
+</div>
+<div id="using-stata" class="section level2">
+<h2><span class="header-section-number">10.2</span> Using Stata</h2>
+<p>To perform kmeans clustering in Stata, you can use the command <em>cluster kmeans</em>, followed by the list of variables you want to cluster on. For spatial clustering, use the x and y coordinates. The command lets you specify the number of clusters as an option, <em>k(#)</em>.</p>
+<pre><code>cluster kmeans xcoordinate ycoordinate, k(8)</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="buffers-distances.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="autocorrelation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["crime_mapping_lab.pdf", "crime_mapping_lab.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

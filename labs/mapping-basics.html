@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Mapping Basics | Crime Mapping and Spatial Analysis</title>
   <meta name="description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Mapping Basics | Crime Mapping and Spatial Analysis" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="John Palmer" />
 
 
-<meta name="date" content="2020-02-20" />
+<meta name="date" content="2020-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -80,6 +80,7 @@
 <li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-2-23-january-2020"><i class="fa fa-check"></i>Lab 2: 23 January 2020</a></li>
 <li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-3-5-february-2020"><i class="fa fa-check"></i>Lab 3: 5 February 2020</a></li>
 <li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-4-20-february-2020"><i class="fa fa-check"></i>Lab 4: 20 February 2020</a></li>
+<li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-5-5-march-2020"><i class="fa fa-check"></i>Lab 5: 5 March 2020</a></li>
 </ul></li>
 <li class="part"><span><b>I Crime Mapping</b></span></li>
 <li class="chapter" data-level="1" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html"><i class="fa fa-check"></i><b>1</b> Getting Started with QGIS</a><ul>
@@ -149,6 +150,15 @@
 <li class="chapter" data-level="9.4" data-path="buffers-distances.html"><a href="buffers-distances.html#counting-points-in-polygons"><i class="fa fa-check"></i><b>9.4</b> Counting Points in Polygons</a></li>
 <li class="chapter" data-level="9.5" data-path="buffers-distances.html"><a href="buffers-distances.html#calculating-distances"><i class="fa fa-check"></i><b>9.5</b> Calculating Distances</a></li>
 <li class="chapter" data-level="9.6" data-path="buffers-distances.html"><a href="buffers-distances.html#joining-and-exporting-data"><i class="fa fa-check"></i><b>9.6</b> Joining and Exporting Data</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>10</b> Cluster Analsis</a><ul>
+<li class="chapter" data-level="10.1" data-path="clustering.html"><a href="clustering.html#using-qgis"><i class="fa fa-check"></i><b>10.1</b> Using QGIS</a></li>
+<li class="chapter" data-level="10.2" data-path="clustering.html"><a href="clustering.html#using-stata"><i class="fa fa-check"></i><b>10.2</b> Using Stata</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="autocorrelation.html"><a href="autocorrelation.html"><i class="fa fa-check"></i><b>11</b> Autocorrelation and Spatial Regression</a><ul>
+<li class="chapter" data-level="11.1" data-path="autocorrelation.html"><a href="autocorrelation.html#loading-the-data-into-stata"><i class="fa fa-check"></i><b>11.1</b> Loading the Data into Stata</a></li>
+<li class="chapter" data-level="11.2" data-path="autocorrelation.html"><a href="autocorrelation.html#creating-spatial-weights-matrix"><i class="fa fa-check"></i><b>11.2</b> Creating Spatial Weights Matrix</a></li>
+<li class="chapter" data-level="11.3" data-path="autocorrelation.html"><a href="autocorrelation.html#regression-and-spatial-regression"><i class="fa fa-check"></i><b>11.3</b> Regression and Spatial Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -306,6 +316,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

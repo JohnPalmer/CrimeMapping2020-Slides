@@ -1,3 +1,6 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
 \documentclass[]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
@@ -6,32 +9,34 @@
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
 \else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
+  \usepackage{unicode-math}
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
 \IfFileExists{microtype.sty}{%
-\usepackage{microtype}
+\usepackage[]{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1in]{geometry}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
 \usepackage{hyperref}
-\hypersetup{unicode=true,
+\hypersetup{
             pdftitle={Crime Mapping and Spatial Analysis},
             pdfauthor={John Palmer},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
-\usepackage{natbib}
-\bibliographystyle{apalike}
 \usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -41,12 +46,6 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -61,34 +60,26 @@
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
-
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\providecommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-
-  \title{Crime Mapping and Spatial Analysis}
-    \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-  \subtitle{Lab Manual}
-  \author{John Palmer}
-    \preauthor{\centering\large\emph}
-  \postauthor{\par}
-      \predate{\centering\large\emph}
-  \postdate{\par}
-    \date{2020-02-20}
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
 
 \usepackage{booktabs}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Crime Mapping and Spatial Analysis}
+\providecommand{\subtitle}[1]{}
+\subtitle{Lab Manual}
+\author{John Palmer}
+\date{2020-03-05}
 
 \begin{document}
 \maketitle
@@ -204,6 +195,20 @@ Submit both PNG files through Aula Global.
 \addcontentsline{toc}{section}{Lab 4: 20 February 2020}
 
 In this lab we will learn how to use buffers and distances for spatial analysis. Follow the instructions in Section \ref{buffers-distances} and upload the csv file that you export in the end to Aula Global.
+
+\hypertarget{lab-5-5-march-2020}{%
+\section*{Lab 5: 5 March 2020}\label{lab-5-5-march-2020}}
+\addcontentsline{toc}{section}{Lab 5: 5 March 2020}
+
+This lab is divided into two parts: In part 1 we will learn how to implement k-means clustering using QGIS. In part 2, we will learn how to use Stata to test for spatial autocorrelation and fit spatial regression models.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Download or reuse any set of point data that you want. Load this into Stata as a points layer, and then use this to work through Section \ref{clustering} to cluster the data using QGIS. Use colors to indicate the clusters on your map. Export the color-coded, clustered map as a png file and submit it through Aula Global.
+\item
+  Start with the dataset (a csv file) that you generated in the previous lab (number of bars and number of battery reports within the buffer drawn around each school in Chicago). If you cannot find this, you can quickly recreate it or ask for a copy. Use this dataset to work through Section \ref{autocorrelation}. Put your results into a Word document, incuding a brief interpretation of the regression models, and upload this through Aula Global.
+\end{enumerate}
 
 \hypertarget{part-crime-mapping}{%
 \part{Crime Mapping}\label{part-crime-mapping}}
@@ -637,7 +642,159 @@ One complication to note: Distances are calculated in units that depend on the C
 
 If you want to end up with a file that you can analyze later in Stata, R, or some other statistical tool, you will want to export your data from QGIS. But you first need to join your distance table with the polygon layer in which you have your counts. Do this using the Join tab in the properties dialog for the polygon layer. Select the unique ID for each layer and carry out the join. If you do it correctly, you should see the distances in the attribute table for the polygons. If that is the case, then export your polygon layer as a csv file and save this for further analysis in our next lab. (Also turn it in as your lab assignment for this week.)
 
-\bibliography{book.bib,packages.bib}
+\hypertarget{clustering}{%
+\chapter{Cluster Analsis}\label{clustering}}
 
+K-means clustering is a simple approach for partitioning observations into a set of \emph{k} clusters. The method within-cluster variances based on the following equation:
+
+\[ \text{arg min}\sum_{i=1}^k\sum_{x_j \in s_i}\left(x_j - \mu_i \right)^2 \]
+
+\hypertarget{using-qgis}{%
+\section{Using QGIS}\label{using-qgis}}
+
+To perform k-means clustering using QGIS, first make sure you have the point data you wish to cluster loaded as a vector layer. Then open the Processing → Toolbox and double-click on Vector analysis → K-means clustering (this is in side bar on the right of the QGIS window).
+
+\begin{figure}
+\centering
+\includegraphics{images/clustering_qgis1.png}
+\caption{Screenshot of the Processing Toolbox in QGIS 3.10 for MacOS}
+\end{figure}
+
+When you do this, a menu will come up allowing you to select the points layer you wish to perform the clustering on and to specify the number of cluters (\emph{k}), the field and layer name that will be used to store the cluster IDs in the attribute table, and other options.
+
+\begin{figure}
+\centering
+\includegraphics{images/clustering_qgis2.png}
+\caption{Screenshot of the k-means clustering menu}
+\end{figure}
+
+Once you choose the options you want and click Run, QGIS will perform the clustering operation. The results will be stored in a new points layer with the name you selected in the previous step. Initially you will not see much difference, just a change in color of the points as this new layer is overlayed on top of the previous one. However, you will see that this new layer has a cluster ID field in the attributes table, and you can use this to color the points by selecting the Categorized option in Properties → Symbology and choosing your cluster ID variable as the Value for the categorization. (Remember to hit the Classify button.)
+
+\begin{figure}
+\centering
+\includegraphics{images/clustering_symb_menu.png}
+\caption{Screenshot of the properties menu for setting up color coding of clustered data}
+\end{figure}
+
+The final result should look something like this:
+
+\begin{figure}
+\centering
+\includegraphics{images/clustering_qgis3.png}
+\caption{Screenshot of clustered data coded by color}
+\end{figure}
+
+\hypertarget{using-stata}{%
+\section{Using Stata}\label{using-stata}}
+
+To perform kmeans clustering in Stata, you can use the command \emph{cluster kmeans}, followed by the list of variables you want to cluster on. For spatial clustering, use the x and y coordinates. The command lets you specify the number of clusters as an option, \emph{k(\#)}.
+
+\begin{verbatim}
+cluster kmeans xcoordinate ycoordinate, k(8)
+\end{verbatim}
+
+\hypertarget{autocorrelation}{%
+\chapter{Autocorrelation and Spatial Regression}\label{autocorrelation}}
+
+This Section walks you through the analysis of spatial autocorrelation using the global Moran's I, and the fitting of spatial regression models with lagged independent variables, lagged dependent variables, and/or lagged errors. It uses as an example the dataset that you created in Section \ref{buffers-distances}, which you should have saved as a csv file. (If you cannot find this, just ask and I will give you a copy to work with.)
+
+\hypertarget{loading-the-data-into-stata}{%
+\section{Loading the Data into Stata}\label{loading-the-data-into-stata}}
+
+The first step is to load the data into Stata. If this is the first time you are working with a csv file in Stata or you have forgotten the command or simply don't want to type the file path, an easy way to load the file is through the menus: File → Import → Text Data.
+
+\begin{figure}
+\centering
+\includegraphics{images/stata_file_import.png}
+\caption{Screenshot of the Stata menu for importing csv files}
+\end{figure}
+
+You can then navigate your file system to select the file and import it. Of course, the more efficient way to do this is with the command and, better yet, to put this into a do-file so that you can re-reun everything again any time. Notice that if you import the file with the menu, you will then see the command (including the path you need) in the Stata console, so you could simply copy this into your do-file. The command should look something like this (modifying the actual path for your system):
+
+\begin{verbatim}
+import delimited Z:\chicago\school_buffer_bar_battery_counts.csv
+\end{verbatim}
+
+\hypertarget{creating-spatial-weights-matrix}{%
+\section{Creating Spatial Weights Matrix}\label{creating-spatial-weights-matrix}}
+
+Once you have the data imported, you need to tell Stata that this is spatial data and create a spatial weights matrix. Again, you can do this with the menus: Statistics → Spatial Autoregressive Models.
+
+\begin{figure}
+\centering
+\includegraphics{images/stata_spatial_menu.png}
+\caption{Screenshot of Stata's spatial regression menu}
+\end{figure}
+
+From the menu the pops up, you will see that you have the choice of using an external shapefile or simply using the information in the file that is currently in memory. Choose this second option, select a variable with unique values for the ID option (in this case, use school\_id), specify the x and y coordinates (in this case, simply x and y), indicate whether these are longitudes and latitudes (in this case they are), and choose whether you want distances reported in kilometers or miles. Then click Submit.
+
+\begin{figure}
+\centering
+\includegraphics{images/stata_spatial_menu2.png}
+\caption{Screenshot of Stata's spatial regression menu}
+\end{figure}
+
+Now, without closing the menu, move to the Spatial Matrices tab. Here is where you can set up the weights matrix that you will be using. In this case you want to select Create standard matrix. Consider whether it makes more sense, given your data, to create a contiguity matrix or an inverse-distance matrix and choose the option in the menu accordingly. (As you will see, only one option actually works with this dataset. Think about why that is.) Give your matrix a name (which you will use later) and, if you have chosen an inverse-distance matrix, then decide if you want to set a threshold distance beyond which the weights will drop to 0. (You can leave the normalization method set at the default.)
+
+\begin{figure}
+\centering
+\includegraphics{images/stata_spatial_weights_menu.png}
+\caption{Screenshot of Stata's spatial regression menu: Spatial Weights Tab}
+\end{figure}
+
+Now hit Submit and Stata will create your matrix. Look in the console and you will see the command that you need in order to do this directly from a do-file next time:
+
+\begin{verbatim}
+spset school_id, coord(x y) coordsys(latlong)
+ 
+spmatrix create idistance W, vtruncate(1) replace
+\end{verbatim}
+
+\hypertarget{regression-and-spatial-regression}{%
+\section{Regression and Spatial Regression}\label{regression-and-spatial-regression}}
+
+Now that you have the spatial weights matrix created, you can start fitting spatial autoregressive models and also testing for autocorrelation. For this, we will move directly to the commands (rather than going through the menus) to make things more efficient (but feel free to explore the menus to see all of the possibilities).
+
+Start with a non-spatial ordinary least squares regression of the number of batteries within each school's buffer on the number of bars in that buffer:
+
+\begin{verbatim}
+reg n_batteries n_bars
+\end{verbatim}
+
+Interpret the results and then test for spatial autocorrelation using the global Moran's I (specifying the name you chose for your weights matrix):
+
+\begin{verbatim}
+estat moran, errorlag(W)
+\end{verbatim}
+
+Now fit the spatial regresion models we discussed in class, using the following commands:
+
+For lagging the dependent variable:
+
+\begin{verbatim}
+spregress n_batteries n_bars, gs2sls dvarlag(W)
+\end{verbatim}
+
+For lagging an independent variable:
+
+\begin{verbatim}
+spregress n_batteries n_bars, gs2sls ivarlag(W: n_bars)
+\end{verbatim}
+
+For lagging the error term:
+
+\begin{verbatim}
+spregress n_batteries n_bars, gs2sls errorlag(W)
+\end{verbatim}
+
+Fit several combinations of these models and interpret the results. As we discussed in class, one useful way of interpreting the effects in this models is by using the following postestimation command:
+
+\begin{verbatim}
+estat impact
+\end{verbatim}
+
+estat impact
+
+\bibliography{book.bib,packages.bib}
 
 \end{document}
