@@ -1,3 +1,0 @@
-# Measuring Autocorrelation with Stata
-
-    spatgsa

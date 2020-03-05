@@ -1,5 +1,0 @@
-book_filename: "crime_mapping_lab"
-delete_merged_file: true
-language:
-  ui:
-    chapter_name: "Chapter "
