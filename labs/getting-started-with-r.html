@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Getting Started with R | Crime Mapping and Spatial Analysis</title>
   <meta name="description" content="Companion guide for the Crime Mapping and Spatial Analysis labs." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Getting Started with R | Crime Mapping and Spatial Analysis" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="John Palmer" />
 
 
-<meta name="date" content="2020-02-20" />
+<meta name="date" content="2020-03-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="getting-started-with-stata.html"/>
-<link rel="next" href="basic-spatial-statistics-with-stata.html"/>
+<link rel="next" href="buffers-distances.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -79,6 +79,8 @@
 <li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-1-9-january-2020"><i class="fa fa-check"></i>Lab 1: 9 January 2020</a></li>
 <li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-2-23-january-2020"><i class="fa fa-check"></i>Lab 2: 23 January 2020</a></li>
 <li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-3-5-february-2020"><i class="fa fa-check"></i>Lab 3: 5 February 2020</a></li>
+<li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-4-20-february-2020"><i class="fa fa-check"></i>Lab 4: 20 February 2020</a></li>
+<li class="chapter" data-level="" data-path="lab-instructions.html"><a href="lab-instructions.html#lab-5-5-march-2020"><i class="fa fa-check"></i>Lab 5: 5 March 2020</a></li>
 </ul></li>
 <li class="part"><span><b>I Crime Mapping</b></span></li>
 <li class="chapter" data-level="1" data-path="getting-started-with-qgis.html"><a href="getting-started-with-qgis.html"><i class="fa fa-check"></i><b>1</b> Getting Started with QGIS</a><ul>
@@ -141,20 +143,30 @@
 <li class="chapter" data-level="8.2" data-path="getting-started-with-stata.html"><a href="getting-started-with-stata.html#commands"><i class="fa fa-check"></i><b>8.2</b> Commands</a></li>
 <li class="chapter" data-level="8.3" data-path="getting-started-with-stata.html"><a href="getting-started-with-stata.html#do-files"><i class="fa fa-check"></i><b>8.3</b> Do-Files</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="getting-started-with-r.html"><a href="getting-started-with-r.html"><i class="fa fa-check"></i><b>9</b> Getting Started with R</a></li>
-<li class="chapter" data-level="10" data-path="basic-spatial-statistics-with-stata.html"><a href="basic-spatial-statistics-with-stata.html"><i class="fa fa-check"></i><b>10</b> Basic Spatial Statistics with Stata</a></li>
-<li class="chapter" data-level="11" data-path="aggregating-point-data.html"><a href="aggregating-point-data.html"><i class="fa fa-check"></i><b>11</b> Aggregating Point Data</a><ul>
-<li class="chapter" data-level="11.1" data-path="aggregating-point-data.html"><a href="aggregating-point-data.html#counting-points-in-areal-units"><i class="fa fa-check"></i><b>11.1</b> Counting Points in Areal Units</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="aggregating-point-data.html"><a href="aggregating-point-data.html#obtain-the-data"><i class="fa fa-check"></i><b>11.1.1</b> Obtain the data</a></li>
-<li class="chapter" data-level="11.1.2" data-path="aggregating-point-data.html"><a href="aggregating-point-data.html#obtaining-shapefile"><i class="fa fa-check"></i><b>11.1.2</b> Obtaining shapefile</a></li>
-<li class="chapter" data-level="11.1.3" data-path="aggregating-point-data.html"><a href="aggregating-point-data.html#add-the-shapefile-layer-to-your-map"><i class="fa fa-check"></i><b>11.1.3</b> Add the shapefile layer to your map</a></li>
-<li class="chapter" data-level="11.1.4" data-path="aggregating-point-data.html"><a href="aggregating-point-data.html#add-the-data"><i class="fa fa-check"></i><b>11.1.4</b> Add the data</a></li>
-<li class="chapter" data-level="11.1.5" data-path="aggregating-point-data.html"><a href="aggregating-point-data.html#count-the-points-in-each-polygon"><i class="fa fa-check"></i><b>11.1.5</b> Count the points in each polygon</a></li>
+<li class="chapter" data-level="9" data-path="getting-started-with-r.html"><a href="getting-started-with-r.html"><i class="fa fa-check"></i><b>9</b> Getting Started with R</a><ul>
+<li class="chapter" data-level="9.1" data-path="getting-started-with-r.html"><a href="getting-started-with-r.html#using-r-from-a-terminal"><i class="fa fa-check"></i><b>9.1</b> Using R from a Terminal</a></li>
+<li class="chapter" data-level="9.2" data-path="getting-started-with-r.html"><a href="getting-started-with-r.html#text-editor"><i class="fa fa-check"></i><b>9.2</b> Text Editor</a></li>
+<li class="chapter" data-level="9.3" data-path="getting-started-with-r.html"><a href="getting-started-with-r.html#ide"><i class="fa fa-check"></i><b>9.3</b> IDE</a></li>
+<li class="chapter" data-level="9.4" data-path="getting-started-with-r.html"><a href="getting-started-with-r.html#basic-concepts"><i class="fa fa-check"></i><b>9.4</b> Basic Concepts</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="buffers-distances.html"><a href="buffers-distances.html"><i class="fa fa-check"></i><b>10</b> Buffers and Distances</a><ul>
+<li class="chapter" data-level="10.1" data-path="buffers-distances.html"><a href="buffers-distances.html#getting-the-data"><i class="fa fa-check"></i><b>10.1</b> Getting the Data</a></li>
+<li class="chapter" data-level="10.2" data-path="buffers-distances.html"><a href="buffers-distances.html#mapping-the-data"><i class="fa fa-check"></i><b>10.2</b> Mapping the Data</a></li>
+<li class="chapter" data-level="10.3" data-path="buffers-distances.html"><a href="buffers-distances.html#drawing-buffers-around-the-schools"><i class="fa fa-check"></i><b>10.3</b> Drawing Buffers Around the Schools</a></li>
+<li class="chapter" data-level="10.4" data-path="buffers-distances.html"><a href="buffers-distances.html#counting-points-in-polygons"><i class="fa fa-check"></i><b>10.4</b> Counting Points in Polygons</a></li>
+<li class="chapter" data-level="10.5" data-path="buffers-distances.html"><a href="buffers-distances.html#calculating-distances"><i class="fa fa-check"></i><b>10.5</b> Calculating Distances</a></li>
+<li class="chapter" data-level="10.6" data-path="buffers-distances.html"><a href="buffers-distances.html#joining-and-exporting-data"><i class="fa fa-check"></i><b>10.6</b> Joining and Exporting Data</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="cluster-analysis-with-stata.html"><a href="cluster-analysis-with-stata.html"><i class="fa fa-check"></i><b>12</b> Cluster Analysis with Stata</a></li>
-<li class="chapter" data-level="13" data-path="measuring-autocorrelation-with-stata.html"><a href="measuring-autocorrelation-with-stata.html"><i class="fa fa-check"></i><b>13</b> Measuring Autocorrelation with Stata</a></li>
-<li class="chapter" data-level="14" data-path="kernel-density-estimation-with-stata.html"><a href="kernel-density-estimation-with-stata.html"><i class="fa fa-check"></i><b>14</b> Kernel Density Estimation with Stata</a></li>
+<li class="chapter" data-level="11" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>11</b> Cluster Analsis</a><ul>
+<li class="chapter" data-level="11.1" data-path="clustering.html"><a href="clustering.html#using-qgis"><i class="fa fa-check"></i><b>11.1</b> Using QGIS</a></li>
+<li class="chapter" data-level="11.2" data-path="clustering.html"><a href="clustering.html#using-stata"><i class="fa fa-check"></i><b>11.2</b> Using Stata</a></li>
+<li class="chapter" data-level="11.3" data-path="clustering.html"><a href="clustering.html#using-r"><i class="fa fa-check"></i><b>11.3</b> Using R</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="autocorrelation.html"><a href="autocorrelation.html"><i class="fa fa-check"></i><b>12</b> Autocorrelation and Spatial Regression</a><ul>
+<li class="chapter" data-level="12.1" data-path="autocorrelation.html"><a href="autocorrelation.html#loading-the-data-into-stata"><i class="fa fa-check"></i><b>12.1</b> Loading the Data into Stata</a></li>
+<li class="chapter" data-level="12.2" data-path="autocorrelation.html"><a href="autocorrelation.html#creating-spatial-weights-matrix"><i class="fa fa-check"></i><b>12.2</b> Creating Spatial Weights Matrix</a></li>
+<li class="chapter" data-level="12.3" data-path="autocorrelation.html"><a href="autocorrelation.html#regression-and-spatial-regression"><i class="fa fa-check"></i><b>12.3</b> Regression and Spatial Regression</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -178,7 +190,27 @@
             <section class="normal" id="section-">
 <div id="getting-started-with-r" class="section level1">
 <h1><span class="header-section-number">Chapter 9</span> Getting Started with R</h1>
+<p>R is a programming language and software environment for statistical computing and graphics. It is “free software,” which means you have the freedom to run, copy, distribute, study, change and improve R. It is also free in terms of price, and you can download it from its official home page at <a href="https://r-project.org/" class="uri">https://r-project.org/</a>.</p>
+<p>One of the powerful thing about R is the enormous ecosystem of packages that people have written for it. An R package is a bundle of code, often along with data, documentation and tests, which runs in R and can be shared. There are thousands of packages for R, written by people all over the world in a wide variety of disciplines, and mostly distributed under free and open source licenses. You can easily install R packages from (CRAN)[<a href="https://r-project.org/" class="uri">https://r-project.org/</a>] as well from GitHub and other code repositories.</p>
+<p>To install R, go to <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a> and install the latest release that is compatible with your system. From time to time you may wish to upgrade the R on your computer in order to take advantage of new features or to ensure support for new packages. If you already have numerous packages, you may want to copy them into the new version to avoid having to download them again. It is sometimes useful to have multiple versions of R installed side-by-side and this is possible to do.</p>
+<div id="using-r-from-a-terminal" class="section level2">
+<h2><span class="header-section-number">9.1</span> Using R from a Terminal</h2>
+<p>The Read-Eval-Print Loop is the most basic way of interacting with R directly. You can get to this by simply typing <kbd>R</kbd> from a termina window. You can also run R files (non-interactively) from a terminal.</p>
+</div>
+<div id="text-editor" class="section level2">
+<h2><span class="header-section-number">9.2</span> Text Editor</h2>
+<p>You can use any text editor to create, store, and edit R scripts (like do-files in Stata). It is nice to have features like code highlighting and a built-in REPL. Choices include Emacs, vim, and sublime.</p>
+</div>
+<div id="ide" class="section level2">
+<h2><span class="header-section-number">9.3</span> IDE</h2>
+<p>An Integrated Development Environment combines a text editor with a set of other useful tools for debugging, automation, and other tasks. The open source version of R Studio is the obvious choice here. You can download it from <a href="https://rstudio.com/products/rstudio/" class="uri">https://rstudio.com/products/rstudio/</a>. Using R with R Studio will be somewhat closer to your experience with Stata’s GUI, but with some important differences. On one hand, you can do less with menus. You cannot, for example, use the menus to carry out statistical analysis. On the other hand, R Studio has many features that you will not find in Stata’s GUI and these actually make your life much easier when you learn them. For example, when you start typing code into an R script, R Studio will offer you autocompletion when it recognizes words you are typing. You can also start typing a word and press the tab key to trigger this. And while you cannot look for the commands you need in your statistical analysis in the menus, you can easily look at the help files and other documentation related to them by typing <kbd>help([command])</kbd>. For example, <kbd>help(var)</kbd> brings up the help file for the <kbd>var</kbd> function and other related functions for computing variance, covariance, and correlation.</p>
+</div>
+<div id="basic-concepts" class="section level2">
+<h2><span class="header-section-number">9.4</span> Basic Concepts</h2>
+<p>This concept of a function is an important one that you need to get used to for working with R (and most other programming languages). You already use functions in QGIS and Stata but you may not think of them as such. Functions are algorithms that do things. Think of them as verbs. You often provide a function with arguments, which it then uses. The other concept you need to understand is that of objects. As the name suggestions, objects are things that have characteristics. Think of them as nouns. You will often pass an object to a function as one of the function’s arguments and the function will then transform the object in some way or use it to compute a value, which it then returns.</p>
+<p>Another important concept in R is that of the package or library. You have already encountered this concept with QGIS in the form of plugins and in Stata in the form of ado files. Much of the power of R comes from all of the packages that have been written for it, as already discussed above. You can find and keep track of packages in R Studio using the <kbd>Packages</kbd> tab at the bottom right.</p>
 
+</div>
 </div>
             </section>
 
@@ -186,7 +218,7 @@
         </div>
       </div>
 <a href="getting-started-with-stata.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="basic-spatial-statistics-with-stata.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="buffers-distances.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -227,6 +259,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

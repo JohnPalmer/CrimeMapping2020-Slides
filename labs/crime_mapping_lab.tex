@@ -79,7 +79,7 @@
 \providecommand{\subtitle}[1]{}
 \subtitle{Lab Manual}
 \author{John Palmer}
-\date{2020-03-05}
+\date{2020-03-10}
 
 \begin{document}
 \maketitle
@@ -589,6 +589,37 @@ display 2+2
 log close
 \end{verbatim}
 
+\hypertarget{getting-started-with-r}{%
+\chapter{Getting Started with R}\label{getting-started-with-r}}
+
+R is a programming language and software environment for statistical computing and graphics. It is ``free software,'' which means you have the freedom to run, copy, distribute, study, change and improve R. It is also free in terms of price, and you can download it from its official home page at \url{https://r-project.org/}.
+
+One of the powerful thing about R is the enormous ecosystem of packages that people have written for it. An R package is a bundle of code, often along with data, documentation and tests, which runs in R and can be shared. There are thousands of packages for R, written by people all over the world in a wide variety of disciplines, and mostly distributed under free and open source licenses. You can easily install R packages from (CRAN){[}\url{https://r-project.org/}{]} as well from GitHub and other code repositories.
+
+To install R, go to \url{https://cran.r-project.org/} and install the latest release that is compatible with your system. From time to time you may wish to upgrade the R on your computer in order to take advantage of new features or to ensure support for new packages. If you already have numerous packages, you may want to copy them into the new version to avoid having to download them again. It is sometimes useful to have multiple versions of R installed side-by-side and this is possible to do.
+
+\hypertarget{using-r-from-a-terminal}{%
+\section{Using R from a Terminal}\label{using-r-from-a-terminal}}
+
+The Read-Eval-Print Loop is the most basic way of interacting with R directly. You can get to this by simply typing R from a termina window. You can also run R files (non-interactively) from a terminal.
+
+\hypertarget{text-editor}{%
+\section{Text Editor}\label{text-editor}}
+
+You can use any text editor to create, store, and edit R scripts (like do-files in Stata). It is nice to have features like code highlighting and a built-in REPL. Choices include Emacs, vim, and sublime.
+
+\hypertarget{ide}{%
+\section{IDE}\label{ide}}
+
+An Integrated Development Environment combines a text editor with a set of other useful tools for debugging, automation, and other tasks. The open source version of R Studio is the obvious choice here. You can download it from \url{https://rstudio.com/products/rstudio/}. Using R with R Studio will be somewhat closer to your experience with Stata's GUI, but with some important differences. On one hand, you can do less with menus. You cannot, for example, use the menus to carry out statistical analysis. On the other hand, R Studio has many features that you will not find in Stata's GUI and these actually make your life much easier when you learn them. For example, when you start typing code into an R script, R Studio will offer you autocompletion when it recognizes words you are typing. You can also start typing a word and press the tab key to trigger this. And while you cannot look for the commands you need in your statistical analysis in the menus, you can easily look at the help files and other documentation related to them by typing help({[}command{]}). For example, help(var) brings up the help file for the var function and other related functions for computing variance, covariance, and correlation.
+
+\hypertarget{basic-concepts}{%
+\section{Basic Concepts}\label{basic-concepts}}
+
+This concept of a function is an important one that you need to get used to for working with R (and most other programming languages). You already use functions in QGIS and Stata but you may not think of them as such. Functions are algorithms that do things. Think of them as verbs. You often provide a function with arguments, which it then uses. The other concept you need to understand is that of objects. As the name suggestions, objects are things that have characteristics. Think of them as nouns. You will often pass an object to a function as one of the function's arguments and the function will then transform the object in some way or use it to compute a value, which it then returns.
+
+Another important concept in R is that of the package or library. You have already encountered this concept with QGIS in the form of plugins and in Stata in the form of ado files. Much of the power of R comes from all of the packages that have been written for it, as already discussed above. You can find and keep track of packages in R Studio using the Packages tab at the bottom right.
+
 \hypertarget{buffers-distances}{%
 \chapter{Buffers and Distances}\label{buffers-distances}}
 
@@ -693,6 +724,51 @@ To perform kmeans clustering in Stata, you can use the command \emph{cluster kme
 cluster kmeans xcoordinate ycoordinate, k(8)
 \end{verbatim}
 
+\hypertarget{using-r}{%
+\section{Using R}\label{using-r}}
+
+This example is designed to give you a taste of R by walking you through what you would need to do for a very basic clustering analysis.
+
+\begin{verbatim}
+# first clear everything from the environment
+rm(list=ls())
+
+# now load necessary libraries
+library(tidyverse)
+
+# Now load some data. In this case, we will grab a subsample of the NYPD crime data from a URL:
+D = read_csv("http://johnpalmer.github.io/CrimeMapping2020-Slides/data/NYPD_Complaint_Map__Year_to_Date.csv")
+
+# to begin with, take a look at the column names in this dataset:
+names(D)
+
+# you can also quickly look at the first few rows:
+head(D)
+
+# or open the whole thing as if it were a spreadsheet:
+view(D)
+
+# for clustering, let's first prepare the data so that we only have X and Y coordinates and remove any missing values:
+D = D %>% select(X="X_COORD_CD", Y="Y_COORD_CD") %>% filter(!is.na(Y), !is.na(X))
+
+# now the clustering function, which takes as arguments, the data and the number of clusters
+clusters = kmeans(D,9)
+
+# how many clusters should we use?
+K=20
+ss = rep(NA, K)
+for (i in 1:K) {
+  clusters=kmeans(D, centers=i)
+  ss[i] = sum(clusters$withinss)
+}
+
+plot(1:K, ss, type="b")
+
+# let's try it with 15 clusters and see how it looks in a plot:
+clusters = kmeans(D,15)
+plot(D, col=clusters$cluster, pch=20)
+\end{verbatim}
+
 \hypertarget{autocorrelation}{%
 \chapter{Autocorrelation and Spatial Regression}\label{autocorrelation}}
 
@@ -792,8 +868,6 @@ Fit several combinations of these models and interpret the results. As we discus
 \begin{verbatim}
 estat impact
 \end{verbatim}
-
-estat impact
 
 \bibliography{book.bib,packages.bib}
 
