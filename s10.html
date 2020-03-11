@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>Mètodes d'Investigació Criminològica Avançada</title>
+	<title>Crime Mapping and Spatial Analysis</title>
 
 	<link rel="stylesheet" href="css/reveal.css">
 	<link rel="stylesheet" href="css/theme/beige.css">
@@ -32,90 +32,37 @@
 		<div class="slides">
 
 			<section>
-				<h1>Mètodes d'Investigació Criminològica Avançada</h1>
-				<h3>Sessió 10: Programari de SIG</h3>
+				<h1>Crime Mapping and Spatial Analysis</h1>
+				<h3>Class 10: Socio-Spatial Research in Criminology</h3>
 				<p><a href="http://johnrbpalmer.com">John Palmer</a>
 				</section>
 
 <section>
-	<h2>Programari de SIG</h2>
-	<ul>
-		<li>llegir mapes</li>
-		<li>afegir informació espacial</li>
-		<li>anàlisi espacial</li>
-		<li>imprimir mapes</li>
-		<li>manejar SRC i la seva transforcó</li>
-		<li>GUI</li>
-		<li>capes</li>
-		<li>llegenda</li>
-		<li>servidor</li>
-	</ul>
+	<h2>Revisiting Crime Theories</h2>
+	<p>Social Disorganization and Routine Activity Theories From a Spatial Perspective</p>
 </section>
 
 <section>
-	<h2>Programari de SIG</h2>
-	<ul>
-		<li>QGIS</li>
-		<li>ArcGIS</li>
-		<li>GRASS</li>
-		<hr>
-		<li>R</li>
-		<li>Stata</li>
-		<li>Python</li>
-	</ul>
+	<h3><a href="https://onlinelibrary.wiley.com/doi/epdf/10.1111/j.1541-0064.2006.00159.x">Andresen 2006</a></h3>
+
+<ul>
+	<li>What are the theoretical expectations?</li>
+	<li>What spatial and temporal aspects that need to be considered?</li>
+	<li>What data is used?</li>
+	<li>How are maps used in the presentation?</li>
+	<li>How is space incorporated into the analysis?</li>
+	<li>What are the results?</li>
+	<li>What would you do differently?</li>
+</ul>
 </section>
 
 <section>
-	<p>dades vs mapatge</p>
+	<h2>Socio-Spatial Analysis More Broadly</h2>
 </section>
 
 <section>
-<h2>R</h2>
+	<h4><a href="https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6">COVID-19</a></h4>
 </section>
-
-<section data-background="images/rstudio_img.png" data-background-size="contain">
-</section>
-
-<section>
-<h3>biblioteques de R</h3>
-<pre><code data-trim data-noescape>install.packages("tidyverse")</code></pre>
-</section>
-
-<section>
-<h3>domar dades</h3>
-<p><a href="data-wrangling-spanish.pdf">Full de referència</a></p> 
-</section>
-
-<section>
-<h3>domar dades</h3>
-<pre><code data-trim data-noescape>D <- tlb_df(USArrests)</code></pre>
-<pre><code data-trim data-noescape>D <- as.tibble(USArrests)</code></pre>
-</section>
-
-<section>
-<h3>domar dades</h3>
-<pre><code data-trim data-noescape>glimpse(D)</code></pre>
-<pre><code data-trim data-noescape>View(D)</code></pre>
-</section>
-
-<section>
-<h3>domar dades</h3>
-<pre><code data-trim data-noescape>%>%</code></pre>
-<pre><code data-trim data-noescape>D <- as.tibble(USArrests) %>% 
-	select(Assault, UrbanPop) %>% 
-	rename(upop = UrbanPop)
-</code></pre>
-</section>
-
-<section>
-<h3>domar dades</h3>
-<p><a href="data/SubwayEntrances.geojson">Subways</a></p> 
-<br>
-<p><a href="data/Police Precincts.geojson">Precincts</a></p> 
-<br>
-<p><a href="data/NYPD_Complaint_Map__Year_to_Date.csv">Delictes</a></p> 
-</section>
-
 
 			</div>
 		</div>
@@ -135,6 +82,7 @@
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				history: true,
+				transition: 'fade',
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [

@@ -27,14 +27,14 @@ sum(clusters$withinss)
 K=20
 ss = rep(NA, K)
 for (i in 1:K) {
-  clusters=kmeans(brut, centers=i)
+  clusters=kmeans(D, centers=i)
   ss[i] = sum(clusters$withinss)
 }
 
 plot(1:K, ss, type="b")
 
-clusters = kmeans(brut,15)
-plot(brut, col=clusters$cluster, pch=20)
+clusters = kmeans(D,15)
+plot(D, col=clusters$cluster, pch=20)
 
 # Ara proba amb llums
 
